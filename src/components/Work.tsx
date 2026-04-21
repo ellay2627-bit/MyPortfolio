@@ -189,7 +189,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
 
   return (
     <div
-      className="fixed inset-0 bg-dark-bg z-[10000] overflow-x-hidden"
+      className="fixed inset-0 bg-dark-bg z-[10000] overflow-x-hidden overflow-y-auto"
       style={{ animation: 'fadeIn 0.3s ease-in-out', top: 0, left: 0, right: 0, bottom: 0 }}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
@@ -197,6 +197,18 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
         }
       }}
     >
+      {/* 从下往上的渐变发光背景 - 只在作品数据完全加载完成后显示 */}
+      {work && !isLoading && work.media && (
+        <div 
+          className="fixed bottom-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: '200px',
+            background: 'linear-gradient(to top, rgba(0, 236, 178, 0.25) 0%, rgba(0, 236, 178, 0.12) 30%, rgba(0, 14, 12, 0) 100%)',
+            zIndex: 0
+          }}
+        />
+      )}
+      
       <div
         className="w-full h-full overflow-y-auto work-detail-scrollbar overflow-x-hidden"
         data-lenis-prevent
@@ -332,17 +344,6 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
 
             {/* 上下页导航区域 */}
             <div className="pt-12 pb-20 relative w-full">
-              {/* 从下往上的渐变发光背景 - 只在作品数据完全加载完成后显示 */}
-              {work && !isLoading && work.media && (
-                <div 
-                  className="absolute bottom-0 left-[-100vw] right-[-100vw] pointer-events-none"
-                  style={{
-                    height: '200px',
-                    background: 'linear-gradient(to top, rgba(0, 236, 178, 0.25) 0%, rgba(0, 236, 178, 0.12) 30%, rgba(0, 14, 12, 0) 100%)',
-                    zIndex: 0
-                  }}
-                />
-              )}
               
               <div className="flex flex-row justify-between items-center w-full relative z-10">
                 {/* 上一条 */}
@@ -1100,7 +1101,7 @@ export default function Work() {
     : workList.filter(item => item.category.includes(activeCategory));
 
   return (
-    <section id="work" className="pt-48 pb-80 md:pt-32 md:pb-60 bg-dark-bg relative">
+    <section id="work" className="pt-48 pb-80 md:pt-32 md:pb-60 bg-dark-bg relative overflow-x-hidden">
       {/* 实时数据同步组件 - 静默更新，不显示骨架屏 */}
       <RealTimeSync onDataUpdate={() => {
         // 后台静默更新数据，不改变加载状态
@@ -1108,10 +1109,10 @@ export default function Work() {
       }} />
       
       {/* 右侧亮光装饰 */}
-      <div className="absolute w-[800px] h-[800px] z-0 right-[-200px] top-[100px] rounded-full bg-gradient-to-l from-primary/30 via-primary/10 to-transparent blur-3xl"></div>
+      <div className="absolute w-[800px] h-[800px] z-0 right-[-300px] top-[100px] rounded-full bg-gradient-to-l from-primary/30 via-primary/10 to-transparent blur-3xl overflow-hidden"></div>
       
       {/* 右侧背景图片 - dotgroup.png */}
-      <div className="absolute w-[600px] h-[600px] z-0 right-[-200px] top-[100px] opacity-30 animate-pulse">
+      <div className="absolute w-[600px] h-[600px] z-0 right-[-300px] top-[100px] opacity-30 animate-pulse overflow-hidden">
         <img src="/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" />
       </div>
       
@@ -1227,36 +1228,6 @@ export default function Work() {
           isLoading={detailLoading}
         />
       )}
-      
-      {/* 添加CSS动画 */}
-      <style jsx global>{`
-        /* 防止横向滚动 */
-        html, body {
-          overflow-x: hidden;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        
-        * {
-          box-sizing: border-box;
-        }
-        
-        @keyframes shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-        .animate-shimmer {
-          animation: shimmer 1.5s infinite linear;
-        }
-        .bg-size-200 {
-          background-size: 200% 100%;
-        }
-      `}</style>
     </section>
   );
 }
