@@ -73,7 +73,7 @@ export default function Navbar() {
           ease: "easeInOut"
         }}
       >
-        <div className="w-full flex items-center justify-between md:px-16 md:max-w-[1920px] md:mx-auto">
+        <div className="w-full flex items-center justify-between md:px-8 md:max-w-[1920px] md:mx-auto">
           {/* LOGO和导航链接居左 */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center mr-12">

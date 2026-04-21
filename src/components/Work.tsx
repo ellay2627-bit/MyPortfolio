@@ -110,13 +110,11 @@ const WorkCard: React.FC<WorkCardProps> = React.memo(({ work, index, onClick, is
                 }}
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-30">
-              <h3 className="text-xl font-semibold text-white mb-2">{work.title}</h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-30 md:opacity-0 md:group-hover:opacity-100 max-md:opacity-100 max-md:transition-none">
+              <h3 className="text-xl font-semibold text-white mb-2 md:text-xl max-md:text-lg max-md:whitespace-normal max-md:word-wrap break-words">{work.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {work.category.map((cat, i) => (
-                  <span key={i} className="px-2 py-1 bg-primary/20 text-primary rounded-full text-xs">
-                  {cat}
-                </span>
+                  <span key={i} className="px-2 py-1 bg-primary/20 text-primary rounded-full text-xs">{cat}</span>
                 ))}
               </div>
             </div>
