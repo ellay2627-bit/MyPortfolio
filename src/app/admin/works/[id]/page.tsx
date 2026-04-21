@@ -1,10 +1,64 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import AdminCursorFix from '@/components/AdminCursorFix';
 import Notification from '@/components/Notification';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
+// 动态导入ReactQuill，只在客户端加载
+const ReactQuill = lazy(() => import('react-quill'));
+
+// ReactQuill包装组件
+const RichTextEditor = ({ value, onChange }: { value: string; onChange: (val: string) => void }) => {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+    // 动态加载CSS
+    if (typeof document !== 'undefined') {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdn.quilljs.com/1.3.7/quill.snow.css';
+      document.head.appendChild(link);
+    }
+  }, []);
+  
+  if (!mounted) {
+    return (
+      <div className="w-full h-64 bg-gray-700 rounded-lg flex items-center justify-center text-gray-400">
+        加载编辑器中...
+      </div>
+    );
+  }
+  
+  return (
+    <Suspense fallback={
+      <div className="w-full h-64 bg-gray-700 rounded-lg flex items-center justify-center text-gray-400">
+        加载编辑器中...
+      </div>
+    }>
+      <ReactQuill
+        value={value}
+        onChange={onChange}
+        className="bg-white rounded-lg"
+        modules={{
+          toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+          ]
+        }}
+        formats={[
+          'header',
+          'bold', 'italic', 'underline', 'strike',
+          'list', 'bullet',
+          'link'
+        ]}
+      />
+    </Suspense>
+  );
+};
 
 const CATEGORIES = ['UX设计', '视觉设计', '品牌设计', '动态设计', '其他'];
 
@@ -576,25 +630,9 @@ export default function WorkEditPage() {
                     详细描述 *
                   </label>
                   <div className="mb-4">
-                    <ReactQuill
+                    <RichTextEditor
                       value={formData.description}
                       onChange={(value) => setFormData({...formData, description: value})}
-                      className="bg-white rounded-lg"
-                      modules={{
-                        toolbar: [
-                          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                          ['bold', 'italic', 'underline', 'strike'],
-                          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                          ['link'],
-                          ['clean']
-                        ]
-                      }}
-                      formats={[
-                        'header',
-                        'bold', 'italic', 'underline', 'strike',
-                        'list', 'bullet',
-                        'link'
-                      ]}
                     />
                   </div>
                 </div>
