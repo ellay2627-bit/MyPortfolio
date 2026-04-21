@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Config</title>
+</head>
+<body>
+  <h1>Testing Config File Access</h1>
+  <p>Config file content:</p>
+  <pre id="config-content"></pre>
+  <script>
+    fetch('/admin/config.yml')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('config-content').textContent = data;
+      })
+      .catch(error => {
+        document.getElementById('config-content').textContent = 'Error loading config: ' + error.message;
+      });
+  </script>
+</body>
+</html>

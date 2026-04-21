@@ -14,6 +14,9 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
 
+    // 初始检查一次，确保刷新时状态正确
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

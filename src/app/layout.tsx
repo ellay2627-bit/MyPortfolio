@@ -1,9 +1,7 @@
 import React from 'react';
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
-import NavbarWrapper from '@/components/NavbarWrapper';
-import NeoCursor from '@/components/NeoCursor';
-import BackToTop from '@/components/BackToTop';
+import { LayoutContent } from '@/components/LayoutContent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,11 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN" className="dark">
+      <head>
+        {/* 禁止浏览器缓存，确保始终显示最新内容 */}
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+      </head>
       <body className={`${inter.className} dark`}>
-        <NavbarWrapper />
-        {children}
-        <NeoCursor />
-        <BackToTop />
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   );

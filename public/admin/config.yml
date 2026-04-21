@@ -1,0 +1,22 @@
+backend:
+  name: test-repo
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "works"
+    label: "作品"
+    folder: "content/works"
+    create: true
+    fields:
+      - { name: "id", label: "ID", widget: "number", required: true }
+      - { name: "title", label: "标题", widget: "string", required: true }
+      - { name: "brief", label: "简介", widget: "string", required: true }
+      - { name: "description", label: "详细描述", widget: "markdown", required: true }
+      - { name: "category", label: "分类", widget: "list", options: ["UX设计", "视觉设计", "品牌设计", "动态设计", "其他"] }
+      - { name: "cover", label: "封面图片", widget: "image", required: true }
+      - { name: "ratio", label: "图片比例", widget: "select", options: ["4:3", "16:9"], default: "4:3" }
+      - { name: "order", label: "排序", widget: "number", default: 0 }
+      - { name: "images", label: "图片", widget: "list", field: { name: "url", widget: "image" } }
+      - { name: "videos", label: "视频", widget: "list", field: { name: "url", widget: "string" } }
