@@ -72,7 +72,11 @@ const loadWorkDetail = async (workId: string): Promise<any | null> => {
     if (response.ok) {
       const data = await response.json();
       console.log('✅ 从静态文件加载详情:', workId);
-      return data;
+      // 确保返回的 id 是字符串类型，与 workData 中的类型一致
+      return {
+        ...data,
+        id: String(data.id)
+      };
     } else {
       console.error('❌ 静态详情文件不存在:', workId);
       return null;
@@ -406,7 +410,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
         <div className={`sticky top-0 bg-dark-bg z-10 transition-all duration-300 ${isScrolled ? 'py-4' : 'py-6'}`}>
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center">
-              <div className="text-left w-full">
+              <div className="text-left flex-1 min-w-0">
                 {work ? (
                   <>
                     <h2 className={`font-bold mb-2 transition-all duration-300 ${isScrolled ? 'text-2xl' : 'text-4xl'}`}>
@@ -425,7 +429,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
               </div>
               <button
                 onClick={() => setShowDetailModal(false)}
-                className="p-2 rounded-full hover:bg-gray-800 transition-all text-white"
+                className="p-2 rounded-full hover:bg-gray-800 transition-all text-white flex-shrink-0 ml-4"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -528,9 +532,9 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
             <div className="pt-12 pb-20 relative w-full">
               
               <div className="flex flex-row justify-between items-center w-full relative z-10">
-                {/* 上一条 */}
+                {/* 上一条 - 只有不是第一个作品时才显示 */}
                 <div className="flex-1 flex justify-start">
-                  {work && workData.length > 0 && (
+                  {work && workData.length > 0 && workData.findIndex(item => String(item.id) === String(work.id)) > 0 && (
                     <button 
                       onClick={() => {
                         console.log('点击上一条');
@@ -538,7 +542,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                         setDetailLoading(true);
                         
                         // 从workData中查找上一个作品
-                        const currentIndex = workData.findIndex(item => item.id === work.id);
+                        const currentIndex = workData.findIndex(item => String(item.id) === String(work.id));
                         
                         if (currentIndex > 0) {
                           const prevWork = workData[currentIndex - 1];
@@ -595,7 +599,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                         </svg>
                         <div>
                           <p className="text-white/60 text-xs md:text-sm">上一条</p>
-                          <p className="text-white text-sm md:text-2xl font-medium">
+                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">
                             {(() => {
                               try {
                                 const currentIndex = workData.findIndex(item => item.id === work.id);
@@ -614,9 +618,9 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                   )}
                 </div>
 
-                {/* 下一条 */}
+                {/* 下一条 - 只有不是最后一个作品时才显示 */}
                 <div className="flex-1 flex justify-end">
-                  {work && workData.length > 0 && (
+                  {work && workData.length > 0 && workData.findIndex(item => String(item.id) === String(work.id)) < workData.length - 1 && (
                     <button 
                       onClick={() => {
                         console.log('点击下一条');
@@ -672,7 +676,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                       <div className="text-right flex items-center">
                         <div>
                           <p className="text-white/60 text-xs md:text-sm">下一条</p>
-                          <p className="text-white text-sm md:text-2xl font-medium">
+                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">
                             {(() => {
                               try {
                                 const currentIndex = workData.findIndex(item => item.id === work.id);
@@ -831,11 +835,10 @@ export default function Work() {
     };
   }, [handleDataUpdate]);
 
-  // 组件加载时立即获取数据，并恢复详情页状态
+  // 组件加载时立即获取数据
   useEffect(() => {
     // 立即开始初始化数据
     initializeData();
-    restoreDetailModalState();
     
     // 预加载数据，确保用户点击时数据已经准备好
     // 但不阻塞首屏渲染
@@ -865,27 +868,17 @@ export default function Work() {
     }
   }, [showDetailModal, selectedWork]);
 
-  // 恢复详情页状态
-  const restoreDetailModalState = () => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      try {
-        const savedState = localStorage.getItem('portfolio_detail_state');
-        if (savedState) {
-          const state = JSON.parse(savedState);
-          // 先设置数据，再恢复状态
-          // 我们会在数据加载完成后再恢复详情页状态
-          (window as any).__pendingDetailState = state;
-        }
-      } catch (error) {
-        console.error('恢复详情页状态失败:', error);
-      }
-    }
-  };
-
   // 初始化数据 - 不再强制清除缓存，确保数据稳定
   const initializeData = () => {
     if (typeof window !== 'undefined') {
       console.log('开始初始化数据...');
+      
+      // 清除之前保存的详情页状态，确保每次打开都从主页开始
+      try {
+        localStorage.removeItem('portfolio_detail_state');
+      } catch (error) {
+        console.error('清除详情页状态失败:', error);
+      }
       
       // 立即尝试从缓存加载，不阻塞渲染
       try {
@@ -907,29 +900,6 @@ export default function Work() {
       
       // 异步从静态数据加载（确保是最新的）- 完全不阻塞
       loadFromStaticData();
-      
-      // 异步恢复详情页状态
-      setTimeout(() => {
-        try {
-          const pendingState = (window as any).__pendingDetailState;
-          if (pendingState && pendingState.showDetailModal && pendingState.selectedWorkId) {
-            console.log('恢复详情页状态...');
-            // 按需加载作品详情
-            loadWorkDetail(pendingState.selectedWorkId).then((workItem) => {
-              if (workItem) {
-                setSelectedWork(workItem);
-                setShowDetailModal(true);
-                setDetailKey(prev => prev + 1);
-              }
-              delete (window as any).__pendingDetailState;
-            }).catch((error) => {
-              console.error('恢复详情页状态失败:', error);
-            });
-          }
-        } catch (error) {
-          console.error('恢复详情页状态失败:', error);
-        }
-      }, 1000); // 延迟1秒，确保首屏已经渲染
     }
   };
 
