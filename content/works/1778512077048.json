@@ -1,0 +1,58 @@
+{
+  "id": 1778512077048,
+  "title": "WEB落地页辑",
+  "brief": "WEB落地页集合",
+  "description": "<p>近期部分WEB相关设计界面</p>",
+  "category": [
+    "UX设计",
+    "动态设计"
+  ],
+  "cover": "/images/works/work-1778512077048-cover.gif",
+  "ratio": "4:3",
+  "order": 18,
+  "media": [
+    {
+      "id": "image-1778512376291-2",
+      "type": "image",
+      "url": "/images/works/work-1778512077048-media-0.png",
+      "name": "web端效果.png",
+      "order": 0
+    },
+    {
+      "id": "image-1778512376293-3",
+      "type": "image",
+      "url": "/images/works/work-1778512077048-media-1.png",
+      "name": "传统流式 - 首页.png",
+      "order": 1
+    },
+    {
+      "id": "image-1778512376288-0",
+      "type": "image",
+      "url": "/images/works/work-1778512077048-media-2.png",
+      "name": "Frame 427319829 1.png",
+      "order": 2
+    },
+    {
+      "id": "image-1778512376289-1",
+      "type": "image",
+      "url": "/images/works/work-1778512077048-media-3.png",
+      "name": "首页 - 风格2.jpg",
+      "order": 3
+    },
+    {
+      "id": "image-1778512376296-4",
+      "type": "image",
+      "url": "/images/works/work-1778512077048-media-4.png",
+      "name": "概念设计.png",
+      "order": 4
+    },
+    {
+      "id": "video-link-1778512399142",
+      "type": "video-link",
+      "url": "https://www.bilibili.com/video/BV1eRR9BmEyA?t=3.0",
+      "name": "视频链接",
+      "order": 5
+    }
+  ],
+  "links": []
+}

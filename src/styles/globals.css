@@ -108,7 +108,7 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* 自定义滚动条 */
+/* 自定义滚动条 - 移除绿色 */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -118,8 +118,12 @@ html.lenis, html.lenis body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* 作品详情模态框滚动条 */

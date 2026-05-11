@@ -265,6 +265,10 @@ export default function WorksPage() {
   const handlePublish = async () => {
     try {
       setPublishing(true);
+      setError('');
+      setSuccess('');
+      
+      console.log('开始发布...');
       const response = await fetch('/api/works', {
         method: 'PUT',
         headers: {
@@ -273,23 +277,27 @@ export default function WorksPage() {
       });
       
       const result = await response.json();
+      console.log('发布API响应:', result);
+      
       if (result.success) {
-        setSuccess('发布成功，前台已实时更新');
+        const publishTimestamp = result.timestamp || Date.now();
+        const message = `✅ 发布成功！共 ${result.count || '?'} 个作品已同步到前台`;
+        setSuccess(message);
         setHasChanges(false);
         
         // 触发多个发布事件，确保通知到前台
-        const publishTimestamp = Date.now();
+        console.log('触发数据更新事件，时间戳:', publishTimestamp);
         
         // 1. 自定义发布事件（同一标签页内）
         const publishEvent = new CustomEvent('portfolio_publish', {
-          detail: { timestamp: publishTimestamp }
+          detail: { timestamp: publishTimestamp, count: result.count }
         });
         window.dispatchEvent(publishEvent);
         
         // 2. 更新localStorage（通知其他标签页）
         try {
           localStorage.setItem('publish_timestamp', publishTimestamp.toString());
-          console.log('发布时间戳已更新:', publishTimestamp);
+          console.log('发布时间戳已保存到localStorage');
         } catch (storageError) {
           console.error('更新localStorage失败:', storageError);
         }
@@ -297,15 +305,23 @@ export default function WorksPage() {
         // 3. 延迟再次触发事件，确保不会丢失
         setTimeout(() => {
           const publishEvent2 = new CustomEvent('portfolio_publish', {
-            detail: { timestamp: publishTimestamp }
+            detail: { timestamp: publishTimestamp, count: result.count }
           });
           window.dispatchEvent(publishEvent2);
+          console.log('第二次触发发布事件');
         }, 500);
+        
+        // 重新加载作品列表，确保显示最新状态
+        setTimeout(() => {
+          fetchWorks();
+        }, 1000);
+        
       } else {
-        setError(result.message);
+        setError(result.message || '发布失败，请重试');
       }
     } catch (err) {
-      setError('发布失败');
+      console.error('发布过程出错:', err);
+      setError('发布失败: ' + (err as Error).message);
     } finally {
       setPublishing(false);
     }

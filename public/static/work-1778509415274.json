@@ -1,0 +1,100 @@
+{
+  "id": 1778509415274,
+  "title": "SandboxFX 沙盘新一代互动教学 品牌设计",
+  "brief": "一款应用与大屏，展示与编辑沙盘，灵活好用的教育沙盘产品",
+  "description": "<p>体现互动性的动态LOGO设定</p>",
+  "category": [
+    "动态设计",
+    "视觉设计"
+  ],
+  "cover": "/images/works/work-1778509415274-cover.webp",
+  "ratio": "4:3",
+  "order": 14,
+  "media": [
+    {
+      "id": "image-1778509530075-8",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-0.png",
+      "name": "01.gif",
+      "order": 0
+    },
+    {
+      "id": "image-1778509530073-3",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-1.webp",
+      "name": "02.webp",
+      "order": 1
+    },
+    {
+      "id": "image-1778509530073-1",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-2.webp",
+      "name": "03.webp",
+      "order": 2
+    },
+    {
+      "id": "image-1778509530075-10",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-3.webp",
+      "name": "04.webp",
+      "order": 3
+    },
+    {
+      "id": "image-1778509530073-0",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-4.webp",
+      "name": "05.webp",
+      "order": 4
+    },
+    {
+      "id": "image-1778509530073-2",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-5.png",
+      "name": "06.webp",
+      "order": 5
+    },
+    {
+      "id": "image-1778509530075-9",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-6.webp",
+      "name": "07.webp",
+      "order": 6
+    },
+    {
+      "id": "image-1778509530073-4",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-7.webp",
+      "name": "12.webp",
+      "order": 7
+    },
+    {
+      "id": "image-1778509530074-5",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-8.webp",
+      "name": "09.webp",
+      "order": 8
+    },
+    {
+      "id": "image-1778509530074-6",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-9.gif",
+      "name": "11.webp",
+      "order": 9
+    },
+    {
+      "id": "image-1778509530074-7",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-10.webp",
+      "name": "10.webp",
+      "order": 10
+    },
+    {
+      "id": "image-1778509530075-11",
+      "type": "image",
+      "url": "/images/works/work-1778509415274-media-11.png",
+      "name": "08.webp",
+      "order": 11
+    }
+  ],
+  "links": []
+}

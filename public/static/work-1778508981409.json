@@ -1,0 +1,66 @@
+{
+  "id": 1778508981409,
+  "title": "Sunyur商越千机阁发布开场视频",
+  "brief": "让 SaaS比 自己 更强大！",
+  "description": "<p>开场视频 + 倒计时设计。</p>",
+  "category": [
+    "动态设计",
+    "视觉设计",
+    "其他"
+  ],
+  "cover": "/images/works/work-1778508981409-cover.webp",
+  "ratio": "4:3",
+  "order": 12,
+  "media": [
+    {
+      "id": "video-link-1778509132775",
+      "type": "video-link",
+      "url": "https://www.bilibili.com/video/BV1FE5b69Ezz?t=1.6",
+      "name": "视频链接",
+      "order": 0
+    },
+    {
+      "id": "image-1778509119726-4",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-1.webp",
+      "name": "01.webp",
+      "order": 1
+    },
+    {
+      "id": "image-1778509119725-0",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-2.webp",
+      "name": "02.webp",
+      "order": 2
+    },
+    {
+      "id": "image-1778509119725-2",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-3.webp",
+      "name": "03.webp",
+      "order": 3
+    },
+    {
+      "id": "image-1778509119725-1",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-4.webp",
+      "name": "04.webp",
+      "order": 4
+    },
+    {
+      "id": "image-1778509119725-3",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-5.webp",
+      "name": "05.webp",
+      "order": 5
+    },
+    {
+      "id": "image-1778509119726-5",
+      "type": "image",
+      "url": "/images/works/work-1778508981409-media-6.webp",
+      "name": "06.webp",
+      "order": 6
+    }
+  ],
+  "links": []
+}

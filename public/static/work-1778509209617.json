@@ -1,0 +1,30 @@
+{
+  "id": 1778509209617,
+  "title": "华渔教育 官方品牌文档PPT设计",
+  "brief": "教育的本质是简单高效",
+  "description": "<p>回归华渔简单、有效的教育理念。</p>",
+  "category": [
+    "品牌设计",
+    "其他"
+  ],
+  "cover": "/images/works/work-1778509209617-cover.webp",
+  "ratio": "4:3",
+  "order": 10,
+  "media": [
+    {
+      "id": "image-1778509365414-1",
+      "type": "image",
+      "url": "/images/works/work-1778509209617-media-0.png",
+      "name": "01.webp",
+      "order": 0
+    },
+    {
+      "id": "image-1778509365411-0",
+      "type": "image",
+      "url": "/images/works/work-1778509209617-media-1.png",
+      "name": "02.webp",
+      "order": 1
+    }
+  ],
+  "links": []
+}

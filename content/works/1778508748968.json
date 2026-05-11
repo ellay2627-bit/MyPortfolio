@@ -1,0 +1,72 @@
+{
+  "id": 1778508748968,
+  "title": "天晴演艺品牌识别",
+  "brief": "黑白艺术与文艺潜质",
+  "description": "<p>天晴演艺是一个主打舞蹈音乐，并多以文艺和小众为基调的高端演艺cube和组织，本次采用极简的线性设计，仅用黑白与市面上的同类品牌做出区分。</p><p>迎合更精准的市场。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>",
+  "category": [
+    "品牌设计",
+    "视觉设计"
+  ],
+  "cover": "/images/works/work-1778508748968-cover.png",
+  "ratio": "4:3",
+  "order": 19,
+  "media": [
+    {
+      "id": "image-1778508870195-0",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-0.webp",
+      "name": "01.webp",
+      "order": 0
+    },
+    {
+      "id": "image-1778508870196-4",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-1.png",
+      "name": "02.webp",
+      "order": 1
+    },
+    {
+      "id": "image-1778508870195-2",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-2.png",
+      "name": "03.webp",
+      "order": 2
+    },
+    {
+      "id": "image-1778508870195-1",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-3.webp",
+      "name": "06.webp",
+      "order": 3
+    },
+    {
+      "id": "image-1778508870196-3",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-4.png",
+      "name": "07.webp",
+      "order": 4
+    },
+    {
+      "id": "image-1778508870196-5",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-5.png",
+      "name": "08.webp",
+      "order": 5
+    },
+    {
+      "id": "image-1778508870196-6",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-6.png",
+      "name": "05.webp",
+      "order": 6
+    },
+    {
+      "id": "image-1778508870197-7",
+      "type": "image",
+      "url": "/images/works/work-1778508748968-media-7.png",
+      "name": "04.webp",
+      "order": 7
+    }
+  ],
+  "links": []
+}

@@ -1,0 +1,1815 @@
+[
+  {
+    "id": 1778497760985,
+    "title": "中小学育小苗智能体助手2.0",
+    "brief": "借助AI能力，进一步为教师/学生/家长 提供“资源搜索、资源推荐、课程问答、步骤答题”等功能升级",
+    "description": "<p>全域诊断：&nbsp;通过全局路径走查，针对性修复用户在使用 AI 能力时的认知偏差与操作断点。</p><p>人设重塑：&nbsp;定义“育小苗”IP 场景化人格，构建一套视觉、语感、交互高度统一的情感化体系。</p><p>范式落地：&nbsp;引入&nbsp;RICH交互范式*，制定AI专属交互体验及设计规范，确保快捷、有效、有温度的交互体验。</p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778497760985-cover.png",
+    "ratio": "4:3",
+    "order": 1,
+    "media": [
+      {
+        "id": "image-1778497860194-2",
+        "type": "image",
+        "url": "/images/works/work-1778497760985-media-0.png",
+        "name": "03小苗-封.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778497860196-4",
+        "type": "image",
+        "url": "/images/works/work-1778497760985-media-1.png",
+        "name": "04小苗 - 什么是小苗.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778497860194-1",
+        "type": "image",
+        "url": "/images/works/work-1778497760985-media-2.png",
+        "name": "05小苗 - 设计亮点描述.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778497860193-0",
+        "type": "image",
+        "url": "/images/works/work-1778497760985-media-3.gif",
+        "name": "06小苗 - IP升级.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778497860195-3",
+        "type": "image",
+        "url": "/images/works/work-1778497760985-media-4.png",
+        "name": "07小苗 - UX升级.jpg",
+        "order": 4
+      }
+    ],
+    "links": [
+      {
+        "text": "中小学产品官网",
+        "url": "https://basic.smartedu.cn/",
+        "order": 0
+      },
+      {
+        "text": "小苗1.0复盘",
+        "url": "https://h025nts2q7s.feishu.cn/wiki/LKy6wK61ki27vzkWRJ5cGS7Rn5g?from=from_copylink",
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": 1778498342494,
+    "title": "中小学教师备授课工具",
+    "brief": "用数字化工具为教师减负、 为学生提效，并为教学决策提供简单有效的数据支持。",
+    "description": "<p>依托AI辅助，高效处理复杂、模糊的业务需求，快速完成分析、整合、原型/PRD输出，让产品从想法到落地更高效、更精准。</p><p><br></p><p>以“<strong>备课包</strong>”资源为底座，AI为提效引擎，实现“数据驱动 - 结构化备课 - 一键授课”闭环的教师一体化生产力平台；减轻教师负担、规范教学流程、平衡教育资源、数据驱动教学。</p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778498342494-cover.jpg",
+    "ratio": "4:3",
+    "order": 2,
+    "media": [
+      {
+        "id": "image-1778498546032-2",
+        "type": "image",
+        "url": "/images/works/work-1778498342494-media-0.png",
+        "name": "12备课授课-封.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778498546032-0",
+        "type": "image",
+        "url": "/images/works/work-1778498342494-media-1.gif",
+        "name": "13备课授课-AI工作流.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778498546035-3",
+        "type": "image",
+        "url": "/images/works/work-1778498342494-media-2.png",
+        "name": "14备课授课-UI亮点.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778498546032-1",
+        "type": "image",
+        "url": "/images/works/work-1778498342494-media-3.jpg",
+        "name": "15UIKITS.jpg",
+        "order": 3
+      }
+    ],
+    "links": [
+      {
+        "text": "2.0产品文档",
+        "url": "https://h025nts2q7s.feishu.cn/wiki/QrhGw5RlCitHwzk3psvcoFBvnHe?from=from_copylink",
+        "order": 0
+      },
+      {
+        "text": "授课工具探索",
+        "url": "https://h025nts2q7s.feishu.cn/wiki/O9PswbsUbimbl7ki5TRcEhbLnsf?from=from_copylink",
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": 1778498094298,
+    "title": "赞赞来客小程序",
+    "brief": "本地生活团购 + 积分生态SaaS小程序，以消费攒积分、积分兑好物形成商业闭环，赋能实体商户经营，同时让用户消费可沉淀、可兑礼，实现平台、商户、用户三方共赢。",
+    "description": "<p><strong>积分钱包</strong>：</p><p>构建融合多企业数据的积分管理系统，统一管理和高效流通线上线下消费积分，提升用户粘性与企业合作。</p><p><br></p><p><strong>赞赞来客团购/本地生活/电商</strong>：</p><p>以小程序为载体，聚焦本地生活，为商家提供多模式销售与履约服务。</p><p><br></p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778498094298-cover.png",
+    "ratio": "4:3",
+    "order": 3,
+    "media": [
+      {
+        "id": "image-1778498255825-0",
+        "type": "image",
+        "url": "/images/works/work-1778498094298-media-0.jpg",
+        "name": "08赞赞来客-封.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778498255826-1",
+        "type": "image",
+        "url": "/images/works/work-1778498094298-media-1.gif",
+        "name": "09赞赞 - 产品形态.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778498255826-3",
+        "type": "image",
+        "url": "/images/works/work-1778498094298-media-2.png",
+        "name": "10赞赞 - 设计系统.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778498255826-2",
+        "type": "image",
+        "url": "/images/works/work-1778498094298-media-3.png",
+        "name": "11赞赞 - 典型页面.jpg",
+        "order": 3
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778507025867,
+    "title": "中小学智慧教育数据可视化",
+    "brief": "利用数据可视组件，搭建可视化大屏，结合动态效果让数据更灵动、可视性更佳",
+    "description": "<p>方案将海量、零散的教育底层数据转化为直观的视觉图谱，实现从宏观态势感知到微观细节下钻的无缝衔接，让决策真正做到有据可依、全局在握。</p>",
+    "category": [
+      "其他",
+      "UX设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778507025867-cover.png",
+    "ratio": "4:3",
+    "order": 4,
+    "media": [
+      {
+        "id": "image-1778507348365-0",
+        "type": "image",
+        "url": "/images/works/work-1778507025867-media-0.png",
+        "name": "23数据可视化 - 封.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778507348371-1",
+        "type": "image",
+        "url": "/images/works/work-1778507025867-media-1.png",
+        "name": "26数据可视化 - 其他.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778507348372-2",
+        "type": "image",
+        "url": "/images/works/work-1778507025867-media-2.gif",
+        "name": "25数据可视化 - 监控.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778507348375-3",
+        "type": "image",
+        "url": "/images/works/work-1778507025867-media-3.png",
+        "name": "24数据可视化 - 驾驶舱.jpg",
+        "order": 3
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778498670904,
+    "title": "国家智慧教育读书平台",
+    "brief": "告别千篇一律的“G端感”与刻板印象，本方案以新中式极简笔触重塑门户视觉，通过精致的3D纸雕插画和呼吸感设计，证明了G端产品亦能拥有超脱平庸、清新脱俗的人文意蕴。",
+    "description": "<p>打造国家智慧教育读书平台2.0版，增加平台功能和场景建设，以数字化支撑青少年学生读书行动</p><p>全面契合书香校园建设、阅读资源优化、阅读素养培育、科技赋能阅读创新、阅读成果展示转化五大工程实施需求。</p>",
+    "category": [
+      "UX设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778498670904-cover.png",
+    "ratio": "4:3",
+    "order": 5,
+    "media": [
+      {
+        "id": "video-link-1778498793931",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1SHR9BuER6?t=2.3",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1778498853490-0",
+        "type": "image",
+        "url": "/images/works/work-1778498670904-media-1.png",
+        "name": "16读书平台-封.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778498853491-1",
+        "type": "image",
+        "url": "/images/works/work-1778498670904-media-2.jpg",
+        "name": "17读书平台-审美.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778498853491-2",
+        "type": "image",
+        "url": "/images/works/work-1778498670904-media-3.png",
+        "name": "18读书平台-设计插画.jpg",
+        "order": 3
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778498879461,
+    "title": "Sandbox FX 产品落地页",
+    "brief": "网龙华渔成功收购promethean，基于这一历史性合作，结合新型互动课堂的衍生，我们决定做点不一样的创新",
+    "description": "<p>我们为网龙脑洞教育产品沙盘sandboxFX设计一则不一样的产品介绍官网。</p><p>在一周时间内，我们产出多个idea，最终用最简单最吸睛的方式完美交付并如期上线。&nbsp;</p>",
+    "category": [
+      "UX设计",
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1778498879461-cover.png",
+    "ratio": "4:3",
+    "order": 6,
+    "media": [
+      {
+        "id": "video-link-1778500134730",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1cY5x6mE9M?t=2.6",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1778499396260-8",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-1.png",
+        "name": "04.gif",
+        "order": 1
+      },
+      {
+        "id": "image-1778499396255-7",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-2.png",
+        "name": "06.gif",
+        "order": 2
+      },
+      {
+        "id": "image-1778499396251-3",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-3.png",
+        "name": "01.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778499396252-5",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-4.webp",
+        "name": "02.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778499396251-4",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-5.png",
+        "name": "03.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778499396253-6",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-6.png",
+        "name": "05.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778499396249-1",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-7.png",
+        "name": "07.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778499396248-0",
+        "type": "image",
+        "url": "/images/works/work-1778498879461-media-8.png",
+        "name": "08.webp",
+        "order": 8
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778506874277,
+    "title": "UED视觉升级 数字分身",
+    "brief": "UED 团队‘专业可信且充满探索欲’的年轻化品牌心智",
+    "description": "<p>以极致圆润的几何字符为核心容器，通过多维材质的动态演绎，重塑 UED 团队‘专业可信且充满探索欲’的年轻化品牌心智；</p><p><br></p><p>打破静态符号边界，构建‘万物皆可 UED’的容器化视觉系统，诠释设计中台多元多变、兼容并蓄的生命力。</p><p><br></p>",
+    "category": [
+      "品牌设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778506874277-cover.png",
+    "ratio": "4:3",
+    "order": 7,
+    "media": [
+      {
+        "id": "image-1778506974232-13",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-0.png",
+        "name": "12.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778506974228-2",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-1.png",
+        "name": "0187b35dd7ae86a8012129e219d95f.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778506974228-3",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-2.webp",
+        "name": "15.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778507461588-0",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-3.png",
+        "name": "26ux设计012.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778507461589-1",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-4.png",
+        "name": "27ux设计013.jpg",
+        "order": 4
+      },
+      {
+        "id": "image-1778506974227-0",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-5.webp",
+        "name": "02.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778506974227-1",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-6.png",
+        "name": "10.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778506974228-4",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-7.webp",
+        "name": "14.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778506974228-5",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-8.webp",
+        "name": "13.webp",
+        "order": 8
+      },
+      {
+        "id": "image-1778506974229-6",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-9.png",
+        "name": "06.webp",
+        "order": 9
+      },
+      {
+        "id": "image-1778506974229-7",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-10.webp",
+        "name": "11.webp",
+        "order": 10
+      },
+      {
+        "id": "image-1778506974232-11",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-11.webp",
+        "name": "08.webp",
+        "order": 11
+      },
+      {
+        "id": "image-1778506974230-8",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-12.png",
+        "name": "09.webp",
+        "order": 12
+      },
+      {
+        "id": "image-1778506974231-9",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-13.gif",
+        "name": "04.webp",
+        "order": 13
+      },
+      {
+        "id": "image-1778506974232-10",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-14.png",
+        "name": "07.webp",
+        "order": 14
+      },
+      {
+        "id": "image-1778506974232-12",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-15.png",
+        "name": "03.webp",
+        "order": 15
+      },
+      {
+        "id": "image-1778506974234-14",
+        "type": "image",
+        "url": "/images/works/work-1778506874277-media-16.png",
+        "name": "05.webp",
+        "order": 16
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1776770500445,
+    "title": "Sunyur商越「新技术重构采购价值」年度峰会视觉设计",
+    "brief": "希望能够通过碰撞的质感，延续商越【变革与重构】的战略意义。",
+    "description": "<p>2021年1118日，</p><h2><strong>是商越三周年庆典</strong>，</h2><h2>同时也是一年一度的年度峰会举行日。</h2><p>在2021年，商越成长为行业翘楚，深受各大合作方及投资方青睐。</p><p>在今年，商越希望一改往日特色，从本届开始打造品牌化峰会视觉战略。</p><p>个人为商越打造从主视觉到延展物料，包括演讲材料、视频、官网、h5等众多视觉设计。</p>",
+    "category": [
+      "视觉设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1776770500445-cover.png",
+    "ratio": "4:3",
+    "order": 8,
+    "media": [
+      {
+        "id": "video-link-1778497048194",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1eRR9B2ENh?t=2.2",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1778497484623-16",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-1.png",
+        "name": "gif.gif",
+        "order": 1
+      },
+      {
+        "id": "image-1778497484611-3",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-2.png",
+        "name": "00.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778497484612-6",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-3.webp",
+        "name": "05.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778497484615-13",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-4.png",
+        "name": "11.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778497484614-10",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-5.png",
+        "name": "15.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778497484614-11",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-6.png",
+        "name": "09.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778497484615-12",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-7.gif",
+        "name": "10.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778497484616-14",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-8.png",
+        "name": "13.webp",
+        "order": 8
+      },
+      {
+        "id": "image-1778497484616-15",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-9.png",
+        "name": "14.webp",
+        "order": 9
+      },
+      {
+        "id": "image-1778497484613-7",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-10.png",
+        "name": "08.webp",
+        "order": 10
+      },
+      {
+        "id": "image-1778497484611-2",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-11.png",
+        "name": "20.webp",
+        "order": 11
+      },
+      {
+        "id": "image-1778497484610-0",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-12.png",
+        "name": "22.webp",
+        "order": 12
+      },
+      {
+        "id": "image-1778497484611-1",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-13.webp",
+        "name": "24.webp",
+        "order": 13
+      },
+      {
+        "id": "image-1778497484611-4",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-14.gif",
+        "name": "26.webp",
+        "order": 14
+      },
+      {
+        "id": "image-1778497484612-5",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-15.webp",
+        "name": "40.webp",
+        "order": 15
+      },
+      {
+        "id": "image-1778497484613-8",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-16.png",
+        "name": "18.webp",
+        "order": 16
+      },
+      {
+        "id": "image-1778497484613-9",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-17.webp",
+        "name": "19.webp",
+        "order": 17
+      },
+      {
+        "id": "image-1778506282562-0",
+        "type": "image",
+        "url": "/images/works/work-1776770500445-media-18.png",
+        "name": "07商越 - 新技术重构.jpg",
+        "order": 18
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778506616824,
+    "title": "天晴互动娱乐品牌识别",
+    "brief": "网龙旗下游戏娱乐品牌，完成品牌蜕变，为其设计一套更有趣的国际化LOGO及延展设计",
+    "description": "<p><em>注：本案为中间稿，最终未使用</em></p>",
+    "category": [
+      "视觉设计",
+      "品牌设计"
+    ],
+    "cover": "/images/works/work-1778506616824-cover.png",
+    "ratio": "4:3",
+    "order": 9,
+    "media": [
+      {
+        "id": "image-1778506743012-1",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-0.webp",
+        "name": "01.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778506743014-6",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-1.webp",
+        "name": "20.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778506743012-0",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-2.webp",
+        "name": "02.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778506743013-4",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-3.webp",
+        "name": "03.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778506743013-2",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-4.webp",
+        "name": "04.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778506743014-8",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-5.png",
+        "name": "05.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778506743013-3",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-6.webp",
+        "name": "09.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778506743013-5",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-7.webp",
+        "name": "18.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778506743014-7",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-8.png",
+        "name": "16.webp",
+        "order": 8
+      },
+      {
+        "id": "image-1778506743014-9",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-9.gif",
+        "name": "11.webp",
+        "order": 9
+      },
+      {
+        "id": "image-1778506743014-10",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-10.gif",
+        "name": "17.webp",
+        "order": 10
+      },
+      {
+        "id": "image-1778506743014-11",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-11.webp",
+        "name": "12.webp",
+        "order": 11
+      },
+      {
+        "id": "image-1778506743015-12",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-12.png",
+        "name": "13.webp",
+        "order": 12
+      },
+      {
+        "id": "image-1778506743015-13",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-13.png",
+        "name": "07.webp",
+        "order": 13
+      },
+      {
+        "id": "image-1778506743016-16",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-14.png",
+        "name": "06.webp",
+        "order": 14
+      },
+      {
+        "id": "image-1778506743016-17",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-15.png",
+        "name": "08.webp",
+        "order": 15
+      },
+      {
+        "id": "image-1778506743015-14",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-16.png",
+        "name": "10.webp",
+        "order": 16
+      },
+      {
+        "id": "image-1778506743015-15",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-17.png",
+        "name": "15.webp",
+        "order": 17
+      },
+      {
+        "id": "image-1778506743016-18",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-18.webp",
+        "name": "19.webp",
+        "order": 18
+      },
+      {
+        "id": "image-1778506743016-19",
+        "type": "image",
+        "url": "/images/works/work-1778506616824-media-19.png",
+        "name": "14.webp",
+        "order": 19
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778509209617,
+    "title": "华渔教育 官方品牌文档PPT设计",
+    "brief": "教育的本质是简单高效",
+    "description": "<p>回归华渔简单、有效的教育理念。</p>",
+    "category": [
+      "品牌设计",
+      "其他"
+    ],
+    "cover": "/images/works/work-1778509209617-cover.webp",
+    "ratio": "4:3",
+    "order": 10,
+    "media": [
+      {
+        "id": "image-1778509365414-1",
+        "type": "image",
+        "url": "/images/works/work-1778509209617-media-0.png",
+        "name": "01.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778509365411-0",
+        "type": "image",
+        "url": "/images/works/work-1778509209617-media-1.png",
+        "name": "02.webp",
+        "order": 1
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778510934180,
+    "title": "中小学产品UX升级",
+    "brief": "中小学产品整体优化，完成蜕变",
+    "description": "<p>确立了从2024至今的设计语言和产品形象基调。</p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778510934180-cover.png",
+    "ratio": "4:3",
+    "order": 11,
+    "media": [
+      {
+        "id": "image-1778511016847-0",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-0.jpg",
+        "name": "ux设计014.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778511016849-5",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-1.gif",
+        "name": "ux设计015.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778511016849-4",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-2.gif",
+        "name": "ux设计016.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778511016848-2",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-3.jpg",
+        "name": "ux设计018.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778511016848-1",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-4.png",
+        "name": "ux设计019.jpg",
+        "order": 4
+      },
+      {
+        "id": "image-1778511016848-3",
+        "type": "image",
+        "url": "/images/works/work-1778510934180-media-5.gif",
+        "name": "ux设计017.jpg",
+        "order": 5
+      }
+    ],
+    "links": [
+      {
+        "text": "中小学产品官网",
+        "url": "https://basic.smartedu.cn/",
+        "order": 0
+      }
+    ]
+  },
+  {
+    "id": 1778508981409,
+    "title": "Sunyur商越千机阁发布开场视频",
+    "brief": "让 SaaS比 自己 更强大！",
+    "description": "<p>开场视频 + 倒计时设计。</p>",
+    "category": [
+      "动态设计",
+      "视觉设计",
+      "其他"
+    ],
+    "cover": "/images/works/work-1778508981409-cover.webp",
+    "ratio": "4:3",
+    "order": 12,
+    "media": [
+      {
+        "id": "video-link-1778509132775",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1FE5b69Ezz?t=1.6",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1778509119726-4",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-1.webp",
+        "name": "01.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778509119725-0",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-2.webp",
+        "name": "02.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778509119725-2",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-3.webp",
+        "name": "03.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778509119725-1",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-4.webp",
+        "name": "04.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778509119725-3",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-5.webp",
+        "name": "05.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778509119726-5",
+        "type": "image",
+        "url": "/images/works/work-1778508981409-media-6.webp",
+        "name": "06.webp",
+        "order": 6
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778502878297,
+    "title": "Yurdesign2.0 设计语言发布keynote设计",
+    "brief": "致力于让每个使用商越采购数字化系统的用户都享有C端互联网产品的极致体验",
+    "description": "<p>提效设计始于此，却不止于此。我们相信，YD2.0带来的极致体验，将进一步降低使用门槛，提升采购效率，加速大中型企业的采购数字化进程。</p>",
+    "category": [
+      "视觉设计",
+      "动态设计",
+      "其他"
+    ],
+    "cover": "/images/works/work-1778502878297-cover.webp",
+    "ratio": "4:3",
+    "order": 13,
+    "media": [
+      {
+        "id": "video-link-1778503063563",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV15Y5b65Epm?t=2.0",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1778503027107-7",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-1.webp",
+        "name": "01.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778503027115-8",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-2.png",
+        "name": "02.gif",
+        "order": 2
+      },
+      {
+        "id": "image-1778503027123-9",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-3.png",
+        "name": "03.gif",
+        "order": 3
+      },
+      {
+        "id": "image-1778503027106-1",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-4.webp",
+        "name": "04.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778503027106-5",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-5.gif",
+        "name": "05.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778503027106-0",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-6.webp",
+        "name": "06.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778503027106-4",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-7.png",
+        "name": "07.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778503027106-2",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-8.webp",
+        "name": "08.webp",
+        "order": 8
+      },
+      {
+        "id": "image-1778503027107-6",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-9.gif",
+        "name": "09.webp",
+        "order": 9
+      },
+      {
+        "id": "image-1778503027106-3",
+        "type": "image",
+        "url": "/images/works/work-1778502878297-media-10.webp",
+        "name": "10.webp",
+        "order": 10
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778509415274,
+    "title": "SandboxFX 沙盘新一代互动教学 品牌设计",
+    "brief": "一款应用与大屏，展示与编辑沙盘，灵活好用的教育沙盘产品",
+    "description": "<p>体现互动性的动态LOGO设定</p>",
+    "category": [
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1778509415274-cover.webp",
+    "ratio": "4:3",
+    "order": 14,
+    "media": [
+      {
+        "id": "image-1778509530075-8",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-0.png",
+        "name": "01.gif",
+        "order": 0
+      },
+      {
+        "id": "image-1778509530073-3",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-1.webp",
+        "name": "02.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778509530073-1",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-2.webp",
+        "name": "03.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778509530075-10",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-3.webp",
+        "name": "04.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778509530073-0",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-4.webp",
+        "name": "05.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778509530073-2",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-5.png",
+        "name": "06.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778509530075-9",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-6.webp",
+        "name": "07.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778509530073-4",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-7.webp",
+        "name": "12.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778509530074-5",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-8.webp",
+        "name": "09.webp",
+        "order": 8
+      },
+      {
+        "id": "image-1778509530074-6",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-9.gif",
+        "name": "11.webp",
+        "order": 9
+      },
+      {
+        "id": "image-1778509530074-7",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-10.webp",
+        "name": "10.webp",
+        "order": 10
+      },
+      {
+        "id": "image-1778509530075-11",
+        "type": "image",
+        "url": "/images/works/work-1778509415274-media-11.png",
+        "name": "08.webp",
+        "order": 11
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778508444788,
+    "title": "百度智能云运营宣传",
+    "brief": "百度云细分行业属性的3d化尝试",
+    "description": "<p>为百度智能云创作的品牌视觉运营设计，主要体现智能云强大的行业解决方案，利用场景元素搭建并强化品牌识别</p><p><br></p><p>本作为练习作品，暂未上线使用。</p>",
+    "category": [
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1778508444788-cover.png",
+    "ratio": "4:3",
+    "order": 15,
+    "media": [
+      {
+        "id": "image-1778508566316-0",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-0.png",
+        "name": "01.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778508566317-4",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-1.png",
+        "name": "02.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778508566317-2",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-2.png",
+        "name": "03.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778508566317-6",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-3.webp",
+        "name": "04.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778508566317-3",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-4.png",
+        "name": "05.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778508566317-5",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-5.webp",
+        "name": "06.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778508566316-1",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-6.gif",
+        "name": "07.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778508566323-7",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-7.png",
+        "name": "08.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778508566329-8",
+        "type": "image",
+        "url": "/images/works/work-1778508444788-media-8.png",
+        "name": "09.gif",
+        "order": 8
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778508076843,
+    "title": "jinstar 概念声音APP",
+    "brief": "用声音社交",
+    "description": "<p>尝试一款概念设计，通过声音可视化以及声音语音互动进行社交</p>",
+    "category": [
+      "动态设计",
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778508076843-cover.png",
+    "ratio": "4:3",
+    "order": 16,
+    "media": [
+      {
+        "id": "image-1778508273690-5",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-0.png",
+        "name": "01.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778508273690-6",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-1.png",
+        "name": "02.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778508273689-2",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-2.gif",
+        "name": "03.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778508273689-1",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-3.png",
+        "name": "04.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778508273688-0",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-4.gif",
+        "name": "05.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778508273689-3",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-5.webp",
+        "name": "06.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778508273689-4",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-6.png",
+        "name": "07.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778508273718-7",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-7.png",
+        "name": "09.gif",
+        "order": 7
+      },
+      {
+        "id": "image-1778508273731-8",
+        "type": "image",
+        "url": "/images/works/work-1778508076843-media-8.png",
+        "name": "08.gif",
+        "order": 8
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778510420037,
+    "title": "英语点读英语",
+    "brief": "哪里不会点哪里的英语点读轻量级应用",
+    "description": "<p>中小学基于强大丰富的英语教材，打造适合中小学点读学习的轻量级工具应用。</p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1778510420037-cover.png",
+    "ratio": "4:3",
+    "order": 17,
+    "media": [
+      {
+        "id": "image-1778510622139-0",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-0.jpg",
+        "name": "列表页-首次进入.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778510622140-1",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-1.jpg",
+        "name": "英语点读-1.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778510622140-2",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-2.jpg",
+        "name": "勋章墙.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778510622140-3",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-3.jpg",
+        "name": "英语点读-2.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778510622140-4",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-4.gif",
+        "name": "默认.jpg",
+        "order": 4
+      },
+      {
+        "id": "image-1778510622140-5",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-5.jpg",
+        "name": "英语点读.jpg",
+        "order": 5
+      },
+      {
+        "id": "image-1778510622140-6",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-6.png",
+        "name": "列表页.jpg",
+        "order": 6
+      },
+      {
+        "id": "image-1778510622140-7",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-7.jpg",
+        "name": "英语点读-4.jpg",
+        "order": 7
+      },
+      {
+        "id": "image-1778510622140-8",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-8.png",
+        "name": "侧边目录优化.jpg",
+        "order": 8
+      },
+      {
+        "id": "image-1778510622141-9",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-9.jpg",
+        "name": "英语点读-3.jpg",
+        "order": 9
+      },
+      {
+        "id": "image-1778510622141-10",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-10.jpg",
+        "name": "APP.jpg",
+        "order": 10
+      },
+      {
+        "id": "image-1778510622141-11",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-11.jpg",
+        "name": "勋章整理.jpg",
+        "order": 11
+      },
+      {
+        "id": "image-1778510622141-12",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-12.jpg",
+        "name": "点读.jpg",
+        "order": 12
+      },
+      {
+        "id": "image-1778510622141-13",
+        "type": "image",
+        "url": "/images/works/work-1778510420037-media-13.jpg",
+        "name": "入口.jpg",
+        "order": 13
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778512077048,
+    "title": "WEB落地页辑",
+    "brief": "WEB落地页集合",
+    "description": "<p>近期部分WEB相关设计界面</p>",
+    "category": [
+      "UX设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778512077048-cover.gif",
+    "ratio": "4:3",
+    "order": 18,
+    "media": [
+      {
+        "id": "image-1778512376291-2",
+        "type": "image",
+        "url": "/images/works/work-1778512077048-media-0.png",
+        "name": "web端效果.png",
+        "order": 0
+      },
+      {
+        "id": "image-1778512376293-3",
+        "type": "image",
+        "url": "/images/works/work-1778512077048-media-1.png",
+        "name": "传统流式 - 首页.png",
+        "order": 1
+      },
+      {
+        "id": "image-1778512376288-0",
+        "type": "image",
+        "url": "/images/works/work-1778512077048-media-2.png",
+        "name": "Frame 427319829 1.png",
+        "order": 2
+      },
+      {
+        "id": "image-1778512376289-1",
+        "type": "image",
+        "url": "/images/works/work-1778512077048-media-3.png",
+        "name": "首页 - 风格2.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778512376296-4",
+        "type": "image",
+        "url": "/images/works/work-1778512077048-media-4.png",
+        "name": "概念设计.png",
+        "order": 4
+      },
+      {
+        "id": "video-link-1778512399142",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1eRR9BmEyA?t=3.0",
+        "name": "视频链接",
+        "order": 5
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778508748968,
+    "title": "天晴演艺品牌识别",
+    "brief": "黑白艺术与文艺潜质",
+    "description": "<p>天晴演艺是一个主打舞蹈音乐，并多以文艺和小众为基调的高端演艺cube和组织，本次采用极简的线性设计，仅用黑白与市面上的同类品牌做出区分。</p><p>迎合更精准的市场。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>",
+    "category": [
+      "品牌设计",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1778508748968-cover.png",
+    "ratio": "4:3",
+    "order": 19,
+    "media": [
+      {
+        "id": "image-1778508870195-0",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-0.webp",
+        "name": "01.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778508870196-4",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-1.png",
+        "name": "02.webp",
+        "order": 1
+      },
+      {
+        "id": "image-1778508870195-2",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-2.png",
+        "name": "03.webp",
+        "order": 2
+      },
+      {
+        "id": "image-1778508870195-1",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-3.webp",
+        "name": "06.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778508870196-3",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-4.png",
+        "name": "07.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778508870196-5",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-5.png",
+        "name": "08.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778508870196-6",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-6.png",
+        "name": "05.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778508870197-7",
+        "type": "image",
+        "url": "/images/works/work-1778508748968-media-7.png",
+        "name": "04.webp",
+        "order": 7
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778507560399,
+    "title": "视觉设计专辑",
+    "brief": "多年设计实战的碎片沉淀。跨越线上与线下，连接创意与执行，视觉美学与品牌传达的持续思考。",
+    "description": "<p>多年设计实战的碎片沉淀。跨越线上与线下，连接创意与执行，视觉美学与品牌传达的持续思考。</p><p>logo设计</p><p>运营设计</p><p>创意设计</p><p>PPT/keynote设计</p><p>文创设计</p><p>... ...</p>",
+    "category": [
+      "其他",
+      "视觉设计",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778507560399-cover.png",
+    "ratio": "4:3",
+    "order": 20,
+    "media": [
+      {
+        "id": "image-1778507646448-0",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-0.jpg",
+        "name": "29视觉设计专辑.jpg",
+        "order": 0
+      },
+      {
+        "id": "image-1778507646449-1",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-1.png",
+        "name": "32视觉设计专辑.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778507646449-2",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-2.jpg",
+        "name": "31视觉设计专辑.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778507646449-3",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-3.png",
+        "name": "30视觉设计专辑.jpg",
+        "order": 3
+      },
+      {
+        "id": "image-1778507646450-4",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-4.png",
+        "name": "33视觉设计专辑.jpg",
+        "order": 4
+      },
+      {
+        "id": "image-1778507646450-5",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-5.jpg",
+        "name": "28视觉设计专辑.jpg",
+        "order": 5
+      },
+      {
+        "id": "image-1778507900650-0",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-6.png",
+        "name": "09.gif",
+        "order": 6
+      },
+      {
+        "id": "image-1778507900682-1",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-7.png",
+        "name": "06.gif",
+        "order": 7
+      },
+      {
+        "id": "image-1778507900686-2",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-8.png",
+        "name": "04.jpeg",
+        "order": 8
+      },
+      {
+        "id": "image-1778507900690-3",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-9.png",
+        "name": "07.gif",
+        "order": 9
+      },
+      {
+        "id": "image-1778507900694-4",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-10.png",
+        "name": "10.gif",
+        "order": 10
+      },
+      {
+        "id": "image-1778507900700-5",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-11.png",
+        "name": "08.gif",
+        "order": 11
+      },
+      {
+        "id": "image-1778507900710-6",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-12.png",
+        "name": "03.gif",
+        "order": 12
+      },
+      {
+        "id": "image-1778507900745-7",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-13.png",
+        "name": "05.gif",
+        "order": 13
+      },
+      {
+        "id": "image-1778507900752-8",
+        "type": "image",
+        "url": "/images/works/work-1778507560399-media-14.png",
+        "name": "11.gif",
+        "order": 14
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1776770296822,
+    "title": "小满发布会动态包装",
+    "brief": "用动态视觉提升发布会影响力影响力",
+    "description": "<p>5月18日上午，2022商越科技年度产品发布会成功举办，数万名直播观众共同见证了此次盛况。</p><p><br></p><p>发布会上，商越智能采购_R4.0（小满版）发布的6大升级产品、2大首发产品和商越体验2.0惊艳亮相，完整诠释”数字化、数据智能、个性化能力、连接、体验“商越五大产品价值主张。</p><p><br></p><p>针对主讲人之间的专场、片头片尾、字幕条、人名条、后期传播等进行了动态视觉的相关设计。</p><p><br></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>",
+    "category": [
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1776770296822-cover.png",
+    "ratio": "4:3",
+    "order": 21,
+    "media": [
+      {
+        "id": "video-link-1778497725423",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1SpR9BBEjq?t=2.3",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "image-1776770459322-1",
+        "type": "image",
+        "url": "/images/works/work-1776770296822-media-1.png",
+        "name": "gif.gif",
+        "order": 1
+      },
+      {
+        "id": "image-1776770459335-2",
+        "type": "image",
+        "url": "/images/works/work-1776770296822-media-2.png",
+        "name": "02.gif",
+        "order": 2
+      },
+      {
+        "id": "image-1776770459347-3",
+        "type": "image",
+        "url": "/images/works/work-1776770296822-media-3.png",
+        "name": "03.gif",
+        "order": 3
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778506476989,
+    "title": "商越产品家族",
+    "brief": "精致的3Dicon树立不同产品线的识别，确保统一",
+    "description": "<p>商越Sunyur创立三周年之际，品牌策略调整，品牌识别系统急需升级，打造一套更符合品牌特征的VI体系，并协助其传达更多品牌价值。</p>",
+    "category": [
+      "视觉设计",
+      "其他",
+      "动态设计"
+    ],
+    "cover": "/images/works/work-1778506476989-cover.png",
+    "ratio": "4:3",
+    "order": 22,
+    "media": [
+      {
+        "id": "image-1778506586681-3",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-0.webp",
+        "name": "06.webp",
+        "order": 0
+      },
+      {
+        "id": "image-1778506569620-0",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-1.png",
+        "name": "15sunyur 品牌 - 架构图.jpg",
+        "order": 1
+      },
+      {
+        "id": "image-1778506569620-1",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-2.png",
+        "name": "16sunyur 品牌 - 家族.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1778506586681-0",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-3.png",
+        "name": "05.webp",
+        "order": 3
+      },
+      {
+        "id": "image-1778506586681-1",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-4.gif",
+        "name": "04.webp",
+        "order": 4
+      },
+      {
+        "id": "image-1778506586681-2",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-5.png",
+        "name": "01.webp",
+        "order": 5
+      },
+      {
+        "id": "image-1778506586681-4",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-6.gif",
+        "name": "02.webp",
+        "order": 6
+      },
+      {
+        "id": "image-1778506586681-5",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-7.webp",
+        "name": "03.webp",
+        "order": 7
+      },
+      {
+        "id": "image-1778506586682-6",
+        "type": "image",
+        "url": "/images/works/work-1778506476989-media-8.gif",
+        "name": "07.webp",
+        "order": 8
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778502673231,
+    "title": "激情设计文创",
+    "brief": "文创作品，周边设计，线下设计",
+    "description": "<p>激情设计，<strong>Passion</strong></p>",
+    "category": [
+      "其他",
+      "视觉设计"
+    ],
+    "cover": "/images/works/work-1778502673231-cover.jpg",
+    "ratio": "4:3",
+    "order": 23,
+    "media": [
+      {
+        "id": "image-1778502827438-0",
+        "type": "image",
+        "url": "/images/works/work-1778502673231-media-0.png",
+        "name": "01.webp",
+        "order": 0
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1778502248177,
+    "title": "「到蓬莱过神仙日子」公车广告",
+    "brief": "大美蓬莱过神仙日子",
+    "description": "<p>此为个人作品，版权归个人所有，不涉及任何相关单位。</p>",
+    "category": [
+      "视觉设计",
+      "其他"
+    ],
+    "cover": "/images/works/work-1778502248177-cover.png",
+    "ratio": "4:3",
+    "order": 24,
+    "media": [
+      {
+        "id": "image-1778502648811-0",
+        "type": "image",
+        "url": "/images/works/work-1778502248177-media-0.png",
+        "name": "蓬莱旅游海报 - 李超.jpg",
+        "order": 0
+      }
+    ],
+    "links": []
+  }
+]

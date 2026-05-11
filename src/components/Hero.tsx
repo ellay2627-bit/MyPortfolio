@@ -16,7 +16,7 @@ export default function Hero() {
   const rotatingTextRef = useRef(null);
   const [boxWidth, setBoxWidth] = useState(0);
   
-  const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师'];
+  const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
 
   React.useEffect(() => {
     if (isInView) {

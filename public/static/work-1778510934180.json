@@ -1,0 +1,63 @@
+{
+  "id": 1778510934180,
+  "title": "中小学产品UX升级",
+  "brief": "中小学产品整体优化，完成蜕变",
+  "description": "<p>确立了从2024至今的设计语言和产品形象基调。</p>",
+  "category": [
+    "UX设计"
+  ],
+  "cover": "/images/works/work-1778510934180-cover.png",
+  "ratio": "4:3",
+  "order": 11,
+  "media": [
+    {
+      "id": "image-1778511016847-0",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-0.jpg",
+      "name": "ux设计014.jpg",
+      "order": 0
+    },
+    {
+      "id": "image-1778511016849-5",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-1.gif",
+      "name": "ux设计015.jpg",
+      "order": 1
+    },
+    {
+      "id": "image-1778511016849-4",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-2.gif",
+      "name": "ux设计016.jpg",
+      "order": 2
+    },
+    {
+      "id": "image-1778511016848-2",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-3.jpg",
+      "name": "ux设计018.jpg",
+      "order": 3
+    },
+    {
+      "id": "image-1778511016848-1",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-4.png",
+      "name": "ux设计019.jpg",
+      "order": 4
+    },
+    {
+      "id": "image-1778511016848-3",
+      "type": "image",
+      "url": "/images/works/work-1778510934180-media-5.gif",
+      "name": "ux设计017.jpg",
+      "order": 5
+    }
+  ],
+  "links": [
+    {
+      "text": "中小学产品官网",
+      "url": "https://basic.smartedu.cn/",
+      "order": 0
+    }
+  ]
+}

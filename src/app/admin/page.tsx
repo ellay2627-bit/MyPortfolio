@@ -29,13 +29,15 @@ export default function AdminDashboard() {
             <LayoutDashboard className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">后台管理系统</h1>
           </div>
-          <Button 
-            variant="ghost" 
-            onClick={() => router.push('/')}
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-          >
-            返回前台
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button 
+              variant="ghost" 
+              onClick={() => router.push('/')}
+              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            >
+              返回前台
+            </Button>
+          </div>
         </div>
       </header>
 

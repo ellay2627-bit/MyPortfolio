@@ -48,7 +48,7 @@ export default function About() {
 
   const careerData = [
     {
-      period: '2022.08-今',
+      period: '2022.08-2026.04',
       company: '网龙网络科技公司',
       industry: '返聘',
       roles: ['UED | 中小学产品方向负责人 | 高级UI设计师']
@@ -164,7 +164,7 @@ export default function About() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut', delay: 0.3 } }
               }}
             >
-              <p>10 + 年设计行业经验，精通视觉 / UX / 动态设计，兼具团队管理能力；<br />
+              <p>12 + 年设计行业经验，精通视觉 / UX / 产品设计，兼具团队管理能力；<br />
               秉持 "在其位，做到更好" 的理念，多次获评优秀员工 / 设计师称号；</p>
               
               <p>很荣幸，你看到了我。<br />

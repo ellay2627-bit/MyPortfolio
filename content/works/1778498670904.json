@@ -1,0 +1,44 @@
+{
+  "id": 1778498670904,
+  "title": "国家智慧教育读书平台",
+  "brief": "告别千篇一律的“G端感”与刻板印象，本方案以新中式极简笔触重塑门户视觉，通过精致的3D纸雕插画和呼吸感设计，证明了G端产品亦能拥有超脱平庸、清新脱俗的人文意蕴。",
+  "description": "<p>打造国家智慧教育读书平台2.0版，增加平台功能和场景建设，以数字化支撑青少年学生读书行动</p><p>全面契合书香校园建设、阅读资源优化、阅读素养培育、科技赋能阅读创新、阅读成果展示转化五大工程实施需求。</p>",
+  "category": [
+    "UX设计",
+    "动态设计"
+  ],
+  "cover": "/images/works/work-1778498670904-cover.png",
+  "ratio": "4:3",
+  "order": 5,
+  "media": [
+    {
+      "id": "video-link-1778498793931",
+      "type": "video-link",
+      "url": "https://www.bilibili.com/video/BV1SHR9BuER6?t=2.3",
+      "name": "视频链接",
+      "order": 0
+    },
+    {
+      "id": "image-1778498853490-0",
+      "type": "image",
+      "url": "/images/works/work-1778498670904-media-1.png",
+      "name": "16读书平台-封.jpg",
+      "order": 1
+    },
+    {
+      "id": "image-1778498853491-1",
+      "type": "image",
+      "url": "/images/works/work-1778498670904-media-2.jpg",
+      "name": "17读书平台-审美.jpg",
+      "order": 2
+    },
+    {
+      "id": "image-1778498853491-2",
+      "type": "image",
+      "url": "/images/works/work-1778498670904-media-3.png",
+      "name": "18读书平台-设计插画.jpg",
+      "order": 3
+    }
+  ],
+  "links": []
+}
