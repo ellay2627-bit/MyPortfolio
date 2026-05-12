@@ -4,11 +4,8 @@ import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion'
 
 // 静态数据缓存
 let listData: any[] = [];
-let fullData: any[] = [];
 let listDataLoaded = false;
-let fullDataLoaded = false;
 let loadListPromise: Promise<any[]> | null = null;
-let loadFullPromise: Promise<any[]> | null = null;
 
 // 加载作品列表数据 - 优先从静态文件加载
 const loadListData = async () => {
@@ -33,26 +30,9 @@ const loadListData = async () => {
             console.log('静态文件不存在，尝试其他来源...');
           }
           
-          // 2. 后备：加载完整的 data.json
-          try {
-            const module = await import('../../content/works/data.json');
-            listData = (module.default || []).map((work: any) => ({
-              id: work.id,
-              title: work.title,
-              brief: work.brief || '',
-              category: work.category || [],
-              cover: work.cover || '',
-              ratio: work.ratio || '4:3',
-              order: work.order || 0
-            }));
-            listDataLoaded = true;
-            console.log('✅ 从 data.json 加载列表，共', listData.length, '个作品');
-            resolve(listData);
-          } catch (error) {
-            console.error('❌ 加载列表数据失败:', error);
-            listData = [];
-            resolve(listData);
-          }
+          console.error('❌ 静态列表文件加载失败');
+          listData = [];
+          resolve(listData);
         } catch (error) {
           console.error('❌ 加载列表数据失败:', error);
           listData = [];
@@ -72,7 +52,7 @@ const loadWorkDetail = async (workId: string): Promise<any | null> => {
     if (response.ok) {
       const data = await response.json();
       console.log('✅ 从静态文件加载详情:', workId);
-      // 确保返回的 id 是字符串类型，与 workData 中的类型一致
+      // 统一为字符串 id，便于列表和详情之间匹配
       return {
         ...data,
         id: String(data.id)
@@ -84,44 +64,6 @@ const loadWorkDetail = async (workId: string): Promise<any | null> => {
   } catch (error) {
     console.error('❌ 加载作品详情失败:', error);
     return null;
-  }
-};
-
-// 预加载所有作品详情数据
-const loadFullData = async () => {
-  if (!fullDataLoaded) {
-    if (!loadFullPromise) {
-      loadFullPromise = new Promise(async (resolve) => {
-        try {
-          console.log('开始加载作品详情数据...');
-          
-          // 从 content/works/data.json 加载所有作品详情
-          const dataModule = await import('../../content/works/data.json');
-          fullData = dataModule.default || [];
-          
-          fullDataLoaded = true;
-          console.log('✅ 作品详情加载完成，共', fullData.length, '个作品');
-          resolve(fullData);
-        } catch (error) {
-          console.error('❌ 加载详情数据失败:', error);
-          fullData = [];
-          resolve(fullData);
-        }
-      });
-    }
-    return loadFullPromise;
-  }
-  return fullData;
-};
-
-// 加载所有作品完整数据
-const loadAllWorksData = async () => {
-  try {
-    await loadFullData();
-    return fullData;
-  } catch (error) {
-    console.error('❌ 加载所有作品数据失败:', error);
-    return [];
   }
 };
 
@@ -163,6 +105,18 @@ interface WorkListItem {
   brief: string;
   order: number;
 }
+
+const toFallbackWork = (work: WorkListItem): WorkItem => ({
+  id: work.id,
+  title: work.title,
+  brief: work.brief,
+  description: '',
+  category: work.category,
+  cover: work.cover,
+  ratio: work.ratio,
+  order: work.order,
+  media: [],
+});
 
 interface WorkCardProps {
   work: WorkListItem;
@@ -237,7 +191,7 @@ const WorkCard: React.FC<WorkCardProps> = React.memo(({ work, index, onClick, is
 
 interface WorkDetailModalProps {
   work: WorkItem | null;
-  workData: WorkItem[];
+  workList: WorkListItem[];
   isScrolled: boolean;
   setIsScrolled: (value: boolean) => void;
   showDetailModal: boolean;
@@ -361,7 +315,7 @@ const MediaItemWithSkeleton = ({
 
 const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({ 
   work, 
-  workData, 
+  workList, 
   isScrolled, 
   setIsScrolled, 
   showDetailModal, 
@@ -379,6 +333,39 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
   const TextSkeleton = ({ className = '' }: { className?: string }) => (
     <div className={`bg-gray-800 rounded animate-pulse ${className}`}></div>
   );
+
+  const currentIndex = work ? workList.findIndex(item => String(item.id) === String(work.id)) : -1;
+  const previousWork = currentIndex > 0 ? workList[currentIndex - 1] : null;
+  const nextWork = currentIndex >= 0 && currentIndex < workList.length - 1 ? workList[currentIndex + 1] : null;
+
+  const navigateToWork = (targetWork: WorkListItem | null) => {
+    if (!targetWork) {
+      return;
+    }
+
+    setDetailLoading(true);
+    setSelectedWork(toFallbackWork(targetWork));
+    setDetailKey(detailKey + 1);
+    setIsScrolled(false);
+
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const scrollContainer = document.querySelector('.work-detail-scrollbar');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = 0;
+      }
+    }, 50);
+
+    loadWorkDetail(targetWork.id).then((targetWorkDetail) => {
+      if (targetWorkDetail) {
+        setSelectedWork(targetWorkDetail);
+      }
+    }).catch((error) => {
+      console.error('加载相邻作品失败:', error);
+    }).finally(() => {
+      setDetailLoading(false);
+    });
+  };
 
   return (
     <div
@@ -534,57 +521,9 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
               <div className="flex flex-row justify-between items-center w-full relative z-10">
                 {/* 上一条 - 只有不是第一个作品时才显示 */}
                 <div className="flex-1 flex justify-start">
-                  {work && workData.length > 0 && workData.findIndex(item => String(item.id) === String(work.id)) > 0 && (
+                  {work && previousWork && (
                     <button 
-                      onClick={() => {
-                        console.log('点击上一条');
-                        // 显示加载状态
-                        setDetailLoading(true);
-                        
-                        // 从workData中查找上一个作品
-                        const currentIndex = workData.findIndex(item => String(item.id) === String(work.id));
-                        
-                        if (currentIndex > 0) {
-                          const prevWork = workData[currentIndex - 1];
-                          // 立即创建后备作品
-                          const fallbackWork = {
-                            id: prevWork.id,
-                            title: prevWork.title,
-                            brief: prevWork.brief || '',
-                            description: '',
-                            category: prevWork.category || [],
-                            cover: prevWork.cover || '',
-                            ratio: prevWork.ratio || '4:3',
-                            order: prevWork.order || 0,
-                            media: []
-                          };
-                          
-                          // 立即更新状态
-                          setSelectedWork(fallbackWork);
-                          setDetailKey(detailKey + 1);
-                          setIsScrolled(false);
-                          
-                          // 滚动到顶部
-                          setTimeout(() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                            const scrollContainer = document.querySelector('.work-detail-scrollbar');
-                            if (scrollContainer) {
-                              scrollContainer.scrollTop = 0;
-                            }
-                          }, 50);
-                          
-                          // 异步加载完整数据
-                          loadWorkDetail(prevWork.id).then(prevWorkDetail => {
-                            if (prevWorkDetail) {
-                              setSelectedWork(prevWorkDetail);
-                            }
-                          }).catch(error => {
-                            console.error('加载上一个作品失败:', error);
-                          }).finally(() => {
-                            setDetailLoading(false);
-                          });
-                        }
-                      }}
+                      onClick={() => navigateToWork(previousWork)}
                       className="flex items-center justify-start opacity-80 hover:opacity-100 transition-opacity duration-300 group"
                     >
                       <div className="text-left flex items-center">
@@ -599,19 +538,7 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                         </svg>
                         <div>
                           <p className="text-white/60 text-xs md:text-sm">上一条</p>
-                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">
-                            {(() => {
-                              try {
-                                const currentIndex = workData.findIndex(item => item.id === work.id);
-                                if (currentIndex > 0) {
-                                  return workData[currentIndex - 1].title;
-                                }
-                              } catch (e) {
-                                console.error('获取上一条作品失败:', e);
-                              }
-                              return '上一条';
-                            })()}
-                          </p>
+                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">{previousWork.title}</p>
                         </div>
                       </div>
                     </button>
@@ -620,75 +547,15 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
 
                 {/* 下一条 - 只有不是最后一个作品时才显示 */}
                 <div className="flex-1 flex justify-end">
-                  {work && workData.length > 0 && workData.findIndex(item => String(item.id) === String(work.id)) < workData.length - 1 && (
+                  {work && nextWork && (
                     <button 
-                      onClick={() => {
-                        console.log('点击下一条');
-                        // 显示加载状态
-                        setDetailLoading(true);
-                        
-                        // 从workData中查找下一个作品
-                        const currentIndex = workData.findIndex(item => item.id === work.id);
-                        
-                        if (currentIndex < workData.length - 1) {
-                          const nextWork = workData[currentIndex + 1];
-                          // 立即创建后备作品
-                          const fallbackWork = {
-                            id: nextWork.id,
-                            title: nextWork.title,
-                            brief: nextWork.brief || '',
-                            description: '',
-                            category: nextWork.category || [],
-                            cover: nextWork.cover || '',
-                            ratio: nextWork.ratio || '4:3',
-                            order: nextWork.order || 0,
-                            media: []
-                          };
-                          
-                          // 立即更新状态
-                          setSelectedWork(fallbackWork);
-                          setDetailKey(detailKey + 1);
-                          setIsScrolled(false);
-                          
-                          // 滚动到顶部
-                          setTimeout(() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                            const scrollContainer = document.querySelector('.work-detail-scrollbar');
-                            if (scrollContainer) {
-                              scrollContainer.scrollTop = 0;
-                            }
-                          }, 50);
-                          
-                          // 异步加载完整数据
-                          loadWorkDetail(nextWork.id).then(nextWorkDetail => {
-                            if (nextWorkDetail) {
-                              setSelectedWork(nextWorkDetail);
-                            }
-                          }).catch(error => {
-                            console.error('加载下一个作品失败:', error);
-                          }).finally(() => {
-                            setDetailLoading(false);
-                          });
-                        }
-                      }}
+                      onClick={() => navigateToWork(nextWork)}
                       className="flex items-center justify-end opacity-80 hover:opacity-100 transition-opacity duration-300 group"
                     >
                       <div className="text-right flex items-center">
                         <div>
                           <p className="text-white/60 text-xs md:text-sm">下一条</p>
-                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">
-                            {(() => {
-                              try {
-                                const currentIndex = workData.findIndex(item => item.id === work.id);
-                                if (currentIndex < workData.length - 1) {
-                                  return workData[currentIndex + 1].title;
-                                }
-                              } catch (e) {
-                                console.error('获取下一条作品失败:', e);
-                              }
-                              return '下一条';
-                            })()}
-                          </p>
+                          <p className="hidden md:block text-white text-sm md:text-2xl font-medium">{nextWork.title}</p>
                         </div>
                         <svg 
                           xmlns="http://www.w3.org/2000/svg" 
@@ -784,7 +651,6 @@ export default function Work() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [detailKey, setDetailKey] = useState(0);
   const [workList, setWorkList] = useState<WorkListItem[]>([]);
-  const [workData, setWorkData] = useState<WorkItem[]>([]); // 存储完整的作品数据，用于上下页导航
   const [loading, setLoading] = useState(true); // 初始显示骨架屏
   const [hasCache, setHasCache] = useState(false);
   const [initialLoaded, setInitialLoaded] = useState(false); // 标记是否已经完成首次加载
@@ -800,7 +666,12 @@ export default function Work() {
     // 清除旧缓存
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem(CACHE_KEY);
-      localStorage.removeItem(CACHE_DETAIL_KEY);
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(`${CACHE_DETAIL_KEY}_`)) {
+          localStorage.removeItem(key);
+        }
+      }
     }
     // 重新加载数据
     loadFromStaticData();
@@ -839,14 +710,6 @@ export default function Work() {
   useEffect(() => {
     // 立即开始初始化数据
     initializeData();
-    
-    // 预加载数据，确保用户点击时数据已经准备好
-    // 但不阻塞首屏渲染
-    setTimeout(() => {
-      loadFullData().then(() => {
-        console.log('完整数据预加载完成，用户点击时可以立即响应');
-      });
-    }, 1000); // 延迟1秒，确保首屏已经渲染
   }, []);
 
   // 保存详情页状态到本地存储
@@ -886,9 +749,6 @@ export default function Work() {
         if (cachedData) {
           console.log('从缓存快速加载数据...');
           setWorkList(cachedData.list);
-          if (cachedData.fullData) {
-            setWorkData(cachedData.fullData);
-          }
           setHasCache(true);
           setLoading(false); // 有缓存立即停止加载状态
           setInitialLoaded(true); // 标记为已加载
@@ -931,64 +791,6 @@ export default function Work() {
         setLoading(false); // 立即停止加载状态
         console.log('作品列表数据加载完成，共', listItems.length, '个作品');
         
-        // 在后台预加载完整数据（不阻塞列表显示）
-        loadFullData().then((loadedFullData) => {
-          console.log('data.json 加载完成，处理完整作品数据...');
-          
-          // 转换完整的作品数据
-          const formattedWorks = loadedFullData.map((work: any) => {
-            try {
-              let media = [];
-              if (work.media && Array.isArray(work.media)) {
-                media = work.media;
-              } else if (work.images || work.videos) {
-                media = [
-                  ...(Array.isArray(work.images) ? work.images : []).map((url: string, i: number) => ({
-                    type: 'image' as const,
-                    url,
-                    order: i
-                  })),
-                  ...(Array.isArray(work.videos) ? work.videos : []).map((url: string, i: number) => ({
-                      type: 'video-link' as const,
-                      url,
-                      order: (Array.isArray(work.images) ? work.images.length : 0) + i
-                    }))
-                ];
-              }
-              
-              const result: WorkItem = {
-                id: String(work.id || Date.now() + Math.random()),
-                title: work.title || '未命名作品',
-                brief: work.brief || '',
-                description: work.description || '',
-                category: Array.isArray(work.category) ? work.category : [],
-                cover: work.cover || '',
-                ratio: work.ratio || '4:3',
-                order: typeof work.order === 'number' ? work.order : 0,
-                media: media
-              };
-              
-              if (work.links) {
-                result.links = work.links;
-              }
-              
-              return result;
-            } catch (err) {
-              console.error('处理单个作品数据失败:', err);
-              return null;
-            }
-          }).filter((item): item is WorkItem => item !== null);
-          
-          // 按order排序
-          formattedWorks.sort((a, b) => a.order - b.order);
-          
-          // 更新完整数据
-          setWorkData(formattedWorks); // 同时更新workData，用于上下页导航
-          console.log('完整作品数据处理完成');
-        }).catch(err => {
-          console.error('预加载完整数据失败:', err);
-        });
-        
         // 缓存到本地 - 只缓存列表数据（不缓存完整数据，避免缓存过大）
         if (typeof window !== 'undefined' && window.localStorage) {
           try {
@@ -1017,7 +819,7 @@ export default function Work() {
   };
 
   // 从缓存加载列表数据 - 同步方式，更快
-  const loadFromCache = (): { list: WorkListItem[], fullData?: WorkItem[] } | null => {
+  const loadFromCache = (): { list: WorkListItem[] } | null => {
     if (typeof window !== 'undefined' && window.localStorage) {
       try {
         const cachedData = localStorage.getItem(CACHE_KEY);
@@ -1081,7 +883,7 @@ export default function Work() {
           // 清除所有作品详情缓存
           for (let i = localStorage.length - 1; i >= 0; i--) {
             const key = localStorage.key(i);
-            if (key && key.startsWith(CACHE_DETAIL_KEY)) {
+            if (key && key.startsWith(`${CACHE_DETAIL_KEY}_`)) {
               localStorage.removeItem(key);
               console.log('清除作品详情缓存:', key);
             }
@@ -1461,7 +1263,7 @@ export default function Work() {
         <WorkDetailModal 
           key={detailKey}
           work={selectedWork || null}
-          workData={workData}
+          workList={workList}
           isScrolled={isScrolled}
           setIsScrolled={setIsScrolled}
           showDetailModal={showDetailModal}

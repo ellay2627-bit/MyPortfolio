@@ -1,9 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { compressWorkAssetBase64 } from '@/lib/tinify';
+import {
+  buildHashSuffix,
+  buildStableAssetId,
+  deleteRemoteAsset,
+  getBase64ByteSize,
+  getRemoteStorageThresholdBytes,
+  isBase64DataUrl,
+  isRemoteStorageEnabled,
+  isRemoteUrl,
+  uploadAssetToRemoteStorage,
+} from '@/lib/media-storage';
 
 const worksDirectory = path.join(process.cwd(), 'content/works');
 const draftDirectory = path.join(process.cwd(), 'content/drafts');
+const publicImagesDirectory = path.join(process.cwd(), 'public', 'images', 'works');
+const publicStaticDirectory = path.join(process.cwd(), 'public', 'static');
 
 // 确保目录存在
 if (!fs.existsSync(worksDirectory)) {
@@ -18,6 +32,201 @@ if (!fs.existsSync(draftDirectory)) {
 let worksCache: any[] | null = null;
 let cacheTimestamp = 0;
 const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
+
+function normalizeRemoteAssetRef(asset: any) {
+  if (!asset || typeof asset !== 'object') {
+    return null;
+  }
+
+  if (
+    asset.provider === 'cloudinary' &&
+    (asset.resourceType === 'image' || asset.resourceType === 'video') &&
+    typeof asset.publicId === 'string' &&
+    typeof asset.secureUrl === 'string'
+  ) {
+    return asset;
+  }
+
+  return null;
+}
+
+function collectRemoteAssets(work: any) {
+  const assets = [];
+
+  const coverAsset = normalizeRemoteAssetRef(work?.coverAsset);
+  if (coverAsset) {
+    assets.push(coverAsset);
+  }
+
+  if (Array.isArray(work?.media)) {
+    work.media.forEach((item: any) => {
+      const asset = normalizeRemoteAssetRef(item?.asset);
+      if (asset) {
+        assets.push(asset);
+      }
+    });
+  }
+
+  return assets;
+}
+
+async function deleteRemoteAssetsFromWork(work: any) {
+  const assets = collectRemoteAssets(work);
+
+  for (const asset of assets) {
+    try {
+      await deleteRemoteAsset(asset);
+    } catch (error) {
+      console.error('删除远端资源失败:', asset.publicId, error);
+    }
+  }
+}
+
+function deleteLocalStaticArtifacts(workId: string | number) {
+  const normalizedId = String(workId);
+
+  if (fs.existsSync(publicImagesDirectory)) {
+    const imageFiles = fs.readdirSync(publicImagesDirectory);
+    imageFiles.forEach((file) => {
+      if (file.startsWith(`work-${normalizedId}-`)) {
+        try {
+          fs.unlinkSync(path.join(publicImagesDirectory, file));
+        } catch (error) {
+          console.error('删除本地图片失败:', file, error);
+        }
+      }
+    });
+  }
+
+  const staticWorkFile = path.join(publicStaticDirectory, `work-${normalizedId}.json`);
+  if (fs.existsSync(staticWorkFile)) {
+    try {
+      fs.unlinkSync(staticWorkFile);
+    } catch (error) {
+      console.error('删除静态详情文件失败:', staticWorkFile, error);
+    }
+  }
+}
+
+function listPublishedWorkFiles() {
+  if (!fs.existsSync(worksDirectory)) {
+    return [];
+  }
+
+  return fs.readdirSync(worksDirectory).filter((file) =>
+    file.endsWith('.json') &&
+    !['data.json', 'list.json', 'works-list.json'].includes(file) &&
+    !file.startsWith('work-')
+  );
+}
+
+async function optimizeCoverAsset(cover: string, workId: string) {
+  if (!isBase64DataUrl(cover)) {
+    return {
+      cover,
+      coverAsset: null,
+    };
+  }
+
+  const compressed = await compressWorkAssetBase64(cover);
+  return {
+    cover: compressed.base64Data,
+    coverAsset: null,
+  };
+}
+
+async function optimizeMediaItem(item: any, workId: string, index: number) {
+  if (!item || typeof item !== 'object' || typeof item.url !== 'string') {
+    return item;
+  }
+
+  if (item.type === 'image' && isBase64DataUrl(item.url)) {
+    const compressed = await compressWorkAssetBase64(item.url);
+    const thresholdBytes = getRemoteStorageThresholdBytes();
+    const contentHash = buildHashSuffix(compressed.base64Data);
+
+    if (isRemoteStorageEnabled() && compressed.outputBytes > thresholdBytes) {
+      const remoteAsset = await uploadAssetToRemoteStorage({
+        base64Data: compressed.base64Data,
+        resourceType: 'image',
+        publicId: buildStableAssetId(['works', workId, 'media', index, contentHash]),
+      });
+
+      if (remoteAsset) {
+        return {
+          ...item,
+          url: remoteAsset.secureUrl,
+          asset: remoteAsset,
+          source: 'remote',
+        };
+      }
+    }
+
+    return {
+      ...item,
+      url: compressed.base64Data,
+      asset: null,
+      source: 'local',
+    };
+  }
+
+  if (item.type === 'video' && isBase64DataUrl(item.url) && isRemoteStorageEnabled()) {
+    const contentHash = buildHashSuffix(item.url);
+    const remoteAsset = await uploadAssetToRemoteStorage({
+      base64Data: item.url,
+      resourceType: 'video',
+      publicId: buildStableAssetId(['works', workId, 'media', index, contentHash]),
+    });
+
+    if (remoteAsset) {
+      return {
+        ...item,
+        url: remoteAsset.secureUrl,
+        asset: remoteAsset,
+        source: 'remote',
+      };
+    }
+  }
+
+  if (item.type === 'video' && isBase64DataUrl(item.url)) {
+    return {
+      ...item,
+      source: 'local',
+    };
+  }
+
+  if (isRemoteUrl(item.url)) {
+    return {
+      ...item,
+      source: item.source || 'remote',
+    };
+  }
+
+  return item;
+}
+
+async function optimizeWorkPayload(work: any) {
+  const optimizedWork = {
+    ...work,
+    media: Array.isArray(work.media) ? [...work.media] : work.media,
+  };
+
+  const normalizedWorkId = String(optimizedWork.id || Date.now());
+
+  if (typeof optimizedWork.cover === 'string') {
+    const coverResult = await optimizeCoverAsset(optimizedWork.cover, normalizedWorkId);
+    optimizedWork.cover = coverResult.cover;
+    optimizedWork.coverAsset = coverResult.coverAsset;
+  }
+
+  if (Array.isArray(optimizedWork.media)) {
+    optimizedWork.media = await Promise.all(
+      optimizedWork.media.map((item: any, index: number) => optimizeMediaItem(item, normalizedWorkId, index))
+    );
+  }
+
+  return optimizedWork;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -90,13 +299,14 @@ export async function POST(request: NextRequest) {
       for (const work of data.works) {
         const fileName = `${work.id || Date.now()}.json`;
         const filePath = path.join(draftDirectory, fileName);
-        fs.writeFileSync(filePath, JSON.stringify(work, null, 2));
+        const optimizedWork = await optimizeWorkPayload(work);
+        fs.writeFileSync(filePath, JSON.stringify(optimizedWork, null, 2));
       }
       return NextResponse.json({ success: true, message: '排序保存成功' });
     }
     
     // 处理单个作品保存
-    const work = data;
+    const work = await optimizeWorkPayload(data);
     const fileName = `${work.id || Date.now()}.json`;
     const filePath = path.join(draftDirectory, fileName);
     
@@ -129,7 +339,11 @@ export async function DELETE(request: NextRequest) {
     });
     
     if (fileToDelete) {
-      fs.unlinkSync(path.join(draftDirectory, fileToDelete));
+      const filePath = path.join(draftDirectory, fileToDelete);
+      const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      await deleteRemoteAssetsFromWork(content);
+      fs.unlinkSync(filePath);
+      deleteLocalStaticArtifacts(id);
       return NextResponse.json({ success: true, message: '作品删除成功' });
     }
     
@@ -146,7 +360,11 @@ export async function DELETE(request: NextRequest) {
     });
     
     if (publishedFileToDelete) {
-      fs.unlinkSync(path.join(worksDirectory, publishedFileToDelete));
+      const filePath = path.join(worksDirectory, publishedFileToDelete);
+      const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      await deleteRemoteAssetsFromWork(content);
+      fs.unlinkSync(filePath);
+      deleteLocalStaticArtifacts(id);
       return NextResponse.json({ success: true, message: '作品删除成功' });
     }
     
@@ -184,20 +402,7 @@ export async function PUT(request: NextRequest) {
     }
     
     console.log('找到', draftFiles.length, '个待发布作品');
-    
-    // 清空已发布目录（保留data.json，最后更新）
-    const publishedFiles = fs.readdirSync(worksDirectory);
-    publishedFiles.forEach(file => {
-      if (file !== 'data.json') {
-        const filePath = path.join(worksDirectory, file);
-        try {
-          fs.unlinkSync(filePath);
-          console.log('已删除旧文件:', file);
-        } catch (error) {
-          console.error('删除文件失败:', file, error);
-        }
-      }
-    });
+    const currentDraftFileSet = new Set(draftFiles);
     
     // 复制草稿到发布目录
     const works: any[] = [];
@@ -214,6 +419,22 @@ export async function PUT(request: NextRequest) {
         console.log('已复制作品:', work.title || file);
       } catch (error) {
         console.error('处理草稿文件失败:', file, error);
+      }
+    });
+
+    // 删除已发布目录中不再存在的旧作品文件
+    const publishedFiles = listPublishedWorkFiles();
+    publishedFiles.forEach((file) => {
+      if (!currentDraftFileSet.has(file)) {
+        const filePath = path.join(worksDirectory, file);
+        try {
+          const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          fs.unlinkSync(filePath);
+          deleteLocalStaticArtifacts(content.id || file.replace('.json', ''));
+          console.log('已删除失效作品文件:', file);
+        } catch (error) {
+          console.error('删除失效作品文件失败:', file, error);
+        }
       }
     });
     

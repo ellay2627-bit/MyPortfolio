@@ -29,14 +29,14 @@
     {
       "id": "image-1778503027115-8",
       "type": "image",
-      "url": "/images/works/work-1778502878297-media-2.png",
+      "url": "/images/works/work-1778502878297-media-2.gif",
       "name": "02.gif",
       "order": 2
     },
     {
       "id": "image-1778503027123-9",
       "type": "image",
-      "url": "/images/works/work-1778502878297-media-3.png",
+      "url": "/images/works/work-1778502878297-media-3.gif",
       "name": "03.gif",
       "order": 3
     },
@@ -50,7 +50,7 @@
     {
       "id": "image-1778503027106-5",
       "type": "image",
-      "url": "/images/works/work-1778502878297-media-5.gif",
+      "url": "/images/works/work-1778502878297-media-5.webp",
       "name": "05.webp",
       "order": 5
     },
@@ -64,7 +64,7 @@
     {
       "id": "image-1778503027106-4",
       "type": "image",
-      "url": "/images/works/work-1778502878297-media-7.png",
+      "url": "/images/works/work-1778502878297-media-7.webp",
       "name": "07.webp",
       "order": 7
     },
@@ -78,7 +78,7 @@
     {
       "id": "image-1778503027107-6",
       "type": "image",
-      "url": "/images/works/work-1778502878297-media-9.gif",
+      "url": "/images/works/work-1778502878297-media-9.webp",
       "name": "09.webp",
       "order": 9
     },

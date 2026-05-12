@@ -7,7 +7,7 @@
     "UX设计",
     "动态设计"
   ],
-  "cover": "/images/works/work-1778512077048-cover.gif",
+  "cover": "/images/works/work-1778512077048-cover.jpg",
   "ratio": "4:3",
   "order": 18,
   "media": [
@@ -35,7 +35,7 @@
     {
       "id": "image-1778512376289-1",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-3.png",
+      "url": "/images/works/work-1778512077048-media-3.jpg",
       "name": "首页 - 风格2.jpg",
       "order": 3
     },

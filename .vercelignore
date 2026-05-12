@@ -1,0 +1,8 @@
+.DS_Store
+coverage
+*.log
+node_modules
+src/components/LiquidEther.css.backup
+src/components/LiquidEther.jsx.backup
+src/components/LiquidEther.jsx.old
+tsconfig.tsbuildinfo

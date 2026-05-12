@@ -7,14 +7,14 @@
     "视觉设计",
     "其他"
   ],
-  "cover": "/images/works/work-1778502248177-cover.png",
+  "cover": "/images/works/work-1778502248177-cover.jpg",
   "ratio": "4:3",
   "order": 24,
   "media": [
     {
       "id": "image-1778502648811-0",
       "type": "image",
-      "url": "/images/works/work-1778502248177-media-0.png",
+      "url": "/images/works/work-1778502248177-media-0.jpg",
       "name": "蓬莱旅游海报 - 李超.jpg",
       "order": 0
     }

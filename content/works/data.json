@@ -7,42 +7,42 @@
     "category": [
       "UX设计"
     ],
-    "cover": "/images/works/work-1778497760985-cover.png",
+    "cover": "/images/works/work-1778497760985-cover.jpg",
     "ratio": "4:3",
     "order": 1,
     "media": [
       {
         "id": "image-1778497860194-2",
         "type": "image",
-        "url": "/images/works/work-1778497760985-media-0.png",
+        "url": "/images/works/work-1778497760985-media-0.jpg",
         "name": "03小苗-封.jpg",
         "order": 0
       },
       {
         "id": "image-1778497860196-4",
         "type": "image",
-        "url": "/images/works/work-1778497760985-media-1.png",
+        "url": "/images/works/work-1778497760985-media-1.jpg",
         "name": "04小苗 - 什么是小苗.jpg",
         "order": 1
       },
       {
         "id": "image-1778497860194-1",
         "type": "image",
-        "url": "/images/works/work-1778497760985-media-2.png",
+        "url": "/images/works/work-1778497760985-media-2.jpg",
         "name": "05小苗 - 设计亮点描述.jpg",
         "order": 2
       },
       {
         "id": "image-1778497860193-0",
         "type": "image",
-        "url": "/images/works/work-1778497760985-media-3.gif",
+        "url": "/images/works/work-1778497760985-media-3.jpg",
         "name": "06小苗 - IP升级.jpg",
         "order": 3
       },
       {
         "id": "image-1778497860195-3",
         "type": "image",
-        "url": "/images/works/work-1778497760985-media-4.png",
+        "url": "/images/works/work-1778497760985-media-4.jpg",
         "name": "07小苗 - UX升级.jpg",
         "order": 4
       }
@@ -75,21 +75,21 @@
       {
         "id": "image-1778498546032-2",
         "type": "image",
-        "url": "/images/works/work-1778498342494-media-0.png",
+        "url": "/images/works/work-1778498342494-media-0.jpg",
         "name": "12备课授课-封.jpg",
         "order": 0
       },
       {
         "id": "image-1778498546032-0",
         "type": "image",
-        "url": "/images/works/work-1778498342494-media-1.gif",
+        "url": "/images/works/work-1778498342494-media-1.jpg",
         "name": "13备课授课-AI工作流.jpg",
         "order": 1
       },
       {
         "id": "image-1778498546035-3",
         "type": "image",
-        "url": "/images/works/work-1778498342494-media-2.png",
+        "url": "/images/works/work-1778498342494-media-2.jpg",
         "name": "14备课授课-UI亮点.jpg",
         "order": 2
       },
@@ -122,7 +122,7 @@
     "category": [
       "UX设计"
     ],
-    "cover": "/images/works/work-1778498094298-cover.png",
+    "cover": "/images/works/work-1778498094298-cover.jpg",
     "ratio": "4:3",
     "order": 3,
     "media": [
@@ -136,21 +136,21 @@
       {
         "id": "image-1778498255826-1",
         "type": "image",
-        "url": "/images/works/work-1778498094298-media-1.gif",
+        "url": "/images/works/work-1778498094298-media-1.jpg",
         "name": "09赞赞 - 产品形态.jpg",
         "order": 1
       },
       {
         "id": "image-1778498255826-3",
         "type": "image",
-        "url": "/images/works/work-1778498094298-media-2.png",
+        "url": "/images/works/work-1778498094298-media-2.jpg",
         "name": "10赞赞 - 设计系统.jpg",
         "order": 2
       },
       {
         "id": "image-1778498255826-2",
         "type": "image",
-        "url": "/images/works/work-1778498094298-media-3.png",
+        "url": "/images/works/work-1778498094298-media-3.jpg",
         "name": "11赞赞 - 典型页面.jpg",
         "order": 3
       }
@@ -167,35 +167,35 @@
       "UX设计",
       "动态设计"
     ],
-    "cover": "/images/works/work-1778507025867-cover.png",
+    "cover": "/images/works/work-1778507025867-cover.jpg",
     "ratio": "4:3",
     "order": 4,
     "media": [
       {
         "id": "image-1778507348365-0",
         "type": "image",
-        "url": "/images/works/work-1778507025867-media-0.png",
+        "url": "/images/works/work-1778507025867-media-0.jpg",
         "name": "23数据可视化 - 封.jpg",
         "order": 0
       },
       {
         "id": "image-1778507348371-1",
         "type": "image",
-        "url": "/images/works/work-1778507025867-media-1.png",
+        "url": "/images/works/work-1778507025867-media-1.jpg",
         "name": "26数据可视化 - 其他.jpg",
         "order": 1
       },
       {
         "id": "image-1778507348372-2",
         "type": "image",
-        "url": "/images/works/work-1778507025867-media-2.gif",
+        "url": "/images/works/work-1778507025867-media-2.jpg",
         "name": "25数据可视化 - 监控.jpg",
         "order": 2
       },
       {
         "id": "image-1778507348375-3",
         "type": "image",
-        "url": "/images/works/work-1778507025867-media-3.png",
+        "url": "/images/works/work-1778507025867-media-3.jpg",
         "name": "24数据可视化 - 驾驶舱.jpg",
         "order": 3
       }
@@ -211,7 +211,7 @@
       "UX设计",
       "动态设计"
     ],
-    "cover": "/images/works/work-1778498670904-cover.png",
+    "cover": "/images/works/work-1778498670904-cover.jpg",
     "ratio": "4:3",
     "order": 5,
     "media": [
@@ -225,7 +225,7 @@
       {
         "id": "image-1778498853490-0",
         "type": "image",
-        "url": "/images/works/work-1778498670904-media-1.png",
+        "url": "/images/works/work-1778498670904-media-1.jpg",
         "name": "16读书平台-封.jpg",
         "order": 1
       },
@@ -239,7 +239,7 @@
       {
         "id": "image-1778498853491-2",
         "type": "image",
-        "url": "/images/works/work-1778498670904-media-3.png",
+        "url": "/images/works/work-1778498670904-media-3.jpg",
         "name": "18读书平台-设计插画.jpg",
         "order": 3
       }
@@ -256,7 +256,7 @@
       "动态设计",
       "视觉设计"
     ],
-    "cover": "/images/works/work-1778498879461-cover.png",
+    "cover": "/images/works/work-1778498879461-cover.jpg",
     "ratio": "4:3",
     "order": 6,
     "media": [
@@ -270,21 +270,21 @@
       {
         "id": "image-1778499396260-8",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-1.png",
+        "url": "/images/works/work-1778498879461-media-1.gif",
         "name": "04.gif",
         "order": 1
       },
       {
         "id": "image-1778499396255-7",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-2.png",
+        "url": "/images/works/work-1778498879461-media-2.gif",
         "name": "06.gif",
         "order": 2
       },
       {
         "id": "image-1778499396251-3",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-3.png",
+        "url": "/images/works/work-1778498879461-media-3.webp",
         "name": "01.webp",
         "order": 3
       },
@@ -298,28 +298,28 @@
       {
         "id": "image-1778499396251-4",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-5.png",
+        "url": "/images/works/work-1778498879461-media-5.webp",
         "name": "03.webp",
         "order": 5
       },
       {
         "id": "image-1778499396253-6",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-6.png",
+        "url": "/images/works/work-1778498879461-media-6.webp",
         "name": "05.webp",
         "order": 6
       },
       {
         "id": "image-1778499396249-1",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-7.png",
+        "url": "/images/works/work-1778498879461-media-7.webp",
         "name": "07.webp",
         "order": 7
       },
       {
         "id": "image-1778499396248-0",
         "type": "image",
-        "url": "/images/works/work-1778498879461-media-8.png",
+        "url": "/images/works/work-1778498879461-media-8.webp",
         "name": "08.webp",
         "order": 8
       }
@@ -335,21 +335,21 @@
       "品牌设计",
       "动态设计"
     ],
-    "cover": "/images/works/work-1778506874277-cover.png",
+    "cover": "/images/works/work-1778506874277-cover.webp",
     "ratio": "4:3",
     "order": 7,
     "media": [
       {
         "id": "image-1778506974232-13",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-0.png",
+        "url": "/images/works/work-1778506874277-media-0.webp",
         "name": "12.webp",
         "order": 0
       },
       {
         "id": "image-1778506974228-2",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-1.png",
+        "url": "/images/works/work-1778506874277-media-1.webp",
         "name": "0187b35dd7ae86a8012129e219d95f.webp",
         "order": 1
       },
@@ -363,14 +363,14 @@
       {
         "id": "image-1778507461588-0",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-3.png",
+        "url": "/images/works/work-1778506874277-media-3.jpg",
         "name": "26ux设计012.jpg",
         "order": 3
       },
       {
         "id": "image-1778507461589-1",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-4.png",
+        "url": "/images/works/work-1778506874277-media-4.jpg",
         "name": "27ux设计013.jpg",
         "order": 4
       },
@@ -384,7 +384,7 @@
       {
         "id": "image-1778506974227-1",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-6.png",
+        "url": "/images/works/work-1778506874277-media-6.webp",
         "name": "10.webp",
         "order": 6
       },
@@ -405,7 +405,7 @@
       {
         "id": "image-1778506974229-6",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-9.png",
+        "url": "/images/works/work-1778506874277-media-9.webp",
         "name": "06.webp",
         "order": 9
       },
@@ -426,35 +426,35 @@
       {
         "id": "image-1778506974230-8",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-12.png",
+        "url": "/images/works/work-1778506874277-media-12.webp",
         "name": "09.webp",
         "order": 12
       },
       {
         "id": "image-1778506974231-9",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-13.gif",
+        "url": "/images/works/work-1778506874277-media-13.webp",
         "name": "04.webp",
         "order": 13
       },
       {
         "id": "image-1778506974232-10",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-14.png",
+        "url": "/images/works/work-1778506874277-media-14.webp",
         "name": "07.webp",
         "order": 14
       },
       {
         "id": "image-1778506974232-12",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-15.png",
+        "url": "/images/works/work-1778506874277-media-15.webp",
         "name": "03.webp",
         "order": 15
       },
       {
         "id": "image-1778506974234-14",
         "type": "image",
-        "url": "/images/works/work-1778506874277-media-16.png",
+        "url": "/images/works/work-1778506874277-media-16.webp",
         "name": "05.webp",
         "order": 16
       }
@@ -470,7 +470,7 @@
       "视觉设计",
       "动态设计"
     ],
-    "cover": "/images/works/work-1776770500445-cover.png",
+    "cover": "/images/works/work-1776770500445-cover.webp",
     "ratio": "4:3",
     "order": 8,
     "media": [
@@ -484,14 +484,14 @@
       {
         "id": "image-1778497484623-16",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-1.png",
+        "url": "/images/works/work-1776770500445-media-1.gif",
         "name": "gif.gif",
         "order": 1
       },
       {
         "id": "image-1778497484611-3",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-2.png",
+        "url": "/images/works/work-1776770500445-media-2.webp",
         "name": "00.webp",
         "order": 2
       },
@@ -505,63 +505,63 @@
       {
         "id": "image-1778497484615-13",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-4.png",
+        "url": "/images/works/work-1776770500445-media-4.webp",
         "name": "11.webp",
         "order": 4
       },
       {
         "id": "image-1778497484614-10",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-5.png",
+        "url": "/images/works/work-1776770500445-media-5.webp",
         "name": "15.webp",
         "order": 5
       },
       {
         "id": "image-1778497484614-11",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-6.png",
+        "url": "/images/works/work-1776770500445-media-6.webp",
         "name": "09.webp",
         "order": 6
       },
       {
         "id": "image-1778497484615-12",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-7.gif",
+        "url": "/images/works/work-1776770500445-media-7.webp",
         "name": "10.webp",
         "order": 7
       },
       {
         "id": "image-1778497484616-14",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-8.png",
+        "url": "/images/works/work-1776770500445-media-8.webp",
         "name": "13.webp",
         "order": 8
       },
       {
         "id": "image-1778497484616-15",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-9.png",
+        "url": "/images/works/work-1776770500445-media-9.webp",
         "name": "14.webp",
         "order": 9
       },
       {
         "id": "image-1778497484613-7",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-10.png",
+        "url": "/images/works/work-1776770500445-media-10.webp",
         "name": "08.webp",
         "order": 10
       },
       {
         "id": "image-1778497484611-2",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-11.png",
+        "url": "/images/works/work-1776770500445-media-11.webp",
         "name": "20.webp",
         "order": 11
       },
       {
         "id": "image-1778497484610-0",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-12.png",
+        "url": "/images/works/work-1776770500445-media-12.webp",
         "name": "22.webp",
         "order": 12
       },
@@ -575,7 +575,7 @@
       {
         "id": "image-1778497484611-4",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-14.gif",
+        "url": "/images/works/work-1776770500445-media-14.webp",
         "name": "26.webp",
         "order": 14
       },
@@ -589,7 +589,7 @@
       {
         "id": "image-1778497484613-8",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-16.png",
+        "url": "/images/works/work-1776770500445-media-16.webp",
         "name": "18.webp",
         "order": 16
       },
@@ -603,7 +603,7 @@
       {
         "id": "image-1778506282562-0",
         "type": "image",
-        "url": "/images/works/work-1776770500445-media-18.png",
+        "url": "/images/works/work-1776770500445-media-18.jpg",
         "name": "07商越 - 新技术重构.jpg",
         "order": 18
       }
@@ -619,7 +619,7 @@
       "视觉设计",
       "品牌设计"
     ],
-    "cover": "/images/works/work-1778506616824-cover.png",
+    "cover": "/images/works/work-1778506616824-cover.webp",
     "ratio": "4:3",
     "order": 9,
     "media": [
@@ -661,7 +661,7 @@
       {
         "id": "image-1778506743014-8",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-5.png",
+        "url": "/images/works/work-1778506616824-media-5.webp",
         "name": "05.webp",
         "order": 5
       },
@@ -682,21 +682,21 @@
       {
         "id": "image-1778506743014-7",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-8.png",
+        "url": "/images/works/work-1778506616824-media-8.webp",
         "name": "16.webp",
         "order": 8
       },
       {
         "id": "image-1778506743014-9",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-9.gif",
+        "url": "/images/works/work-1778506616824-media-9.webp",
         "name": "11.webp",
         "order": 9
       },
       {
         "id": "image-1778506743014-10",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-10.gif",
+        "url": "/images/works/work-1778506616824-media-10.webp",
         "name": "17.webp",
         "order": 10
       },
@@ -710,42 +710,42 @@
       {
         "id": "image-1778506743015-12",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-12.png",
+        "url": "/images/works/work-1778506616824-media-12.webp",
         "name": "13.webp",
         "order": 12
       },
       {
         "id": "image-1778506743015-13",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-13.png",
+        "url": "/images/works/work-1778506616824-media-13.webp",
         "name": "07.webp",
         "order": 13
       },
       {
         "id": "image-1778506743016-16",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-14.png",
+        "url": "/images/works/work-1778506616824-media-14.webp",
         "name": "06.webp",
         "order": 14
       },
       {
         "id": "image-1778506743016-17",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-15.png",
+        "url": "/images/works/work-1778506616824-media-15.webp",
         "name": "08.webp",
         "order": 15
       },
       {
         "id": "image-1778506743015-14",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-16.png",
+        "url": "/images/works/work-1778506616824-media-16.webp",
         "name": "10.webp",
         "order": 16
       },
       {
         "id": "image-1778506743015-15",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-17.png",
+        "url": "/images/works/work-1778506616824-media-17.webp",
         "name": "15.webp",
         "order": 17
       },
@@ -759,7 +759,7 @@
       {
         "id": "image-1778506743016-19",
         "type": "image",
-        "url": "/images/works/work-1778506616824-media-19.png",
+        "url": "/images/works/work-1778506616824-media-19.webp",
         "name": "14.webp",
         "order": 19
       }
@@ -782,14 +782,14 @@
       {
         "id": "image-1778509365414-1",
         "type": "image",
-        "url": "/images/works/work-1778509209617-media-0.png",
+        "url": "/images/works/work-1778509209617-media-0.webp",
         "name": "01.webp",
         "order": 0
       },
       {
         "id": "image-1778509365411-0",
         "type": "image",
-        "url": "/images/works/work-1778509209617-media-1.png",
+        "url": "/images/works/work-1778509209617-media-1.webp",
         "name": "02.webp",
         "order": 1
       }
@@ -804,7 +804,7 @@
     "category": [
       "UX设计"
     ],
-    "cover": "/images/works/work-1778510934180-cover.png",
+    "cover": "/images/works/work-1778510934180-cover.jpg",
     "ratio": "4:3",
     "order": 11,
     "media": [
@@ -818,14 +818,14 @@
       {
         "id": "image-1778511016849-5",
         "type": "image",
-        "url": "/images/works/work-1778510934180-media-1.gif",
+        "url": "/images/works/work-1778510934180-media-1.jpg",
         "name": "ux设计015.jpg",
         "order": 1
       },
       {
         "id": "image-1778511016849-4",
         "type": "image",
-        "url": "/images/works/work-1778510934180-media-2.gif",
+        "url": "/images/works/work-1778510934180-media-2.jpg",
         "name": "ux设计016.jpg",
         "order": 2
       },
@@ -839,14 +839,14 @@
       {
         "id": "image-1778511016848-1",
         "type": "image",
-        "url": "/images/works/work-1778510934180-media-4.png",
+        "url": "/images/works/work-1778510934180-media-4.jpg",
         "name": "ux设计019.jpg",
         "order": 4
       },
       {
         "id": "image-1778511016848-3",
         "type": "image",
-        "url": "/images/works/work-1778510934180-media-5.gif",
+        "url": "/images/works/work-1778510934180-media-5.jpg",
         "name": "ux设计017.jpg",
         "order": 5
       }
@@ -956,14 +956,14 @@
       {
         "id": "image-1778503027115-8",
         "type": "image",
-        "url": "/images/works/work-1778502878297-media-2.png",
+        "url": "/images/works/work-1778502878297-media-2.gif",
         "name": "02.gif",
         "order": 2
       },
       {
         "id": "image-1778503027123-9",
         "type": "image",
-        "url": "/images/works/work-1778502878297-media-3.png",
+        "url": "/images/works/work-1778502878297-media-3.gif",
         "name": "03.gif",
         "order": 3
       },
@@ -977,7 +977,7 @@
       {
         "id": "image-1778503027106-5",
         "type": "image",
-        "url": "/images/works/work-1778502878297-media-5.gif",
+        "url": "/images/works/work-1778502878297-media-5.webp",
         "name": "05.webp",
         "order": 5
       },
@@ -991,7 +991,7 @@
       {
         "id": "image-1778503027106-4",
         "type": "image",
-        "url": "/images/works/work-1778502878297-media-7.png",
+        "url": "/images/works/work-1778502878297-media-7.webp",
         "name": "07.webp",
         "order": 7
       },
@@ -1005,7 +1005,7 @@
       {
         "id": "image-1778503027107-6",
         "type": "image",
-        "url": "/images/works/work-1778502878297-media-9.gif",
+        "url": "/images/works/work-1778502878297-media-9.webp",
         "name": "09.webp",
         "order": 9
       },
@@ -1035,7 +1035,7 @@
       {
         "id": "image-1778509530075-8",
         "type": "image",
-        "url": "/images/works/work-1778509415274-media-0.png",
+        "url": "/images/works/work-1778509415274-media-0.gif",
         "name": "01.gif",
         "order": 0
       },
@@ -1070,7 +1070,7 @@
       {
         "id": "image-1778509530073-2",
         "type": "image",
-        "url": "/images/works/work-1778509415274-media-5.png",
+        "url": "/images/works/work-1778509415274-media-5.webp",
         "name": "06.webp",
         "order": 5
       },
@@ -1098,7 +1098,7 @@
       {
         "id": "image-1778509530074-6",
         "type": "image",
-        "url": "/images/works/work-1778509415274-media-9.gif",
+        "url": "/images/works/work-1778509415274-media-9.webp",
         "name": "11.webp",
         "order": 9
       },
@@ -1112,7 +1112,7 @@
       {
         "id": "image-1778509530075-11",
         "type": "image",
-        "url": "/images/works/work-1778509415274-media-11.png",
+        "url": "/images/works/work-1778509415274-media-11.webp",
         "name": "08.webp",
         "order": 11
       }
@@ -1128,28 +1128,28 @@
       "动态设计",
       "视觉设计"
     ],
-    "cover": "/images/works/work-1778508444788-cover.png",
+    "cover": "/images/works/work-1778508444788-cover.webp",
     "ratio": "4:3",
     "order": 15,
     "media": [
       {
         "id": "image-1778508566316-0",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-0.png",
+        "url": "/images/works/work-1778508444788-media-0.webp",
         "name": "01.webp",
         "order": 0
       },
       {
         "id": "image-1778508566317-4",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-1.png",
+        "url": "/images/works/work-1778508444788-media-1.webp",
         "name": "02.webp",
         "order": 1
       },
       {
         "id": "image-1778508566317-2",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-2.png",
+        "url": "/images/works/work-1778508444788-media-2.webp",
         "name": "03.webp",
         "order": 2
       },
@@ -1163,7 +1163,7 @@
       {
         "id": "image-1778508566317-3",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-4.png",
+        "url": "/images/works/work-1778508444788-media-4.webp",
         "name": "05.webp",
         "order": 4
       },
@@ -1177,21 +1177,21 @@
       {
         "id": "image-1778508566316-1",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-6.gif",
+        "url": "/images/works/work-1778508444788-media-6.webp",
         "name": "07.webp",
         "order": 6
       },
       {
         "id": "image-1778508566323-7",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-7.png",
+        "url": "/images/works/work-1778508444788-media-7.webp",
         "name": "08.webp",
         "order": 7
       },
       {
         "id": "image-1778508566329-8",
         "type": "image",
-        "url": "/images/works/work-1778508444788-media-8.png",
+        "url": "/images/works/work-1778508444788-media-8.gif",
         "name": "09.gif",
         "order": 8
       }
@@ -1207,42 +1207,42 @@
       "动态设计",
       "UX设计"
     ],
-    "cover": "/images/works/work-1778508076843-cover.png",
+    "cover": "/images/works/work-1778508076843-cover.webp",
     "ratio": "4:3",
     "order": 16,
     "media": [
       {
         "id": "image-1778508273690-5",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-0.png",
+        "url": "/images/works/work-1778508076843-media-0.webp",
         "name": "01.webp",
         "order": 0
       },
       {
         "id": "image-1778508273690-6",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-1.png",
+        "url": "/images/works/work-1778508076843-media-1.webp",
         "name": "02.webp",
         "order": 1
       },
       {
         "id": "image-1778508273689-2",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-2.gif",
+        "url": "/images/works/work-1778508076843-media-2.webp",
         "name": "03.webp",
         "order": 2
       },
       {
         "id": "image-1778508273689-1",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-3.png",
+        "url": "/images/works/work-1778508076843-media-3.webp",
         "name": "04.webp",
         "order": 3
       },
       {
         "id": "image-1778508273688-0",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-4.gif",
+        "url": "/images/works/work-1778508076843-media-4.webp",
         "name": "05.webp",
         "order": 4
       },
@@ -1256,21 +1256,21 @@
       {
         "id": "image-1778508273689-4",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-6.png",
+        "url": "/images/works/work-1778508076843-media-6.webp",
         "name": "07.webp",
         "order": 6
       },
       {
         "id": "image-1778508273718-7",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-7.png",
+        "url": "/images/works/work-1778508076843-media-7.gif",
         "name": "09.gif",
         "order": 7
       },
       {
         "id": "image-1778508273731-8",
         "type": "image",
-        "url": "/images/works/work-1778508076843-media-8.png",
+        "url": "/images/works/work-1778508076843-media-8.gif",
         "name": "08.gif",
         "order": 8
       }
@@ -1320,7 +1320,7 @@
       {
         "id": "image-1778510622140-4",
         "type": "image",
-        "url": "/images/works/work-1778510420037-media-4.gif",
+        "url": "/images/works/work-1778510420037-media-4.jpg",
         "name": "默认.jpg",
         "order": 4
       },
@@ -1334,7 +1334,7 @@
       {
         "id": "image-1778510622140-6",
         "type": "image",
-        "url": "/images/works/work-1778510420037-media-6.png",
+        "url": "/images/works/work-1778510420037-media-6.jpg",
         "name": "列表页.jpg",
         "order": 6
       },
@@ -1348,7 +1348,7 @@
       {
         "id": "image-1778510622140-8",
         "type": "image",
-        "url": "/images/works/work-1778510420037-media-8.png",
+        "url": "/images/works/work-1778510420037-media-8.jpg",
         "name": "侧边目录优化.jpg",
         "order": 8
       },
@@ -1399,7 +1399,7 @@
       "UX设计",
       "动态设计"
     ],
-    "cover": "/images/works/work-1778512077048-cover.gif",
+    "cover": "/images/works/work-1778512077048-cover.jpg",
     "ratio": "4:3",
     "order": 18,
     "media": [
@@ -1427,7 +1427,7 @@
       {
         "id": "image-1778512376289-1",
         "type": "image",
-        "url": "/images/works/work-1778512077048-media-3.png",
+        "url": "/images/works/work-1778512077048-media-3.jpg",
         "name": "首页 - 风格2.jpg",
         "order": 3
       },
@@ -1457,7 +1457,7 @@
       "品牌设计",
       "视觉设计"
     ],
-    "cover": "/images/works/work-1778508748968-cover.png",
+    "cover": "/images/works/work-1778508748968-cover.webp",
     "ratio": "4:3",
     "order": 19,
     "media": [
@@ -1471,14 +1471,14 @@
       {
         "id": "image-1778508870196-4",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-1.png",
+        "url": "/images/works/work-1778508748968-media-1.webp",
         "name": "02.webp",
         "order": 1
       },
       {
         "id": "image-1778508870195-2",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-2.png",
+        "url": "/images/works/work-1778508748968-media-2.webp",
         "name": "03.webp",
         "order": 2
       },
@@ -1492,28 +1492,28 @@
       {
         "id": "image-1778508870196-3",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-4.png",
+        "url": "/images/works/work-1778508748968-media-4.webp",
         "name": "07.webp",
         "order": 4
       },
       {
         "id": "image-1778508870196-5",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-5.png",
+        "url": "/images/works/work-1778508748968-media-5.webp",
         "name": "08.webp",
         "order": 5
       },
       {
         "id": "image-1778508870196-6",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-6.png",
+        "url": "/images/works/work-1778508748968-media-6.webp",
         "name": "05.webp",
         "order": 6
       },
       {
         "id": "image-1778508870197-7",
         "type": "image",
-        "url": "/images/works/work-1778508748968-media-7.png",
+        "url": "/images/works/work-1778508748968-media-7.webp",
         "name": "04.webp",
         "order": 7
       }
@@ -1544,7 +1544,7 @@
       {
         "id": "image-1778507646449-1",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-1.png",
+        "url": "/images/works/work-1778507560399-media-1.jpg",
         "name": "32视觉设计专辑.jpg",
         "order": 1
       },
@@ -1558,14 +1558,14 @@
       {
         "id": "image-1778507646449-3",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-3.png",
+        "url": "/images/works/work-1778507560399-media-3.jpg",
         "name": "30视觉设计专辑.jpg",
         "order": 3
       },
       {
         "id": "image-1778507646450-4",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-4.png",
+        "url": "/images/works/work-1778507560399-media-4.jpg",
         "name": "33视觉设计专辑.jpg",
         "order": 4
       },
@@ -1579,63 +1579,63 @@
       {
         "id": "image-1778507900650-0",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-6.png",
+        "url": "/images/works/work-1778507560399-media-6.gif",
         "name": "09.gif",
         "order": 6
       },
       {
         "id": "image-1778507900682-1",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-7.png",
+        "url": "/images/works/work-1778507560399-media-7.gif",
         "name": "06.gif",
         "order": 7
       },
       {
         "id": "image-1778507900686-2",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-8.png",
+        "url": "/images/works/work-1778507560399-media-8.jpg",
         "name": "04.jpeg",
         "order": 8
       },
       {
         "id": "image-1778507900690-3",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-9.png",
+        "url": "/images/works/work-1778507560399-media-9.gif",
         "name": "07.gif",
         "order": 9
       },
       {
         "id": "image-1778507900694-4",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-10.png",
+        "url": "/images/works/work-1778507560399-media-10.gif",
         "name": "10.gif",
         "order": 10
       },
       {
         "id": "image-1778507900700-5",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-11.png",
+        "url": "/images/works/work-1778507560399-media-11.gif",
         "name": "08.gif",
         "order": 11
       },
       {
         "id": "image-1778507900710-6",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-12.png",
+        "url": "/images/works/work-1778507560399-media-12.gif",
         "name": "03.gif",
         "order": 12
       },
       {
         "id": "image-1778507900745-7",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-13.png",
+        "url": "/images/works/work-1778507560399-media-13.gif",
         "name": "05.gif",
         "order": 13
       },
       {
         "id": "image-1778507900752-8",
         "type": "image",
-        "url": "/images/works/work-1778507560399-media-14.png",
+        "url": "/images/works/work-1778507560399-media-14.gif",
         "name": "11.gif",
         "order": 14
       }
@@ -1665,21 +1665,21 @@
       {
         "id": "image-1776770459322-1",
         "type": "image",
-        "url": "/images/works/work-1776770296822-media-1.png",
+        "url": "/images/works/work-1776770296822-media-1.gif",
         "name": "gif.gif",
         "order": 1
       },
       {
         "id": "image-1776770459335-2",
         "type": "image",
-        "url": "/images/works/work-1776770296822-media-2.png",
+        "url": "/images/works/work-1776770296822-media-2.gif",
         "name": "02.gif",
         "order": 2
       },
       {
         "id": "image-1776770459347-3",
         "type": "image",
-        "url": "/images/works/work-1776770296822-media-3.png",
+        "url": "/images/works/work-1776770296822-media-3.gif",
         "name": "03.gif",
         "order": 3
       }
@@ -1696,7 +1696,7 @@
       "其他",
       "动态设计"
     ],
-    "cover": "/images/works/work-1778506476989-cover.png",
+    "cover": "/images/works/work-1778506476989-cover.jpg",
     "ratio": "4:3",
     "order": 22,
     "media": [
@@ -1710,42 +1710,42 @@
       {
         "id": "image-1778506569620-0",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-1.png",
+        "url": "/images/works/work-1778506476989-media-1.jpg",
         "name": "15sunyur 品牌 - 架构图.jpg",
         "order": 1
       },
       {
         "id": "image-1778506569620-1",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-2.png",
+        "url": "/images/works/work-1778506476989-media-2.jpg",
         "name": "16sunyur 品牌 - 家族.jpg",
         "order": 2
       },
       {
         "id": "image-1778506586681-0",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-3.png",
+        "url": "/images/works/work-1778506476989-media-3.webp",
         "name": "05.webp",
         "order": 3
       },
       {
         "id": "image-1778506586681-1",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-4.gif",
+        "url": "/images/works/work-1778506476989-media-4.webp",
         "name": "04.webp",
         "order": 4
       },
       {
         "id": "image-1778506586681-2",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-5.png",
+        "url": "/images/works/work-1778506476989-media-5.webp",
         "name": "01.webp",
         "order": 5
       },
       {
         "id": "image-1778506586681-4",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-6.gif",
+        "url": "/images/works/work-1778506476989-media-6.webp",
         "name": "02.webp",
         "order": 6
       },
@@ -1759,7 +1759,7 @@
       {
         "id": "image-1778506586682-6",
         "type": "image",
-        "url": "/images/works/work-1778506476989-media-8.gif",
+        "url": "/images/works/work-1778506476989-media-8.webp",
         "name": "07.webp",
         "order": 8
       }
@@ -1782,7 +1782,7 @@
       {
         "id": "image-1778502827438-0",
         "type": "image",
-        "url": "/images/works/work-1778502673231-media-0.png",
+        "url": "/images/works/work-1778502673231-media-0.webp",
         "name": "01.webp",
         "order": 0
       }
@@ -1798,14 +1798,14 @@
       "视觉设计",
       "其他"
     ],
-    "cover": "/images/works/work-1778502248177-cover.png",
+    "cover": "/images/works/work-1778502248177-cover.jpg",
     "ratio": "4:3",
     "order": 24,
     "media": [
       {
         "id": "image-1778502648811-0",
         "type": "image",
-        "url": "/images/works/work-1778502248177-media-0.png",
+        "url": "/images/works/work-1778502248177-media-0.jpg",
         "name": "蓬莱旅游海报 - 李超.jpg",
         "order": 0
       }

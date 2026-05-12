@@ -7,21 +7,21 @@
     "品牌设计",
     "动态设计"
   ],
-  "cover": "/images/works/work-1778506874277-cover.png",
+  "cover": "/images/works/work-1778506874277-cover.webp",
   "ratio": "4:3",
   "order": 7,
   "media": [
     {
       "id": "image-1778506974232-13",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-0.png",
+      "url": "/images/works/work-1778506874277-media-0.webp",
       "name": "12.webp",
       "order": 0
     },
     {
       "id": "image-1778506974228-2",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-1.png",
+      "url": "/images/works/work-1778506874277-media-1.webp",
       "name": "0187b35dd7ae86a8012129e219d95f.webp",
       "order": 1
     },
@@ -35,14 +35,14 @@
     {
       "id": "image-1778507461588-0",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-3.png",
+      "url": "/images/works/work-1778506874277-media-3.jpg",
       "name": "26ux设计012.jpg",
       "order": 3
     },
     {
       "id": "image-1778507461589-1",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-4.png",
+      "url": "/images/works/work-1778506874277-media-4.jpg",
       "name": "27ux设计013.jpg",
       "order": 4
     },
@@ -56,7 +56,7 @@
     {
       "id": "image-1778506974227-1",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-6.png",
+      "url": "/images/works/work-1778506874277-media-6.webp",
       "name": "10.webp",
       "order": 6
     },
@@ -77,7 +77,7 @@
     {
       "id": "image-1778506974229-6",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-9.png",
+      "url": "/images/works/work-1778506874277-media-9.webp",
       "name": "06.webp",
       "order": 9
     },
@@ -98,35 +98,35 @@
     {
       "id": "image-1778506974230-8",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-12.png",
+      "url": "/images/works/work-1778506874277-media-12.webp",
       "name": "09.webp",
       "order": 12
     },
     {
       "id": "image-1778506974231-9",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-13.gif",
+      "url": "/images/works/work-1778506874277-media-13.webp",
       "name": "04.webp",
       "order": 13
     },
     {
       "id": "image-1778506974232-10",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-14.png",
+      "url": "/images/works/work-1778506874277-media-14.webp",
       "name": "07.webp",
       "order": 14
     },
     {
       "id": "image-1778506974232-12",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-15.png",
+      "url": "/images/works/work-1778506874277-media-15.webp",
       "name": "03.webp",
       "order": 15
     },
     {
       "id": "image-1778506974234-14",
       "type": "image",
-      "url": "/images/works/work-1778506874277-media-16.png",
+      "url": "/images/works/work-1778506874277-media-16.webp",
       "name": "05.webp",
       "order": 16
     }

@@ -41,7 +41,7 @@
     {
       "id": "image-1778510622140-4",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-4.gif",
+      "url": "/images/works/work-1778510420037-media-4.jpg",
       "name": "默认.jpg",
       "order": 4
     },
@@ -55,7 +55,7 @@
     {
       "id": "image-1778510622140-6",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-6.png",
+      "url": "/images/works/work-1778510420037-media-6.jpg",
       "name": "列表页.jpg",
       "order": 6
     },
@@ -69,7 +69,7 @@
     {
       "id": "image-1778510622140-8",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-8.png",
+      "url": "/images/works/work-1778510420037-media-8.jpg",
       "name": "侧边目录优化.jpg",
       "order": 8
     },

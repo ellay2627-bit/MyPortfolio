@@ -8,7 +8,7 @@
     "其他",
     "动态设计"
   ],
-  "cover": "/images/works/work-1778506476989-cover.png",
+  "cover": "/images/works/work-1778506476989-cover.jpg",
   "ratio": "4:3",
   "order": 22,
   "media": [
@@ -22,42 +22,42 @@
     {
       "id": "image-1778506569620-0",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-1.png",
+      "url": "/images/works/work-1778506476989-media-1.jpg",
       "name": "15sunyur 品牌 - 架构图.jpg",
       "order": 1
     },
     {
       "id": "image-1778506569620-1",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-2.png",
+      "url": "/images/works/work-1778506476989-media-2.jpg",
       "name": "16sunyur 品牌 - 家族.jpg",
       "order": 2
     },
     {
       "id": "image-1778506586681-0",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-3.png",
+      "url": "/images/works/work-1778506476989-media-3.webp",
       "name": "05.webp",
       "order": 3
     },
     {
       "id": "image-1778506586681-1",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-4.gif",
+      "url": "/images/works/work-1778506476989-media-4.webp",
       "name": "04.webp",
       "order": 4
     },
     {
       "id": "image-1778506586681-2",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-5.png",
+      "url": "/images/works/work-1778506476989-media-5.webp",
       "name": "01.webp",
       "order": 5
     },
     {
       "id": "image-1778506586681-4",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-6.gif",
+      "url": "/images/works/work-1778506476989-media-6.webp",
       "name": "02.webp",
       "order": 6
     },
@@ -71,7 +71,7 @@
     {
       "id": "image-1778506586682-6",
       "type": "image",
-      "url": "/images/works/work-1778506476989-media-8.gif",
+      "url": "/images/works/work-1778506476989-media-8.webp",
       "name": "07.webp",
       "order": 8
     }

@@ -7,7 +7,7 @@
     "品牌设计",
     "视觉设计"
   ],
-  "cover": "/images/works/work-1778508748968-cover.png",
+  "cover": "/images/works/work-1778508748968-cover.webp",
   "ratio": "4:3",
   "order": 19,
   "media": [
@@ -21,14 +21,14 @@
     {
       "id": "image-1778508870196-4",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-1.png",
+      "url": "/images/works/work-1778508748968-media-1.webp",
       "name": "02.webp",
       "order": 1
     },
     {
       "id": "image-1778508870195-2",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-2.png",
+      "url": "/images/works/work-1778508748968-media-2.webp",
       "name": "03.webp",
       "order": 2
     },
@@ -42,28 +42,28 @@
     {
       "id": "image-1778508870196-3",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-4.png",
+      "url": "/images/works/work-1778508748968-media-4.webp",
       "name": "07.webp",
       "order": 4
     },
     {
       "id": "image-1778508870196-5",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-5.png",
+      "url": "/images/works/work-1778508748968-media-5.webp",
       "name": "08.webp",
       "order": 5
     },
     {
       "id": "image-1778508870196-6",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-6.png",
+      "url": "/images/works/work-1778508748968-media-6.webp",
       "name": "05.webp",
       "order": 6
     },
     {
       "id": "image-1778508870197-7",
       "type": "image",
-      "url": "/images/works/work-1778508748968-media-7.png",
+      "url": "/images/works/work-1778508748968-media-7.webp",
       "name": "04.webp",
       "order": 7
     }
