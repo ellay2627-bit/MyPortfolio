@@ -9,14 +9,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
+    setMounted(true);
     // 检查是否已登录
     const isLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
     setIsAuthenticated(isLoggedIn);
   }, []);
+
+  // 在组件挂载前，不渲染任何内容，避免 hydration 错误
+  if (!mounted) {
+    return null;
+  }
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();

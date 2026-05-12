@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"migrate:storage": "node scripts/migrate-works-to-storage.js",
-		"compress:images": "node scripts/compress-existing-images.js"
+		"compress:images": "node scripts/compress-existing-images.js",
+		"sanitize:content": "node scripts/sanitize-content-json.js"
 	},
 	"dependencies": {
 		"@radix-ui/react-checkbox": "^1.3.3",

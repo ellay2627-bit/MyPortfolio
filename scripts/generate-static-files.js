@@ -182,7 +182,7 @@ function main() {
       const processedWork = processWork(work, workId, usedLocalFiles);
       works.push(processedWork);
       activeWorkIds.add(String(processedWork.id));
-      fs.writeFileSync(filePath, JSON.stringify(work, null, 2));
+      fs.writeFileSync(filePath, JSON.stringify(processedWork, null, 2));
       console.log(`处理完成: ${processedWork.title || workId}`);
     } catch (error) {
       console.error(`处理作品失败 ${file}:`, error);

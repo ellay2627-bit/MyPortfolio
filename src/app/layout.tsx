@@ -1,9 +1,6 @@
 import React from 'react';
 import '@/styles/globals.css';
-import { Inter } from 'next/font/google';
 import { LayoutContent } from '@/components/LayoutContent';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Ellay - 视觉/UI 设计师',
@@ -19,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </head>
-      <body className={`${inter.className} dark`}>
+      <body className="dark">
         <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
