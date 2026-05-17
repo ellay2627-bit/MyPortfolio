@@ -11,7 +11,7 @@ import './RotatingText.css';
 
 export default function Hero() {
   const controls = useAnimation();
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
   const [boxWidth, setBoxWidth] = useState(0);
@@ -38,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden" ref={ref}>
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden" ref={ref}>
       {/* ColorBends动态背景 */}
       <ColorBends
         className="absolute inset-0 z-0"

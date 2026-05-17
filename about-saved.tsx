@@ -1,14 +1,13 @@
 'use client'
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useSectionScrollContext } from '@/contexts/SectionScrollProvider'
-
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+ 
 interface AboutProps {
-  activeTab?: number
-  onTabChange?: (tab: number) => void
+  activeTab: number
+  onTabChange: (tab: number) => void
   onNavigate?: (section: 'hero' | 'work') => void
 }
-
+ 
 const tabData = [
   {
     id: 0,
@@ -56,24 +55,26 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
   const segments = text.split('\n')
   
   return (
-    <span style={{ display: 'block', overflow: 'hidden' }} suppressHydrationWarning>
+    <span style={{ display: 'block' }} suppressHydrationWarning>
       {segments.map((segment, segIndex) => (
         <React.Fragment key={segIndex}>
           {[...segment].map((char, index) => (
             <motion.span
               key={`${segIndex}-${index}`}
               initial={{ 
-                opacity: 0,
-                y: 20
+                opacity: 0, 
+                y: 20, 
+                filter: 'blur(4px)' 
               }}
               animate={{ 
-                opacity: 1,
-                y: 0
+                opacity: 1, 
+                y: 0, 
+                filter: 'blur(0px)' 
               }}
               transition={{
-                duration: 0.2,
-                delay: (segIndex * 0.05) + (index * 0.03),
-                ease: [0.25, 0.1, 0.25, 1]
+                duration: 0.15,
+                delay: delay + (segIndex * 0.02) + (index * 0.015),
+                ease: [0.4, 0, 0.2, 1]
               }}
               style={{ display: 'inline-block' }}
             >
@@ -87,40 +88,19 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
   )
 }
  
-export default function About({ activeTab: propActiveTab, onTabChange: propOnTabChange, onNavigate }: AboutProps) {
+export default function About({ activeTab, onTabChange, onNavigate }: AboutProps) {
   const [showTimeline, setShowTimeline] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [autoParallax, setAutoParallax] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
-  const [prevTab, setPrevTab] = useState(0)
-  
-  // 使用完整的滚动系统
-  const { aboutTab, changeAboutTab } = useSectionScrollContext()
-  
-  // 使用全局的 tabIndex
-  const currentActiveTab = propActiveTab !== undefined ? propActiveTab : aboutTab
-  const tabDataForActive = tabData.find(t => t.id === currentActiveTab)!
+  const isInView = useInView(containerRef, { once: true, margin: '-100px' })
+  const prevTabRef = useRef(0)
+  const tabDataForActive = tabData.find(t => t.id === activeTab)!
   const timeRef = useRef(0)
-  const maxTabIndex = tabData.length - 1
-  
-  // 计算方向：1=向下切换，-1=向上切换
-  const direction = currentActiveTab > prevTab ? 1 : currentActiveTab < prevTab ? -1 : 0
-  
-  // 当tab变化时更新prevTab
+ 
   useEffect(() => {
-    if (currentActiveTab !== prevTab) {
-      setPrevTab(currentActiveTab)
-    }
-  }, [currentActiveTab, prevTab])
-
-  // 处理标签切换
-  const handleTabChange = (id: number) => {
-    if (propOnTabChange) {
-      propOnTabChange(id)
-    } else {
-      changeAboutTab(id)
-    }
-  }
+    prevTabRef.current = activeTab
+  }, [activeTab])
  
   // 自动视差动画
   useEffect(() => {
@@ -170,7 +150,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       roles: ['平面设计师']
     }
   ]
-
+ 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return
@@ -179,11 +159,9 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       const y = (e.clientY - rect.top - rect.height / 2) / rect.height
       setMousePosition({ x, y })
     }
-
+ 
     window.addEventListener('mousemove', handleMouseMove)
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
+    return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
  
   const getParallaxStyle = useCallback((multiplier: number) => {
@@ -194,53 +172,51 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   }, [mousePosition, autoParallax])
  
   const imageVariants = {
-    hidden: (dir: number) => ({
+    hidden: (direction: number) => ({
       opacity: 0,
-      y: dir > 0 ? 150 : -150, // 向下切换从下方上来，向上切换从上方下来
-      scale: 0.95,
+      y: direction > 0 ? -200 : 200,
+      scale: 0.9,
     }),
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }
+      transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] }
     },
-    exit: (dir: number) => ({
+    exit: (direction: number) => ({
       opacity: 0,
-      y: dir > 0 ? -150 : 150, // 向下切换向上离开，向上切换向下离开
-      scale: 0.95,
-      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
+      y: direction > 0 ? 200 : -200,
+      scale: 0.9,
+      transition: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
     })
   }
  
   const decorationVariants = {
     hidden: (custom: [number, number, number]) => {
-      const [dir, randomOffset] = custom;
+      const [direction, randomOffset, randomDuration] = custom;
       return {
         opacity: 0,
-        y: dir > 0 ? 120 + randomOffset : -120 - randomOffset,
-        scale: 0.9,
+        y: direction > 0 ? -150 - randomOffset : 150 + randomOffset,
+        scale: 0.8,
       };
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.32, ease: [0.25, 0.1, 0.25, 1] }
     },
     exit: (custom: [number, number, number]) => {
-      const [dir, randomOffset] = custom;
+      const [direction, randomOffset, randomDuration] = custom;
       return {
         opacity: 0,
-        y: dir > 0 ? -120 - randomOffset : 120 + randomOffset,
-        scale: 0.9,
-        transition: { duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }
+        y: direction > 0 ? 150 + randomOffset : -150 - randomOffset,
+        scale: 0.8,
       };
     }
   }
  
   const getMeImage = () => {
-    switch (currentActiveTab) {
+    switch (activeTab) {
       case 0: return '/images/about/img/me_01.png'
       case 1: return '/images/about/img/me_02.png'
       case 2: return '/images/about/img/me_03.png'
@@ -249,7 +225,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       default: return '/images/about/img/me_01.png'
     }
   }
-
+ 
   const getDecorations = (direction: number) => {
     // 为每个装饰元素生成随机偏移量和持续时间
     const randomValues = React.useMemo(() => {
@@ -279,7 +255,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       };
     }, []);
  
-    switch (currentActiveTab) {
+    switch (activeTab) {
       case 0:
         return (
           <>
@@ -1078,13 +1054,14 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
         />
       </div>
  
-      <AnimatePresence mode="popLayout">
-        <React.Fragment key={currentActiveTab}>
+      <AnimatePresence mode="wait">
+        <React.Fragment key={activeTab}>
           <motion.div
-            initial={{ opacity: 0, y: direction > 0 ? 150 : -150, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: direction > 0 ? -150 : 150, scale: 0.95 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            custom={activeTab > prevTabRef.current ? 1 : -1}
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             style={{
               position: 'absolute',
               left: '33.4%',
@@ -1098,72 +1075,86 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               <img src={getMeImage()} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
           </motion.div>
-          {getDecorations(direction)}
+          {getDecorations(activeTab > prevTabRef.current ? 1 : -1)}
         </React.Fragment>
       </AnimatePresence>
-
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={`text-content-${currentActiveTab}`}
-          style={{
-            position: 'absolute',
-            left: '20.8%',
-            top: '32.2%',
-            width: '30%',
-            height: '35.5%'
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-        >
-          {tabDataForActive.title1 && (
-            <div
-              style={{
-                marginBottom: '8px',
-                fontSize: 'clamp(24px, 2.5vw, 48px)',
-                fontWeight: 100,
-                color: 'rgba(255,255,255,0.75)',
-                lineHeight: 1.2,
-                fontFamily: 'PingFang SC, system-ui'
-              }}
-            >
-              <AnimatedText text={tabDataForActive.title1} delay={0} />
-            </div>
-          )}
-
-          <div
+ 
+      <motion.div
+        style={{
+          position: 'absolute',
+          left: '20.8%',
+          top: '32.2%',
+          width: '30%',
+          height: '35.5%'
+        }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+      >
+        {tabDataForActive.title1 && (
+          <motion.div
+            key={`title1-${activeTab}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{
-              fontSize: 'clamp(32px, 3.33vw, 64px)',
-              fontWeight: 600,
-              color: '#ffffff',
-              lineHeight: 1.125,
               marginBottom: '8px',
+              fontSize: 'clamp(24px, 2.5vw, 48px)',
+              fontWeight: 100,
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.2,
               fontFamily: 'PingFang SC, system-ui'
             }}
           >
-            <AnimatedText text={tabDataForActive.title2} delay={0} />
-          </div>
-
-          {tabDataForActive.description && (
-            <div
-              style={{
-                fontSize: 'clamp(14px, 0.83vw, 16px)',
-                fontWeight: 400,
-                color: 'rgba(255,255,255,0.75)',
-                lineHeight: 1.5,
-                marginTop: '8px',
-                fontFamily: 'PingFang SC, system-ui'
-              }}
-            >
-              <AnimatedText text={tabDataForActive.description} delay={0} />
-            </div>
-          )}
-
-          {tabDataForActive.hasButton && (
-            <div
-              style={{ marginTop: '40px' }}
-            >
+            <AnimatedText text={tabDataForActive.title1} />
+          </motion.div>
+        )}
+ 
+        <motion.div
+          key={`title2-${activeTab}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          style={{
+            fontSize: 'clamp(32px, 3.33vw, 64px)',
+            fontWeight: 600,
+            color: '#ffffff',
+            lineHeight: 1.125,
+            marginBottom: '8px',
+            fontFamily: 'PingFang SC, system-ui'
+          }}
+        >
+          <AnimatedText text={tabDataForActive.title2} delay={0.1} />
+        </motion.div>
+ 
+        {tabDataForActive.description && (
+          <motion.div
+            key={`desc-${activeTab}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              fontSize: 'clamp(14px, 0.83vw, 16px)',
+              fontWeight: 400,
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.5,
+              marginTop: '8px',
+              fontFamily: 'PingFang SC, system-ui'
+            }}
+          >
+            <AnimatedText text={tabDataForActive.description} delay={0.25} />
+          </motion.div>
+        )}
+ 
+        {tabDataForActive.hasButton && (
+          <motion.div
+            key={`btn-${activeTab}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ delay: 0.4, duration: 0.3 }}
+            style={{ marginTop: '40px' }}
+          >
             <button
               suppressHydrationWarning
               onClick={() => setShowTimeline(true)}
@@ -1186,11 +1177,10 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               查看履历
               <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} />
             </button>
-          </div>
+          </motion.div>
         )}
-        </motion.div>
-      </AnimatePresence>
-
+      </motion.div>
+ 
       <motion.div
         style={{
           position: 'absolute',
@@ -1199,7 +1189,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           alignSelf: 'center'
         }}
         initial={{ opacity: 0, x: 50, y: 50 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
+        animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 50, y: 50 }}
         transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
       >
         <div style={{
@@ -1209,7 +1199,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           alignItems: 'flex-start'
         }}>
           {tabData.map((tab) => {
-            const isActive = currentActiveTab === tab.id
+            const isActive = activeTab === tab.id
             const circleSize = isActive ? '40px' : '32px'
             const iconSize = isActive ? '24px' : '16px'
             const iconColor = isActive ? '#000e0c' : 'rgba(255,255,255,0.75)'
@@ -1236,7 +1226,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             return (
               <button
                 key={tab.id}
-                onClick={() => handleTabChange(tab.id)}
+                onClick={() => onTabChange(tab.id)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
