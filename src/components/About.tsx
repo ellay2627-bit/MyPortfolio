@@ -59,7 +59,7 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
     <span style={{ display: 'block', overflow: 'hidden' }} suppressHydrationWarning>
       {segments.map((segment, segIndex) => (
         <React.Fragment key={segIndex}>
-          {[...segment].map((char, index) => (
+          {Array.from(segment).map((char, index) => (
             <motion.span
               key={`${segIndex}-${index}`}
               initial={{ 

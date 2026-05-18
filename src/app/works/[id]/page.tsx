@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Work from '@/components/Work';
-import { WorkItem } from '@/components/Work';
 
 export default function WorkDetailPage() {
   const params = useParams();
