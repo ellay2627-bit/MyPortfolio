@@ -17,6 +17,15 @@ const nextConfig = {
         ],
       },
       {
+        source: '/images/about/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
         source: '/static/works-list.json',
         headers: [
           {

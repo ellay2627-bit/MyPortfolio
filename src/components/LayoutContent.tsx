@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import NavbarWrapper from './NavbarWrapper';
 import NeoCursor from './NeoCursor';
 import BackToTop from './BackToTop';
+import { AboutImagePreloader } from './AboutImagePreloader';
 import { usePathname } from 'next/navigation';
 import { SectionScrollProvider } from '@/contexts/SectionScrollProvider';
 
@@ -17,6 +18,7 @@ function LayoutContentInner({ children }: LayoutContentProps) {
   return (
     <>
       {!isAdminPage && <NavbarWrapper />}
+      {!isAdminPage && <AboutImagePreloader />}
       {children}
       {!isAdminPage && <NeoCursor />}
       {!isAdminPage && <BackToTop />}

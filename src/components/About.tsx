@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSectionScrollContext } from '@/contexts/SectionScrollProvider'
+import { preloadAboutAssets } from '@/lib/aboutAssets'
 
 interface AboutProps {
   activeTab?: number
@@ -125,6 +126,11 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
     }
   }
  
+  // 进入 About 时确保资源已预加载（与全局 Preloader 共享，不重复请求）
+  useEffect(() => {
+    void preloadAboutAssets()
+  }, [])
+
   // 自动视差动画
   useEffect(() => {
     let animationFrameId: number
@@ -1101,6 +1107,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
         <motion.img
           src="/images/about/img/BGdot.png"
           alt=""
+          decoding="async"
+          fetchPriority="high"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           animate={{
             opacity: [0.6, 0.85, 0.6],
@@ -1141,7 +1149,13 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             }}
           >
             <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img src={getMeImage()} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img
+                src={getMeImage()}
+                alt=""
+                decoding="async"
+                fetchPriority="high"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
             </div>
           </motion.div>
           {getDecorations(direction)}
