@@ -89,10 +89,13 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
  
 export default function About({ activeTab: propActiveTab, onTabChange: propOnTabChange, onNavigate }: AboutProps) {
   const [showTimeline, setShowTimeline] = useState(false)
+  const [hoveredTab, setHoveredTab] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [autoParallax, setAutoParallax] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
   const [prevTab, setPrevTab] = useState(0)
+  const [hasPlayedInitialAnimation, setHasPlayedInitialAnimation] = useState(false)
+  const animationKey = useRef(0)
   
   // 使用完整的滚动系统
   const { aboutTab, changeAboutTab } = useSectionScrollContext()
@@ -137,6 +140,49 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
     animationFrameId = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrameId)
   }, [])
+
+  // 检测About区域是否进入视窗 - 触发首次入场动画
+  useEffect(() => {
+    if (!containerRef.current || hasPlayedInitialAnimation) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasPlayedInitialAnimation) {
+          setHasPlayedInitialAnimation(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [hasPlayedInitialAnimation])
+
+  // 装饰元素的随机值 - 在组件顶层定义
+  const decorationRandomValues = React.useMemo(() => ({
+    'dec-0-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-0-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-0-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-0-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-1-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-1-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-1-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-1-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-1-5': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-2-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-2-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-2-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-2-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-2-5': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-3-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-3-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-3-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-3-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-4-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-4-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-4-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+    'dec-4-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
+  }), [])
  
   const careerData = [
     {
@@ -251,46 +297,24 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   }
 
   const getDecorations = (direction: number) => {
-    // 为每个装饰元素生成随机偏移量和持续时间
-    const randomValues = React.useMemo(() => {
-      return {
-        'dec-0-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-0-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-0-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-0-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-1-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-1-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-1-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-1-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-1-5': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-2-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-2-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-2-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-2-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-2-5': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-3-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-3-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-3-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-3-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-4-1': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-4-2': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-4-3': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-        'dec-4-4': { offset: Math.random() * 100, duration: 0.25 + Math.random() * 0.3 },
-      };
-    }, []);
- 
     switch (currentActiveTab) {
       case 0:
         return (
           <>
             <motion.div
               key="dec-0-1"
-              custom={[direction, randomValues['dec-0-1'].offset, randomValues['dec-0-1'].duration]}
-              variants={decorationVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: randomValues['dec-0-1'].duration, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0, y: direction > 0 ? 120 + decorationRandomValues['dec-0-1'].offset : -120 - decorationRandomValues['dec-0-1'].offset, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 0, scale: 0.9 }}
+              transition={{
+                duration: 0.45,
+                delay: 0.1,
+                ease: [0.2, 0.8, 0.3, 1],
+                exit: {
+                  duration: 0.12,
+                  ease: [0.7, 0.2, 1, 0.1]
+                }
+              }}
               style={{
                 position: 'absolute',
                 left: '56.4%',
@@ -318,12 +342,18 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-0-2"
-              custom={[direction, randomValues['dec-0-2'].offset, randomValues['dec-0-2'].duration]}
-              variants={decorationVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: randomValues['dec-0-2'].duration, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0, y: direction > 0 ? 120 + decorationRandomValues['dec-0-2'].offset : -120 - decorationRandomValues['dec-0-2'].offset, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 0, scale: 0.9 }}
+              transition={{
+                duration: 0.45,
+                delay: 0.1,
+                ease: [0.2, 0.8, 0.3, 1],
+                exit: {
+                  duration: 0.12,
+                  ease: [0.7, 0.2, 1, 0.1]
+                }
+              }}
               style={{
                 position: 'absolute',
                 left: '38.2%',
@@ -351,12 +381,18 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-0-3"
-              custom={[direction, randomValues['dec-0-3'].offset, randomValues['dec-0-3'].duration]}
-              variants={decorationVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: randomValues['dec-0-3'].duration, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0, y: direction > 0 ? 120 + decorationRandomValues['dec-0-3'].offset : -120 - decorationRandomValues['dec-0-3'].offset, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 0, scale: 0.9 }}
+              transition={{
+                duration: 0.45,
+                delay: 0.1,
+                ease: [0.2, 0.8, 0.3, 1],
+                exit: {
+                  duration: 0.12,
+                  ease: [0.7, 0.2, 1, 0.1]
+                }
+              }}
               style={{
                 position: 'absolute',
                 left: '61.8%',
@@ -384,12 +420,12 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-0-4"
-              custom={[direction, randomValues['dec-0-4'].offset, randomValues['dec-0-4'].duration]}
+              custom={[direction, decorationRandomValues['dec-0-4'].offset, decorationRandomValues['dec-0-4'].duration]}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: randomValues['dec-0-4'].duration, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: decorationRandomValues['dec-0-4'].duration, ease: [0.4, 0, 0.2, 1] }}
               style={{
                 position: 'absolute',
                 left: '59.9%',
@@ -422,12 +458,12 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           <>
             <motion.div
               key="dec-1-1"
-              custom={[direction, randomValues['dec-1-1'].offset, randomValues['dec-1-1'].duration]}
+              custom={[direction, decorationRandomValues['dec-1-1'].offset, decorationRandomValues['dec-1-1'].duration]}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: randomValues['dec-1-1'].duration, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: decorationRandomValues['dec-1-1'].duration, ease: [0.4, 0, 0.2, 1] }}
               style={{
                 position: 'absolute',
                 left: '56.4%',
@@ -455,8 +491,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-1-2"
-              custom={[direction, randomValues['dec-1-2'].offset, randomValues['dec-1-2'].duration]}
-              transition={{ duration: randomValues['dec-1-2'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-1-2'].offset, decorationRandomValues['dec-1-2'].duration]}
+              transition={{ duration: decorationRandomValues['dec-1-2'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -488,8 +524,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-1-3"
-              custom={[direction, randomValues['dec-1-3'].offset, randomValues['dec-1-3'].duration]}
-              transition={{ duration: randomValues['dec-1-3'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-1-3'].offset, decorationRandomValues['dec-1-3'].duration]}
+              transition={{ duration: decorationRandomValues['dec-1-3'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -521,8 +557,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-1-4"
-              custom={[direction, randomValues['dec-1-4'].offset, randomValues['dec-1-4'].duration]}
-              transition={{ duration: randomValues['dec-1-4'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-1-4'].offset, decorationRandomValues['dec-1-4'].duration]}
+              transition={{ duration: decorationRandomValues['dec-1-4'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -554,8 +590,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-1-5"
-              custom={[direction, randomValues['dec-1-5'].offset, randomValues['dec-1-5'].duration]}
-              transition={{ duration: randomValues['dec-1-5'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-1-5'].offset, decorationRandomValues['dec-1-5'].duration]}
+              transition={{ duration: decorationRandomValues['dec-1-5'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -592,8 +628,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           <>
             <motion.div
               key="dec-2-1"
-              custom={[direction, randomValues['dec-2-1'].offset, randomValues['dec-2-1'].duration]}
-              transition={{ duration: randomValues['dec-2-1'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-2-1'].offset, decorationRandomValues['dec-2-1'].duration]}
+              transition={{ duration: decorationRandomValues['dec-2-1'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -625,8 +661,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-2-2"
-              custom={[direction, randomValues['dec-2-2'].offset, randomValues['dec-2-2'].duration]}
-              transition={{ duration: randomValues['dec-2-2'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-2-2'].offset, decorationRandomValues['dec-2-2'].duration]}
+              transition={{ duration: decorationRandomValues['dec-2-2'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -658,8 +694,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-2-3"
-              custom={[direction, randomValues['dec-2-3'].offset, randomValues['dec-2-3'].duration]}
-              transition={{ duration: randomValues['dec-2-3'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-2-3'].offset, decorationRandomValues['dec-2-3'].duration]}
+              transition={{ duration: decorationRandomValues['dec-2-3'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -691,8 +727,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-2-4"
-              custom={[direction, randomValues['dec-2-4'].offset, randomValues['dec-2-4'].duration]}
-              transition={{ duration: randomValues['dec-2-4'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-2-4'].offset, decorationRandomValues['dec-2-4'].duration]}
+              transition={{ duration: decorationRandomValues['dec-2-4'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -724,8 +760,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-2-5"
-              custom={[direction, randomValues['dec-2-5'].offset, randomValues['dec-2-5'].duration]}
-              transition={{ duration: randomValues['dec-2-5'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-2-5'].offset, decorationRandomValues['dec-2-5'].duration]}
+              transition={{ duration: decorationRandomValues['dec-2-5'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -762,8 +798,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           <>
             <motion.div
               key="dec-3-1"
-              custom={[direction, randomValues['dec-3-1'].offset, randomValues['dec-3-1'].duration]}
-              transition={{ duration: randomValues['dec-3-1'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-3-1'].offset, decorationRandomValues['dec-3-1'].duration]}
+              transition={{ duration: decorationRandomValues['dec-3-1'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -795,8 +831,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-3-2"
-              custom={[direction, randomValues['dec-3-2'].offset, randomValues['dec-3-2'].duration]}
-              transition={{ duration: randomValues['dec-3-2'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-3-2'].offset, decorationRandomValues['dec-3-2'].duration]}
+              transition={{ duration: decorationRandomValues['dec-3-2'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -828,8 +864,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-3-3"
-              custom={[direction, randomValues['dec-3-3'].offset, randomValues['dec-3-3'].duration]}
-              transition={{ duration: randomValues['dec-3-3'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-3-3'].offset, decorationRandomValues['dec-3-3'].duration]}
+              transition={{ duration: decorationRandomValues['dec-3-3'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -861,8 +897,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-3-4"
-              custom={[direction, randomValues['dec-3-4'].offset, randomValues['dec-3-4'].duration]}
-              transition={{ duration: randomValues['dec-3-4'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-3-4'].offset, decorationRandomValues['dec-3-4'].duration]}
+              transition={{ duration: decorationRandomValues['dec-3-4'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -899,8 +935,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           <>
             <motion.div
               key="dec-4-1"
-              custom={[direction, randomValues['dec-4-1'].offset, randomValues['dec-4-1'].duration]}
-              transition={{ duration: randomValues['dec-4-1'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-4-1'].offset, decorationRandomValues['dec-4-1'].duration]}
+              transition={{ duration: decorationRandomValues['dec-4-1'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -932,8 +968,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-4-2"
-              custom={[direction, randomValues['dec-4-2'].offset, randomValues['dec-4-2'].duration]}
-              transition={{ duration: randomValues['dec-4-2'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-4-2'].offset, decorationRandomValues['dec-4-2'].duration]}
+              transition={{ duration: decorationRandomValues['dec-4-2'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -965,8 +1001,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-4-3"
-              custom={[direction, randomValues['dec-4-3'].offset, randomValues['dec-4-3'].duration]}
-              transition={{ duration: randomValues['dec-4-3'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-4-3'].offset, decorationRandomValues['dec-4-3'].duration]}
+              transition={{ duration: decorationRandomValues['dec-4-3'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -998,8 +1034,8 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </motion.div>
             <motion.div
               key="dec-4-4"
-              custom={[direction, randomValues['dec-4-4'].offset, randomValues['dec-4-4'].duration]}
-              transition={{ duration: randomValues['dec-4-4'].duration, ease: [0.4, 0, 0.2, 1] }}
+              custom={[direction, decorationRandomValues['dec-4-4'].offset, decorationRandomValues['dec-4-4'].duration]}
+              transition={{ duration: decorationRandomValues['dec-4-4'].duration, ease: [0.4, 0, 0.2, 1] }}
               variants={decorationVariants}
               initial="hidden"
               animate="visible"
@@ -1077,14 +1113,24 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           }}
         />
       </div>
- 
+
+      {hasPlayedInitialAnimation && (
+        <>
       <AnimatePresence mode="popLayout">
         <React.Fragment key={currentActiveTab}>
           <motion.div
-            initial={{ opacity: 0, y: direction > 0 ? 150 : -150, scale: 0.95 }}
+            initial={{ opacity: 0, y: 150, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: direction > 0 ? -150 : 150, scale: 0.95 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            exit={{ opacity: 0, y: 0, scale: 0.95 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1,
+              ease: [0.2, 0.8, 0.3, 1],
+              exit: {
+                duration: 0.12,
+                ease: [0.7, 0.2, 1, 0.1]
+              }
+            }}
             style={{
               position: 'absolute',
               left: '33.4%',
@@ -1117,91 +1163,98 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
         >
-          {tabDataForActive.title1 && (
+            {tabDataForActive.title1 && (
+              <div
+                style={{
+                  marginBottom: '8px',
+                  fontSize: 'clamp(24px, 2.5vw, 48px)',
+                  fontWeight: 100,
+                  color: 'rgba(255,255,255,0.75)',
+                  lineHeight: 1.2,
+                  fontFamily: 'PingFang SC, system-ui'
+                }}
+              >
+                <AnimatedText text={tabDataForActive.title1} delay={0} />
+              </div>
+            )}
+
             <div
               style={{
+                fontSize: 'clamp(32px, 3.33vw, 64px)',
+                fontWeight: 600,
+                color: '#ffffff',
+                lineHeight: 1.125,
                 marginBottom: '8px',
-                fontSize: 'clamp(24px, 2.5vw, 48px)',
-                fontWeight: 100,
-                color: 'rgba(255,255,255,0.75)',
-                lineHeight: 1.2,
                 fontFamily: 'PingFang SC, system-ui'
               }}
             >
-              <AnimatedText text={tabDataForActive.title1} delay={0} />
+              <AnimatedText text={tabDataForActive.title2} delay={0} />
+            </div>
+
+            {tabDataForActive.description && (
+              <div
+                style={{
+                  fontSize: 'clamp(14px, 0.83vw, 16px)',
+                  fontWeight: 400,
+                  color: 'rgba(255,255,255,0.75)',
+                  lineHeight: 1.5,
+                  marginTop: '8px',
+                  fontFamily: 'PingFang SC, system-ui'
+                }}
+              >
+                <AnimatedText text={tabDataForActive.description} delay={0} />
+              </div>
+            )}
+
+            {tabDataForActive.hasButton && (
+              <div
+                style={{ marginTop: '40px' }}
+              >
+              <motion.button
+                suppressHydrationWarning
+                onClick={() => setShowTimeline(true)}
+                className="inline-flex items-center justify-center rounded-full border border-[1px] transition-colors relative overflow-hidden cursor-pointer"
+                style={{
+                  background: '#00ECB2',
+                  borderColor: '#00ECB2',
+                  color: '#000e0c',
+                  fontSize: 'clamp(16px, 1.04vw, 20px)',
+                  fontWeight: 400,
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
+                  height: '38px',
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 0 30px rgba(0, 236, 178, 0.5)',
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="scan-light" />
+                <span className="relative z-10 flex items-center">
+                  查看履历
+                  <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} />
+                </span>
+              </motion.button>
             </div>
           )}
+          </motion.div>
+        </AnimatePresence>
+        </>
+      )}
 
-          <div
-            style={{
-              fontSize: 'clamp(32px, 3.33vw, 64px)',
-              fontWeight: 600,
-              color: '#ffffff',
-              lineHeight: 1.125,
-              marginBottom: '8px',
-              fontFamily: 'PingFang SC, system-ui'
-            }}
-          >
-            <AnimatedText text={tabDataForActive.title2} delay={0} />
-          </div>
-
-          {tabDataForActive.description && (
-            <div
-              style={{
-                fontSize: 'clamp(14px, 0.83vw, 16px)',
-                fontWeight: 400,
-                color: 'rgba(255,255,255,0.75)',
-                lineHeight: 1.5,
-                marginTop: '8px',
-                fontFamily: 'PingFang SC, system-ui'
-              }}
-            >
-              <AnimatedText text={tabDataForActive.description} delay={0} />
-            </div>
-          )}
-
-          {tabDataForActive.hasButton && (
-            <div
-              style={{ marginTop: '40px' }}
-            >
-            <button
-              suppressHydrationWarning
-              onClick={() => setShowTimeline(true)}
-              style={{
-                backgroundColor: '#00ecb2',
-                color: '#000e0c',
-                fontSize: 'clamp(16px, 1.04vw, 20px)',
-                fontWeight: 400,
-                paddingLeft: '20px',
-                paddingRight: '20px',
-                height: '38px',
-                borderRadius: '9999px',
-                border: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer'
-              }}
-            >
-              查看履历
-              <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} />
-            </button>
-          </div>
-        )}
-        </motion.div>
-      </AnimatePresence>
-
-      <motion.div
-        style={{
-          position: 'absolute',
-          right: '16%',
-          width: 'auto',
-          alignSelf: 'center'
-        }}
-        initial={{ opacity: 0, x: 50, y: 50 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-      >
+      {hasPlayedInitialAnimation && (
+        <motion.div
+          style={{
+            position: 'absolute',
+            right: '16%',
+            width: 'auto',
+            alignSelf: 'center'
+          }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.25, ease: 'easeOut' }}
+        >
         <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -1210,10 +1263,11 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
         }}>
           {tabData.map((tab) => {
             const isActive = currentActiveTab === tab.id
-            const circleSize = isActive ? '40px' : '32px'
-            const iconSize = isActive ? '24px' : '16px'
-            const iconColor = isActive ? '#000e0c' : 'rgba(255,255,255,0.75)'
- 
+            const isHighlighted = isActive || hoveredTab === tab.id
+            const circleSize = isHighlighted ? '40px' : '32px'
+            const iconSize = isHighlighted ? '24px' : '16px'
+            const iconColor = isHighlighted ? '#000e0c' : 'rgba(255,255,255,0.75)'
+
             const icons = [
               <svg key="icon_me" width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: iconSize, height: iconSize }}>
                 <path d="M7.38938 16.5386C5.33894 15.0901 4 12.7014 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 12.7014 18.6611 15.0901 16.6106 16.5386L18.6936 21.2996C18.8043 21.5526 18.6889 21.8474 18.4359 21.9581C18.3727 21.9857 18.3045 22 18.2355 22H5.76451C5.48837 22 5.26451 21.7761 5.26451 21.5C5.26451 21.431 5.27878 21.3628 5.30643 21.2996L7.38938 16.5386ZM14.1246 15.846L15.4567 14.905C17.041 13.7858 18 11.9752 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.9752 6.95901 13.7858 8.54335 14.905L9.87539 15.846L8.05803 20H15.942L14.1246 15.846ZM8.11851 10.9704L10.0593 10.4852C10.2761 11.3553 11.0628 12 12 12C12.9372 12 13.7239 11.3553 13.9407 10.4852L15.8815 10.9704C15.4478 12.7106 13.8745 14 12 14C10.1255 14 8.55217 12.7106 8.11851 10.9704Z" fill={iconColor} />
@@ -1232,11 +1286,13 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 <path d="M9.73304 5.33339H13.9998C14.7362 5.33339 15.3332 5.93034 15.3332 6.6667V8.06964C15.3332 8.24377 15.299 8.41624 15.2328 8.5773L13.1698 13.5872C13.067 13.837 12.8235 14 12.5534 14H1.33317C0.964984 14 0.666504 13.7016 0.666504 13.3334V6.6667C0.666504 6.29853 0.964984 6.00006 1.33317 6.00006H3.6544C3.87102 6.00006 4.07412 5.89481 4.19904 5.71784L7.83464 0.567407C7.92964 0.432828 8.1087 0.387823 8.25604 0.461493L9.46544 1.06618C10.1665 1.41673 10.5286 2.20845 10.3352 2.96807L9.73304 5.33339ZM4.6665 7.05837V12.6667H12.1069L13.9998 8.06964V6.6667H9.73304C8.86324 6.6667 8.22637 5.84736 8.4409 5.00444L9.0431 2.63913C9.08177 2.4872 9.00937 2.32886 8.8691 2.25875L8.42837 2.03837L5.28834 6.48676C5.12174 6.72277 4.90878 6.91624 4.6665 7.05837ZM3.33317 7.33337H1.99984V12.6667H3.33317V7.33337Z" fill={iconColor} />
               </svg>
             ]
- 
+
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
+                onMouseEnter={() => setHoveredTab(tab.id)}
+                onMouseLeave={() => setHoveredTab(null)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -1254,7 +1310,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                   style={{
                     width: circleSize,
                     height: circleSize,
-                    backgroundColor: isActive ? '#00ecb2' : 'rgba(55,255,206,0.1)',
+                    backgroundColor: isHighlighted ? '#00ecb2' : 'rgba(55,255,206,0.1)',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -1269,7 +1325,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 </div>
                 <span style={{
                   marginLeft: '12px',
-                  opacity: isActive ? 0.85 : 0.4,
+                  opacity: isHighlighted ? 0.85 : 0.4,
                   color: '#ffffff',
                   fontSize: '14px',
                   fontWeight: 400,
@@ -1283,12 +1339,14 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           })}
         </div>
       </motion.div>
- 
+      )}
+
       {showTimeline && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          data-lenis-prevent
           style={{
             position: 'fixed',
             inset: 0,
@@ -1307,6 +1365,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 20, stiffness: 100 }}
+            data-lenis-prevent
             style={{
               borderRadius: '12px',
               width: '100%',
@@ -1351,7 +1410,9 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               </button>
             </div>
  
-            <div style={{
+            <div 
+              data-lenis-prevent
+              style={{
               flex: 1,
               overflowY: 'auto',
               padding: '30px'
@@ -1374,72 +1435,28 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    style={{
-                      position: 'relative',
-                      paddingLeft: '40px',
-                      paddingBottom: '30px'
-                    }}
+                    className="relative pl-10 pb-8 group"
                   >
-                    <div style={{
-                      position: 'absolute',
-                      left: 0,
-                      top: '4px',
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(255,255,255,0.1)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <div style={{
-                        width: '12px',
-                        height: '12px',
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(255,255,255,0.5)'
-                      }} />
+                    <div className="absolute left-0 top-1 w-6 h-6 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                      <div className="w-3 h-3 bg-white/50 rounded-full group-hover:bg-white transition-colors duration-300" />
                     </div>
  
-                    <div style={{
-                      marginBottom: '8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      flexWrap: 'wrap'
-                    }}>
-                      <span style={{ fontSize: '18px', fontWeight: 100, color: 'rgba(255,255,255,0.5)' }}>
+                    <div className="mb-2 flex items-center gap-3 flex-wrap">
+                      <span className="text-lg font-extralight text-white/50 group-hover:text-primary transition-colors duration-300">
                         {item.period}
                       </span>
-                      <span style={{
-                        backgroundColor: 'rgba(255,255,255,0.05)',
-                        color: 'rgba(255,255,255,0.5)',
-                        padding: '4px 12px',
-                        borderRadius: '8px',
-                        fontSize: '14px'
-                      }}>
+                      <span className="px-3 py-1 bg-white/5 text-white/50 rounded-lg text-sm group-hover:bg-white/10 group-hover:text-white/80 transition-colors duration-300">
                         {item.industry}
                       </span>
                     </div>
-                    <h4 style={{
-                      fontSize: '22px',
-                      fontWeight: 600,
-                      color: 'rgba(255,255,255,0.7)',
-                      marginBottom: '12px',
-                      marginTop: 0
-                    }}>
+                    <h4 className="text-[22px] font-semibold text-white/70 mb-3 mt-0 group-hover:text-white transition-colors duration-300">
                       {item.company}
                     </h4>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="flex flex-wrap gap-2">
                       {item.roles.map((role, roleIndex) => (
                         <span
                           key={roleIndex}
-                          style={{
-                            backgroundColor: 'rgba(255,255,255,0.05)',
-                            color: 'rgba(255,255,255,0.5)',
-                            padding: '8px 16px',
-                            borderRadius: '8px',
-                            fontSize: '15px'
-                          }}
+                          className="px-4 py-2 bg-white/5 text-white/50 rounded-lg text-[15px] group-hover:bg-primary/15 group-hover:text-primary transition-colors duration-300"
                         >
                           {role}
                         </span>

@@ -1,0 +1,99 @@
+{
+  "id": 1779090375446,
+  "title": "中小学习题库优化升级",
+  "brief": "解决业务痛点，提升用户体验，成本可控下的最佳实践",
+  "description": "<p>中小学习题组件已经袭用多年，已经无法满足业务和用户的需求。</p><p>故在最佳性价比的前提下进行系统性的升级。</p><p><br></p><p>体验、交互、UI全面提升。</p><p>串联学习路径，结合AI能力，打造不一样的习题学习、巩固、知识点、练习全学习场景。</p><p><br></p><p><br></p>",
+  "category": [
+    "UX设计"
+  ],
+  "cover": "/images/works/work-1779090375446-cover.jpg",
+  "ratio": "4:3",
+  "order": 13,
+  "media": [
+    {
+      "id": "image-1779090576481-2",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-0.png",
+      "name": "学生-在线练习-默认.png",
+      "order": 0
+    },
+    {
+      "id": "image-1779090576483-11",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-1.png",
+      "name": "数学进阶练习 主页  默认状态.png",
+      "order": 1
+    },
+    {
+      "id": "image-1779090576480-0",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-2.png",
+      "name": "1-1.习题库支持“找相似题目”和显示“知识点.png",
+      "order": 2
+    },
+    {
+      "id": "image-1779090576482-8",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-3.png",
+      "name": "搜索 输入中.png",
+      "order": 3
+    },
+    {
+      "id": "image-1779090576483-9",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-4.png",
+      "name": "数学进阶练习.png",
+      "order": 4
+    },
+    {
+      "id": "image-1779090576481-3",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-5.png",
+      "name": "我的试卷预览.png",
+      "order": 5
+    },
+    {
+      "id": "image-1779090576480-1",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-6.png",
+      "name": "相似题目.png",
+      "order": 6
+    },
+    {
+      "id": "image-1779090576482-4",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-7.png",
+      "name": "我的试卷 列表.png",
+      "order": 7
+    },
+    {
+      "id": "image-1779090576482-7",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-8.png",
+      "name": "试卷编辑.png",
+      "order": 8
+    },
+    {
+      "id": "image-1779090576482-6",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-9.png",
+      "name": "练习模式进入 loading.png",
+      "order": 9
+    },
+    {
+      "id": "image-1779090576482-5",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-10.png",
+      "name": "常规作答 - 查看解析模式.png",
+      "order": 10
+    },
+    {
+      "id": "image-1779090576483-10",
+      "type": "image",
+      "url": "/images/works/work-1779090375446-media-11.png",
+      "name": "答题作答.png",
+      "order": 11
+    }
+  ],
+  "links": []
+}

@@ -113,13 +113,13 @@ export default function Hero() {
           className="text-center"
         >
           <motion.p 
-            className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto font-light"
+            className="text-lg md:text-xl text-white/80 mb-12 max-w-3xl mx-auto font-light"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 } }
             }}
           >
-            深耕设计/产品12年+，从UI到视觉到产品，全赛道闭环经验！
+            深耕设计 / 产品16年+，从UI · 视觉 到 产品 · AI智能，全赛道闭环经验高手
           </motion.p>
           {/* 按钮设置pointer-events: auto使其可点击 */}
           <motion.a

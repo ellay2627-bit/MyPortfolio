@@ -203,6 +203,7 @@ interface WorkDetailModalProps {
   isLoading: boolean;
   setDetailLoading: (loading: boolean) => void;
   loadWorkDetail: (workId: string) => Promise<WorkItem | null>;
+  onClose?: () => void;
 }
 
 // 图片/视频骨架屏组件
@@ -326,7 +327,8 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
   setSelectedImage,
   isLoading,
   setDetailLoading,
-  loadWorkDetail
+  loadWorkDetail,
+  onClose
 }) => {
 
   // 文字骨架屏组件
@@ -415,7 +417,13 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                 )}
               </div>
               <button
-                onClick={() => setShowDetailModal(false)}
+                onClick={() => {
+                  if (onClose) {
+                    onClose();
+                  } else {
+                    setShowDetailModal(false);
+                  }
+                }}
                 className="p-2 rounded-full hover:bg-gray-800 transition-all text-white flex-shrink-0 ml-4"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -643,7 +651,12 @@ const ImageViewer: React.FC<ImageViewerProps> = React.memo(({ selectedImage, sel
   );
 });
 
-export default function Work() {
+interface WorkProps {
+  directWorkId?: string | null;
+  onDirectClose?: () => void;
+}
+
+export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
   const [activeCategory, setActiveCategory] = useState('全部作品');
   const [selectedWork, setSelectedWork] = useState<WorkItem | null>(null);
   const [showDetailModal, setShowDetailModal] = useState(false);
@@ -705,6 +718,60 @@ export default function Work() {
       window.removeEventListener('portfolio_publish', handlePortfolioPublish as EventListener);
     };
   }, [handleDataUpdate]);
+
+  // 处理直接打开的作品（来自URL参数
+  useEffect(() => {
+    if (directWorkId) {
+      // 先尝试从workList中找到
+      const targetWork = workList.find(w => w.id === directWorkId);
+      if (targetWork) {
+        handleWorkClick(targetWork);
+      } else if (workList.length > 0) {
+        // 如果workList已经加载但没找到，直接通过loadWorkDetail加载
+        loadWorkDetail(directWorkId).then(fullWork => {
+          if (fullWork) {
+            setSelectedWork(fullWork);
+            setIsScrolled(false);
+            setShowDetailModal(true);
+            setDetailLoading(false);
+            setDetailKey(prev => prev + 1);
+          }
+        });
+      }
+    }
+  }, [directWorkId, workList]);
+
+  // 同步URL状态 - 只在主页（不是直接访问/works/[id]时
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !directWorkId) {
+      if (showDetailModal && selectedWork) {
+        // 打开作品时更新URL
+        const newUrl = `/works/${selectedWork.id}`;
+        if (window.location.pathname !== newUrl) {
+          window.history.pushState({ workId: selectedWork.id }, '', newUrl);
+        }
+      } else {
+        // 作品关闭时回退URL
+        if (window.location.pathname.startsWith('/works/')) {
+          window.history.replaceState({}, '', '/#work');
+        }
+      }
+    }
+  }, [showDetailModal, selectedWork, directWorkId]);
+
+  // 处理浏览器的前进/后退按钮
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state?.workId) {
+      } else {
+        setShowDetailModal(false);
+        setSelectedWork(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // 组件加载时立即获取数据
   useEffect(() => {
@@ -1275,6 +1342,7 @@ export default function Work() {
           isLoading={detailLoading}
           setDetailLoading={setDetailLoading}
           loadWorkDetail={loadWorkDetail}
+          onClose={onDirectClose}
         />
       )}
     </section>

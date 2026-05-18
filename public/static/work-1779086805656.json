@@ -1,0 +1,107 @@
+{
+  "id": 1779086805656,
+  "title": "Sunyur商越品牌识别系统升级",
+  "brief": "通过系统的推导，尝试提升品牌价值，共赢品牌",
+  "description": "<p>商越Sunyur创立三周年之际，品牌策略调整，品牌识别系统急需升级，打造一套更符合品牌特征的VI体系，并协助其传达更多品牌价值。</p><p><strong>本设计于当年发布会正式宣发落地</strong>。</p>",
+  "category": [
+    "视觉设计",
+    "品牌设计",
+    "动态设计"
+  ],
+  "cover": "/images/works/work-1779086805656-cover.jpg",
+  "ratio": "4:3",
+  "order": 8,
+  "media": [
+    {
+      "id": "video-link-1779087052229",
+      "type": "video-link",
+      "url": "https://www.bilibili.com/video/BV15mLF6NEr6?t=2.0",
+      "name": "视频链接",
+      "order": 0
+    },
+    {
+      "id": "image-1779087070789-2",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-1.jpg",
+      "name": "08sunyur 品牌.jpg",
+      "order": 1
+    },
+    {
+      "id": "image-1779087057106-0",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-2.gif",
+      "name": "logo.gif",
+      "order": 2
+    },
+    {
+      "id": "image-1779087070789-4",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-3.jpg",
+      "name": "09sunyur 品牌.jpg",
+      "order": 3
+    },
+    {
+      "id": "image-1779087070790-6",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-4.jpg",
+      "name": "10sunyur 品牌.jpg",
+      "order": 4
+    },
+    {
+      "id": "image-1779087070789-3",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-5.jpg",
+      "name": "11sunyur 品牌.jpg",
+      "order": 5
+    },
+    {
+      "id": "image-1779087070789-1",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-6.jpg",
+      "name": "12sunyur 品牌.jpg",
+      "order": 6
+    },
+    {
+      "id": "image-1779087070789-0",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-7.jpg",
+      "name": "13sunyur 品牌.jpg",
+      "order": 7
+    },
+    {
+      "id": "image-1779087070790-5",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-8.jpg",
+      "name": "14sunyur 品牌.jpg",
+      "order": 8
+    },
+    {
+      "id": "image-1779087219531-0",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-9.webp",
+      "name": "01.webp",
+      "order": 9
+    },
+    {
+      "id": "image-1779087219531-1",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-10.webp",
+      "name": "03.webp",
+      "order": 10
+    },
+    {
+      "id": "image-1779087219531-2",
+      "type": "image",
+      "url": "/images/works/work-1779086805656-media-11.webp",
+      "name": "02.webp",
+      "order": 11
+    }
+  ],
+  "links": [
+    {
+      "text": "商越官网",
+      "url": "https://www.sunyur.com/",
+      "order": 0
+    }
+  ]
+}

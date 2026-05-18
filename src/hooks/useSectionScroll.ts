@@ -79,6 +79,17 @@ export function useSectionScroll() {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      // 检查是否有弹窗打开 - 如果有，不阻止滚动
+      const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement
+      if (timelineModal && timelineModal.contains(e.target as Node)) {
+        return
+      }
+      // 检查Work详情弹窗是否打开
+      const workModal = document.querySelector('.work-detail-scrollbar') as HTMLElement
+      if (workModal && workModal.contains(e.target as Node)) {
+        return
+      }
+      
       const now = Date.now()
       
       const scrollTop = window.scrollY
@@ -157,9 +168,6 @@ export function useSectionScroll() {
     window.addEventListener('wheel', handleWheel, { passive: false, capture: true })
     return () => {
       window.removeEventListener('wheel', handleWheel, { capture: true })
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current)
-      }
     }
   }, [goToSection, changeAboutTab])
 
