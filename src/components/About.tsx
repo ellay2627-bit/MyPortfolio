@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSectionScrollContext } from '@/contexts/SectionScrollProvider'
 import { preloadAboutAssets } from '@/lib/aboutAssets'
@@ -94,7 +94,6 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [autoParallax, setAutoParallax] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
-  const [prevTab, setPrevTab] = useState(0)
   const [hasPlayedInitialAnimation, setHasPlayedInitialAnimation] = useState(false)
   const animationKey = useRef(0)
   
@@ -106,16 +105,17 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   const tabDataForActive = tabData.find(t => t.id === currentActiveTab)!
   const timeRef = useRef(0)
   const maxTabIndex = tabData.length - 1
-  
+  const prevTabRef = useRef(currentActiveTab)
+
   // 计算方向：1=向下切换，-1=向上切换
-  const direction = currentActiveTab > prevTab ? 1 : currentActiveTab < prevTab ? -1 : 0
-  
-  // 当tab变化时更新prevTab
+  const direction = useMemo(() => {
+    if (currentActiveTab === prevTabRef.current) return 0
+    return currentActiveTab > prevTabRef.current ? 1 : -1
+  }, [currentActiveTab])
+
   useEffect(() => {
-    if (currentActiveTab !== prevTab) {
-      setPrevTab(currentActiveTab)
-    }
-  }, [currentActiveTab, prevTab])
+    prevTabRef.current = currentActiveTab
+  }, [currentActiveTab])
 
   // 处理标签切换
   const handleTabChange = (id: number) => {
@@ -245,32 +245,12 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
     }
   }, [mousePosition, autoParallax])
  
-  const imageVariants = {
-    hidden: (dir: number) => ({
-      opacity: 0,
-      y: dir > 0 ? 150 : -150, // 向下切换从下方上来，向上切换从上方下来
-      scale: 0.95,
-    }),
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }
-    },
-    exit: (dir: number) => ({
-      opacity: 0,
-      y: dir > 0 ? -150 : 150, // 向下切换向上离开，向上切换向下离开
-      scale: 0.95,
-      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-    })
-  }
- 
   const decorationVariants = {
     hidden: (custom: [number, number, number]) => {
       const [dir, randomOffset] = custom;
       return {
         opacity: 0,
-        y: dir > 0 ? 120 + randomOffset : -120 - randomOffset,
+        y: dir > 0 ? 180 + randomOffset : -180 - randomOffset,
         scale: 0.9,
       };
     },
@@ -284,9 +264,9 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       const [dir, randomOffset] = custom;
       return {
         opacity: 0,
-        y: dir > 0 ? -120 - randomOffset : 120 + randomOffset,
+        y: dir > 0 ? -180 - randomOffset : 180 + randomOffset,
         scale: 0.9,
-        transition: { duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }
+        transition: { duration: 0.14, ease: [0.4, 0, 0.2, 1] }
       };
     }
   }
@@ -1125,18 +1105,18 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       {hasPlayedInitialAnimation && (
         <>
       <AnimatePresence mode="popLayout">
-        <React.Fragment key={currentActiveTab}>
           <motion.div
-            initial={{ opacity: 0, y: 150, scale: 0.95 }}
+            key={currentActiveTab}
+            initial={{ opacity: 0, y: direction > 0 ? 260 : -260, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 0, scale: 0.95 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{
-              duration: 0.5,
-              delay: 0.1,
-              ease: [0.2, 0.8, 0.3, 1],
+              duration: 0.45,
+              delay: 0.02,
+              ease: [0.25, 0.46, 0.45, 0.94],
               exit: {
-                duration: 0.12,
-                ease: [0.7, 0.2, 1, 0.1]
+                duration: 0.01,
+                ease: [0.4, 0, 0.2, 1]
               }
             }}
             style={{
@@ -1159,7 +1139,6 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             </div>
           </motion.div>
           {getDecorations(direction)}
-        </React.Fragment>
       </AnimatePresence>
 
       <AnimatePresence mode="popLayout">
