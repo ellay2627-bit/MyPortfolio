@@ -213,7 +213,7 @@
     ],
     "cover": "/images/works/work-1778498670904-cover.jpg",
     "ratio": "4:3",
-    "order": 6,
+    "order": 5,
     "media": [
       {
         "id": "video-link-1778498793931",
@@ -258,7 +258,7 @@
     ],
     "cover": "/images/works/work-1778498879461-cover.jpg",
     "ratio": "4:3",
-    "order": 7,
+    "order": 6,
     "media": [
       {
         "id": "video-link-1778500134730",
@@ -338,7 +338,7 @@
     ],
     "cover": "/images/works/work-1779086805656-cover.jpg",
     "ratio": "4:3",
-    "order": 8,
+    "order": 7,
     "media": [
       {
         "id": "video-link-1779087052229",
@@ -563,6 +563,135 @@
         "type": "image",
         "url": "/images/works/work-1778506874277-media-16.webp",
         "name": "05.webp",
+        "order": 16
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1779276584797,
+    "title": "国家中小学智慧教育 - 节令运营",
+    "brief": "巧妙的把LOGO作为容器，强化节令的同时推广宣传品牌",
+    "description": "<p>为做好平台情感化、节日化运营，树立品牌形象，结合国家法定节日、重要纪念日、相关宣传主题等，对国家中小学智慧教育平台进行相关节日主题运营设计。</p><p><br></p><p>此为本人制定策略与规范，团队根据运营周期各自负责或共同创作。</p>",
+    "category": [
+      "视觉设计",
+      "动态设计",
+      "其他"
+    ],
+    "cover": "/images/works/work-1779276584797-cover.jpg",
+    "ratio": "4:3",
+    "order": 9,
+    "media": [
+      {
+        "id": "video-link-1779276873836",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV13wLU6cEAM?t=2.0",
+        "name": "视频链接",
+        "order": 0
+      },
+      {
+        "id": "video-link-1779276890188",
+        "type": "video-link",
+        "url": "https://www.bilibili.com/video/BV1DFLU6hEmy?t=2.0",
+        "name": "视频链接",
+        "order": 1
+      },
+      {
+        "id": "image-1779277287577-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-2.jpg",
+        "name": "31视觉设计专辑.jpg",
+        "order": 2
+      },
+      {
+        "id": "image-1779277164382-6",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-3.png",
+        "name": "02 设计背景.png",
+        "order": 4
+      },
+      {
+        "id": "image-1779277164380-1",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-4.png",
+        "name": "03 设计探索.png",
+        "order": 5
+      },
+      {
+        "id": "image-1779277164380-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-5.png",
+        "name": "04 设计探索.png",
+        "order": 6
+      },
+      {
+        "id": "image-1779277164382-4",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-6.png",
+        "name": "05 设计方法.png",
+        "order": 7
+      },
+      {
+        "id": "image-1779277164381-2",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-7.png",
+        "name": "06 信息分层.png",
+        "order": 8
+      },
+      {
+        "id": "image-1779277164381-3",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-8.png",
+        "name": "07 动静结合.png",
+        "order": 9
+      },
+      {
+        "id": "image-1779277366541-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-9.png",
+        "name": "08 系列延展.png",
+        "order": 10
+      },
+      {
+        "id": "image-1779277198291-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-10.png",
+        "name": "09 春节1.png",
+        "order": 11
+      },
+      {
+        "id": "image-1779277198291-1",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-11.png",
+        "name": "11.png",
+        "order": 12
+      },
+      {
+        "id": "image-1779277198292-2",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-12.png",
+        "name": "10.png",
+        "order": 13
+      },
+      {
+        "id": "image-1779277212696-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-13.png",
+        "name": "13.png",
+        "order": 14
+      },
+      {
+        "id": "image-1779277212697-1",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-14.png",
+        "name": "12.png",
+        "order": 15
+      },
+      {
+        "id": "image-1779277396893-0",
+        "type": "image",
+        "url": "/images/works/work-1779276584797-media-15.png",
+        "name": "23.png",
         "order": 16
       }
     ],
@@ -905,112 +1034,6 @@
         "url": "/images/works/work-1778508076843-media-8.gif",
         "name": "08.gif",
         "order": 8
-      }
-    ],
-    "links": []
-  },
-  {
-    "id": 1779090969749,
-    "title": "中小学后台产品管理专辑",
-    "brief": "后台的轻松管理任务",
-    "description": "<p>基于后台多年的逻辑框架优化体验的设计。</p>",
-    "category": [
-      "UX设计"
-    ],
-    "cover": "/images/works/work-1779090969749-cover.jpg",
-    "ratio": "4:3",
-    "order": 12,
-    "media": [
-      {
-        "id": "image-1779091063881-3",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-0.png",
-        "name": "首页.png",
-        "order": 0
-      },
-      {
-        "id": "image-1779091472014-8",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-1.png",
-        "name": "00.png",
-        "order": 1
-      },
-      {
-        "id": "image-1779091063882-4",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-2.png",
-        "name": "内容审核 - 视频 -1440-主动点击进度条中的打点区域.png",
-        "order": 2
-      },
-      {
-        "id": "image-1779091063880-0",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-3.png",
-        "name": "内容审核 - 音频 -1440.png",
-        "order": 3
-      },
-      {
-        "id": "image-1779091063881-1",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-4.png",
-        "name": "图片.png",
-        "order": 4
-      },
-      {
-        "id": "image-1779091063881-2",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-5.png",
-        "name": "文案.png",
-        "order": 5
-      },
-      {
-        "id": "image-1779091063882-5",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-6.jpg",
-        "name": "框架.jpg",
-        "order": 6
-      },
-      {
-        "id": "image-1779091063883-8",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-7.jpg",
-        "name": "英语点读 后台配置能力设计 - 四期.jpg",
-        "order": 7
-      },
-      {
-        "id": "image-1779091063884-9",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-8.jpg",
-        "name": "标准课包 管理.jpg",
-        "order": 8
-      },
-      {
-        "id": "image-1779091472012-3",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-9.png",
-        "name": "01.png",
-        "order": 9
-      },
-      {
-        "id": "image-1779091472010-0",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-10.png",
-        "name": "1121.png",
-        "order": 10
-      },
-      {
-        "id": "image-1779091472013-6",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-11.png",
-        "name": "04.png",
-        "order": 11
-      },
-      {
-        "id": "image-1779091472011-2",
-        "type": "image",
-        "url": "/images/works/work-1779090969749-media-12.png",
-        "name": "77.png",
-        "order": 12
       }
     ],
     "links": []
@@ -1732,6 +1755,112 @@
         "url": "/images/works/work-1778509415274-media-11.webp",
         "name": "08.webp",
         "order": 11
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": 1779090969749,
+    "title": "中小学后台产品管理专辑",
+    "brief": "后台的轻松管理任务",
+    "description": "<p>基于后台多年的逻辑框架优化体验的设计。</p>",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "/images/works/work-1779090969749-cover.jpg",
+    "ratio": "4:3",
+    "order": 20,
+    "media": [
+      {
+        "id": "image-1779091063881-3",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-0.png",
+        "name": "首页.png",
+        "order": 0
+      },
+      {
+        "id": "image-1779091472014-8",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-1.png",
+        "name": "00.png",
+        "order": 1
+      },
+      {
+        "id": "image-1779091063882-4",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-2.png",
+        "name": "内容审核 - 视频 -1440-主动点击进度条中的打点区域.png",
+        "order": 2
+      },
+      {
+        "id": "image-1779091063880-0",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-3.png",
+        "name": "内容审核 - 音频 -1440.png",
+        "order": 3
+      },
+      {
+        "id": "image-1779091063881-1",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-4.png",
+        "name": "图片.png",
+        "order": 4
+      },
+      {
+        "id": "image-1779091063881-2",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-5.png",
+        "name": "文案.png",
+        "order": 5
+      },
+      {
+        "id": "image-1779091063882-5",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-6.jpg",
+        "name": "框架.jpg",
+        "order": 6
+      },
+      {
+        "id": "image-1779091063883-8",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-7.jpg",
+        "name": "英语点读 后台配置能力设计 - 四期.jpg",
+        "order": 7
+      },
+      {
+        "id": "image-1779091063884-9",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-8.jpg",
+        "name": "标准课包 管理.jpg",
+        "order": 8
+      },
+      {
+        "id": "image-1779091472012-3",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-9.png",
+        "name": "01.png",
+        "order": 9
+      },
+      {
+        "id": "image-1779091472010-0",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-10.png",
+        "name": "1121.png",
+        "order": 10
+      },
+      {
+        "id": "image-1779091472013-6",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-11.png",
+        "name": "04.png",
+        "order": 11
+      },
+      {
+        "id": "image-1779091472011-2",
+        "type": "image",
+        "url": "/images/works/work-1779090969749-media-12.png",
+        "name": "77.png",
+        "order": 12
       }
     ],
     "links": []

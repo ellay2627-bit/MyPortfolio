@@ -54,6 +54,25 @@ const tabData = [
 ]
  
 const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+  // Reduce per-character animations to avoid heavy re-renders.
+  // For immediate performance relief we render static text.
+  // This respects prefers-reduced-motion; for future, we can enable per-char animation conditionally.
+  // Force-disable per-character animations to avoid text flicker and reduce CPU usage.
+  const shouldAnimate = true
+
+  if (!shouldAnimate) {
+    return (
+      <span style={{ display: 'block', overflow: 'hidden' }} suppressHydrationWarning>
+        {text.split('\n').map((s, i) => (
+          <React.Fragment key={i}>
+            {s}
+            {i < text.split('\n').length - 1 && <br />}
+          </React.Fragment>
+        ))}
+      </span>
+    )
+  }
+
   const segments = text.split('\n')
   
   return (
@@ -64,17 +83,15 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
             <motion.span
               key={`${segIndex}-${index}`}
               initial={{ 
-                opacity: 0,
-                y: 20
+                opacity: 0
               }}
               animate={{ 
-                opacity: 1,
-                y: 0
+                opacity: 1
               }}
               transition={{
-                duration: 0.2,
-                delay: (segIndex * 0.05) + (index * 0.03),
-                ease: [0.25, 0.1, 0.25, 1]
+                duration: 0.05,
+                delay: (segIndex * 0.05) + (index * 0.04),
+                ease: 'easeIn'
               }}
               style={{ display: 'inline-block' }}
             >
@@ -88,9 +105,64 @@ const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
   )
 }
  
+const tabNames = ['能力分析', '大事记', '工作经历']
+
+const eventsData = [
+  {
+    year: '2026',
+    tag: 'AI+UX 落地实战',
+    title: '定义新一代"智能备授课"工具',
+    description: '拒绝功能堆砌，回归教学本质。主导了从"传统数字化工具"向"AI 驱动智能系统"的进阶升级'
+  },
+  {
+    year: '2025',
+    tag: 'AI智能体实战',
+    title: '主导"育小苗"AI 助手落地',
+    description: '拒绝 AI 泡沫，将智能交互真实落地于亿级教育产品。通过 AI 辅助流转，将团队设计效能提升300%'
+  },
+  {
+    year: '2024',
+    tag: '峰值突破',
+    title: '见证用户数破1亿大关',
+    description: '负责"国家中小学智慧教育平台"UED 设计，与团队一起支撑超1亿用户的日常高频使用，具备应对极端复杂场景的设计掌控力'
+  },
+  {
+    year: '2023',
+    tag: '官方致谢',
+    title: '获教育部点名感谢信',
+    description: '凭借在国家级战略项目中的卓越表现，获得教育部官方发函致谢（团队之一）'
+  },
+  {
+    year: '2022',
+    tag: '榜首成就',
+    title: 'App Store教育类下载量第一',
+    description: '主导并参与设计中小学产品的改版设计，助力登顶教育类榜首'
+  },
+  {
+    year: '2021',
+    tag: 'SaaS变革',
+    title: 'SaaS采购品牌强势升级',
+    description: '商越品牌大规模全新升级，最大规模发布会宣布革新'
+  },
+  {
+    year: '2019',
+    tag: '行业领跑',
+    title: '助力华渔教育成为行业龙头',
+    description: '5年深耕，从0到1参与构建多端设计规范，统筹北京团队，期间获评优秀设计师及设计创新奖'
+  },
+  {
+    year: 'BEFORE',
+    tag: '视觉跨界成长',
+    title: '服务 CCTV 及多家省级卫视',
+    description: '进修影视包装，跨界视频/动画设计，作品入选央视优秀创意栏目，连续三年获评最佳员工，完成了从平面到动态视觉的维度升级'
+  }
+]
+
 export default function About({ activeTab: propActiveTab, onTabChange: propOnTabChange, onNavigate }: AboutProps) {
   const [showTimeline, setShowTimeline] = useState(false)
+  const [activeResumeTab, setActiveResumeTab] = useState(0)
   const [hoveredTab, setHoveredTab] = useState<number | null>(null)
+  const [hoveredEventIndex, setHoveredEventIndex] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [autoParallax, setAutoParallax] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
@@ -134,7 +206,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   // 自动视差动画
   useEffect(() => {
     let animationFrameId: number
-    
+
     const animate = () => {
       timeRef.current += 0.005
       const x = Math.sin(timeRef.current * 1.3) * 0.3
@@ -142,7 +214,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
       setAutoParallax({ x, y })
       animationFrameId = requestAnimationFrame(animate)
     }
-    
+
     animationFrameId = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrameId)
   }, [])
@@ -192,34 +264,39 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
  
   const careerData = [
     {
-      period: '2022.08-2026.04',
+      period: '2022/08 - 2026/04',
       company: '网龙网络科技公司',
-      industry: '返聘',
-      roles: ['UED | 中小学产品方向负责人 | 高级UI设计师']
+      tag: '互联网教育',
+      roles: 'UI设计师P7 · UED负责人 · 中小学产品核心成员',
+      description: '带领7人团队，主导国家级亿级平台UED，推动AI智能化进程与实践'
     },
     {
-      period: '2021.07-2022.08',
+      period: '2021/07 - 2022/08',
       company: '北京商越网络科技有限公司',
-      industry: 'SaaS采购',
-      roles: ['UED | 视觉设计师（组长）']
+      tag: 'SaaS采购',
+      roles: '视觉设计师（组长） · 品牌设计师',
+      description: 'SaaS品牌重塑，主导Vi 规范，主导运营及市场活动视觉设计'
     },
     {
-      period: '2017.06-2021.05',
-      company: '网龙网络科技公司 | 华渔教育集团',
-      industry: '互联网教育',
-      roles: ['UED北京分处 | 创意设计师P7']
+      period: '2017/06 - 2021/05',
+      company: '网龙网络科技公司 ｜ 华渔教育集团',
+      tag: '互联网教育',
+      roles: '创意设计师P7 · 北京分处核心成员',
+      description: '主导教育核心产品（101教育、人教辞书等）视觉与产品研发，树立品牌识别系统'
     },
     {
-      period: '2012.05-2017.05',
-      company: '天马传媒有限公司 | Xreal行空互动',
-      industry: '4A创意广告',
-      roles: ['北京分公司 | 视频设计师']
+      period: '2012/06 - 2017/05',
+      company: '天马传媒有限公司 ｜ Xreal行空互动',
+      tag: '4A创意广告',
+      roles: '视频设计师 ｜ 创意设计师',
+      description: '为CCTV、省级卫视提供视频动效及VI形象设计'
     },
     {
-      period: '2010.05-2012.03',
-      company: '烟台嘉禾乐天家居商场',
-      industry: '商超',
-      roles: ['平面设计师']
+      period: '2010/06 - 2011/07',
+      company: '烟台嘉和乐天家居商场',
+      tag: '商超',
+      roles: '平面设计师 · 运营部',
+      description: '日常运营活动负责，商户宣传物料负责，品牌维护'
     }
   ]
 
@@ -1104,7 +1181,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
 
       {hasPlayedInitialAnimation && (
         <>
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="sync">
           <motion.div
             key={currentActiveTab}
             initial={{ opacity: 0, y: direction > 0 ? 260 : -260, scale: 0.95 }}
@@ -1112,10 +1189,10 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{
               duration: 0.45,
-              delay: 0.02,
+              delay: 0,
               ease: [0.25, 0.46, 0.45, 0.94],
               exit: {
-                duration: 0.01,
+                duration: 0,
                 ease: [0.4, 0, 0.2, 1]
               }
             }}
@@ -1141,7 +1218,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           {getDecorations(direction)}
       </AnimatePresence>
 
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="sync">
         <motion.div
           key={`text-content-${currentActiveTab}`}
           style={{
@@ -1154,7 +1231,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.1 }}
         >
             {tabDataForActive.title1 && (
               <div
@@ -1354,109 +1431,485 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           onClick={() => setShowTimeline(false)}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: 'spring', damping: 20, stiffness: 100 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 100 }}
             data-lenis-prevent
             style={{
-              borderRadius: '12px',
+              borderRadius: '24px',
               width: '100%',
-              maxWidth: '800px',
-              maxHeight: '80vh',
+              maxWidth: '1200px',
+              height: '720px',
+              maxHeight: '90vh',
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
               overflow: 'hidden',
-              backgroundColor: '#031210',
-              border: '1px solid rgba(255,255,255,0.1)'
+              backgroundColor: '#000E0C',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Left Section - Content */}
             <div style={{
-              position: 'sticky',
-              top: 0,
-              zIndex: 10,
-              padding: '20px 30px',
+              flex: 1,
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              backgroundColor: 'rgba(3,18,16,0.95)',
-              backdropFilter: 'blur(12px)'
+              flexDirection: 'column',
+              overflow: 'hidden'
             }}>
-              <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#ffffff', margin: 0 }}>
-                个人履历
-              </h3>
+
+              {/* Tabs */}
+              <div style={{
+                padding: '24px 40px',
+                display: 'flex',
+                gap: '24px',
+                alignItems: 'center'
+              }}>
+                {tabNames.map((tab, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => setActiveResumeTab(index)}
+                    style={{
+                      padding: '8px 20px',
+                      borderRadius: '999px',
+                      border: activeResumeTab === index ? 'none' : '1px solid rgba(255, 255, 255, 0.04)',
+                      background: activeResumeTab === index ? '#00ECB2' : 'rgba(255, 255, 255, 0.1)',
+                      color: activeResumeTab === index ? '#000E0C' : 'rgba(255, 255, 255, 0.85)',
+                      fontSize: '16px',
+                      lineHeight: '24px',
+                      fontWeight: activeResumeTab === index ? 600 : 400,
+                      cursor: 'pointer',
+                      fontFamily: 'PingFang SC',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px'
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: activeResumeTab === index
+                        ? '0 0 30px rgba(0, 236, 178, 0.5)'
+                        : '0 0 20px rgba(255, 255, 255, 0.1)'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {tab}
+                  </motion.button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div style={{
+                flex: 1,
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <AnimatePresence mode="wait">
+                  {/* 能力分析 */}
+                  {activeResumeTab === 0 && (
+                    <motion.div
+                      key="skills"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '32px 48px'
+                      }}
+                    >
+                      <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <motion.img 
+                          src="/images/about/radar-placeholder.png" 
+                          alt="能力分析"
+                          initial={{ scale: 0.3, opacity: 0 }}
+                          animate={{ 
+                            scale: 1, 
+                            opacity: 1,
+                            transition: {
+                              duration: 0.8,
+                              ease: [0.22, 1, 0.36, 1]
+                            }
+                          }}
+                          style={{ 
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            objectFit: 'contain'
+                          }} 
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* 大事记 */}
+                  {activeResumeTab === 1 && (
+                    <motion.div
+                      key="events"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: '100%',
+                        maxHeight: '580px',
+                        padding: '0 40px 24px',
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none'
+                      }}
+                      onWheel={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchMove={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onScroll={(e) => e.stopPropagation()}
+                    >
+                      <div style={{ 
+                        position: 'relative', 
+                        width: '100%',
+                        maxWidth: '840px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '16px'
+                      }}>
+                        {eventsData.map((event, index) => {
+                          const isHovered = hoveredEventIndex === index
+                          
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.1, duration: 0.5 }}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                padding: '16px',
+                                borderRadius: '8px',
+                                background: isHovered ? 'rgba(0, 236, 178, 0.06)' : 'transparent',
+                                cursor: 'default',
+                                transition: 'background 0.2s ease'
+                              }}
+                              onMouseEnter={() => setHoveredEventIndex(index)}
+                              onMouseLeave={() => setHoveredEventIndex(null)}
+                            >
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                marginBottom: '4px'
+                              }}>
+                                <span style={{
+                                  fontFamily: 'Campton',
+                                  fontWeight: 700,
+                                  fontSize: '56px',
+                                  lineHeight: '46px',
+                                  color: 'rgba(255, 255, 255, 0.1)',
+                                  letterSpacing: '0.05em',
+                                  textTransform: 'uppercase',
+                                  height: '46px',
+                                  display: 'inline-block',
+                                  verticalAlign: 'baseline'
+                                }}>{event.year}</span>
+                              </div>
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                marginBottom: '4px',
+                                flexWrap: 'wrap'
+                              }}>
+                                <span style={{
+                                  display: 'inline-block',
+                                  padding: '2px 8px',
+                                  borderRadius: '4px',
+                                  fontSize: '14px',
+                                  color: '#00C897',
+                                  background: 'rgba(3, 255, 194, 0.1)',
+                                  fontFamily: 'PingFang SC',
+                                  flexShrink: 0
+                                }}>{event.tag}</span>
+                                <span style={{
+                                  fontSize: '24px',
+                                  fontWeight: 600,
+                                  color: isHovered ? 'rgba(0, 236, 178, 1)' : 'rgba(255, 255, 255, 0.85)',
+                                  fontFamily: 'PingFang SC',
+                                  transition: 'color 0.2s ease'
+                                }}>{event.title}</span>
+                              </div>
+                              <div style={{
+                                fontSize: '16px',
+                                color: 'rgba(255, 255, 255, 0.5)',
+                                lineHeight: '1.6',
+                                fontFamily: 'PingFang SC',
+                                wordWrap: 'break-word',
+                                overflowWrap: 'break-word',
+                                hyphens: 'auto'
+                              }}>{event.description}</div>
+                            </motion.div>
+                          )
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* 工作经历 */}
+                  {activeResumeTab === 2 && (
+                    <motion.div
+                      key="experience"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: '840px',
+                        padding: '0 40px 4px',
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none',
+                        maxHeight: '580px'
+                      }}
+                      onWheel={(e) => { e.stopPropagation(); }}
+                      onTouchStart={(e) => { e.stopPropagation(); }}
+                      onTouchMove={(e) => { e.stopPropagation(); e.preventDefault(); }}
+                      onTouchEnd={(e) => { e.stopPropagation(); }}
+                      onScroll={(e) => { e.stopPropagation(); }}
+                    >
+                      <div style={{ 
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        gap: '0px'
+                      }}>
+                        {careerData.map((item, index) => {
+                          const isHovered = hoveredEventIndex === index
+                          const isLast = index === careerData.length - 1
+                          
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.08, duration: 0.5 }}
+                              style={{
+                                display: 'flex',
+                                gap: '12px',
+                                padding: '16px',
+                                borderRadius: '8px',
+                                background: isHovered ? 'rgba(3, 255, 194, 0.06)' : 'transparent',
+                                cursor: 'default',
+                                transition: 'background 0.2s ease'
+                              }}
+                              onMouseEnter={() => setHoveredEventIndex(index)}
+                              onMouseLeave={() => setHoveredEventIndex(null)}
+                            >
+                              <div style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                paddingTop: '0px'
+                              }}>
+                                <img 
+                                  src="/images/about/icon/time_dot.svg" 
+                                  alt=""
+                                  style={{ width: '16px', height: '16px', flexShrink: 0 }}
+                                />
+                                {!isLast && (
+                                  <img 
+                                    src="/images/about/icon/time_line.svg" 
+                                    alt=""
+                                    style={{ 
+                                      width: '2px', 
+                                      marginTop: '0px', 
+                                      flexShrink: 0,
+                                      height: '110px',
+                                      objectFit: 'cover'
+                                    }}
+                                  />
+                                )}
+                              </div>
+                              <div style={{ 
+                                display: 'flex', 
+                                flexDirection: 'column',
+                                gap: '4px',
+                                flex: 1
+                              }}>
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '10px',
+                                  flexWrap: 'wrap'
+                                }}>
+                                  <span style={{
+                                    fontFamily: 'Campton',
+                                    fontWeight: 700,
+                                    fontSize: '20px',
+                                    lineHeight: '20px',
+                                    color: 'rgba(255, 255, 255, 0.3)'
+                                  }}>{item.period}</span>
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '4px',
+                                  flexWrap: 'wrap'
+                                }}>
+                                  <span style={{
+                                    fontFamily: 'PingFang SC',
+                                    fontWeight: 600,
+                                    fontSize: '24px',
+                                    lineHeight: '40px',
+                                    color: isHovered ? '#00ECB2' : 'rgba(255, 255, 255, 0.85)',
+                                    transition: 'color 0.2s ease'
+                                  }}>{item.company}</span>
+                                  <span style={{
+                                    display: 'inline-block',
+                                    padding: '2px 8px',
+                                    borderRadius: '4px',
+                                    fontSize: '14px',
+                                    color: '#00C897',
+                                    background: 'rgba(3, 255, 194, 0.1)',
+                                    fontFamily: 'PingFang SC'
+                                  }}>{item.tag}</span>
+                                </div>
+                                <span style={{
+                                  fontFamily: 'PingFang SC',
+                                  fontWeight: 400,
+                                  fontSize: '16px',
+                                  lineHeight: '24px',
+                                  color: 'rgba(255, 255, 255, 0.75)'
+                                }}>{item.roles}</span>
+                                <span style={{
+                                  fontFamily: 'PingFang SC',
+                                  fontWeight: 400,
+                                  fontSize: '12px',
+                                  lineHeight: '20px',
+                                  color: 'rgba(255, 255, 255, 0.3)'
+                                }}>{item.description}</span>
+                              </div>
+                            </motion.div>
+                          )
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Right Section - Portrait */}
+            <div style={{
+              position: 'relative',
+              width: '360px',
+              flexShrink: 0,
+              background: 'linear-gradient(180deg, rgba(3, 40, 46, 1) 0%, rgba(0, 236, 178, 1) 100%)',
+              overflow: 'hidden'
+            }}>
+              {/* Close button */}
               <button
                 onClick={() => setShowTimeline(false)}
                 style={{
-                  padding: '8px',
-                  borderRadius: '50%',
+                  position: 'absolute',
+                  right: '24px',
+                  top: '24px',
+                  width: '32px',
+                  height: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
                   border: 'none',
                   background: 'transparent',
-                  cursor: 'pointer',
-                  color: '#ffffff'
+                  zIndex: 100
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
+                <img src="/images/about/icon/close-line.svg" alt="" style={{ width: '32px', height: '32px' }} />
               </button>
-            </div>
- 
-            <div 
-              data-lenis-prevent
-              style={{
-              flex: 1,
-              overflowY: 'auto',
-              padding: '30px'
-            }}>
-              <div style={{ position: 'relative' }}>
-                {careerData.length > 1 && (
-                  <div style={{
-                    position: 'absolute',
-                    left: '12px',
-                    top: '10px',
-                    bottom: 0,
-                    width: '2px',
-                    background: 'linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.05), transparent)'
-                  }} />
-                )}
- 
-                {careerData.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="relative pl-10 pb-8 group"
-                  >
-                    <div className="absolute left-0 top-1 w-6 h-6 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                      <div className="w-3 h-3 bg-white/50 rounded-full group-hover:bg-white transition-colors duration-300" />
-                    </div>
- 
-                    <div className="mb-2 flex items-center gap-3 flex-wrap">
-                      <span className="text-lg font-extralight text-white/50 group-hover:text-primary transition-colors duration-300">
-                        {item.period}
-                      </span>
-                      <span className="px-3 py-1 bg-white/5 text-white/50 rounded-lg text-sm group-hover:bg-white/10 group-hover:text-white/80 transition-colors duration-300">
-                        {item.industry}
-                      </span>
-                    </div>
-                    <h4 className="text-[22px] font-semibold text-white/70 mb-3 mt-0 group-hover:text-white transition-colors duration-300">
-                      {item.company}
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {item.roles.map((role, roleIndex) => (
-                        <span
-                          key={roleIndex}
-                          className="px-4 py-2 bg-white/5 text-white/50 rounded-lg text-[15px] group-hover:bg-primary/15 group-hover:text-primary transition-colors duration-300"
-                        >
-                          {role}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
+              
+              {/* 我的履历文字 - 在头像区域的上方 */}
+              <div style={{
+                position: 'absolute',
+                left: '116px',
+                top: '64px',
+                fontSize: '64px',
+                fontWeight: 600,
+                lineHeight: '72px',
+                color: '#FFFFFF',
+                fontFamily: 'PingFang SC',
+                zIndex: 10
+              }}>
+                我的<br/>履历
+              </div>
+
+              {/* Decorative elements */}
+              <motion.img
+                src="/images/about/img/Resume_2.png"
+                alt=""
+                style={{
+                  position: 'absolute',
+                  right: '25px',
+                  top: '210px',
+                  width: '79px',
+                  height: '81px',
+                  zIndex: 5
+                }}
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.img
+                src="/images/about/img/Resume_1.png"
+                alt=""
+                style={{
+                  position: 'absolute',
+                  left: '91px',
+                  top: '273px',
+                  width: '40px',
+                  height: '38px',
+                  zIndex: 5
+                }}
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.img
+                src="/images/about/img/Resume_3.png"
+                alt=""
+                style={{
+                  position: 'absolute',
+                  left: '-7px',
+                  top: '387px',
+                  width: '81px',
+                  height: '81px',
+                  zIndex: 5
+                }}
+                animate={{ rotate: [0, -3, 3, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+
+              {/* Avatar */}
+              <div style={{
+                position: 'absolute',
+                left: '-100px',
+                top: '270px',
+                width: '560px',
+                height: '450px',
+                pointerEvents: 'none',
+                zIndex: 3
+              }}>
+                <img
+                  src="/images/about/img/me_ Resume.png"
+                  alt=""
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
               </div>
             </div>
           </motion.div>
