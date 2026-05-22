@@ -520,6 +520,7 @@ export default function WorksPage() {
                       src={work.cover}
                       alt={work.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                     {/* 拖拽提示 */}
                     <div className="absolute top-4 left-4 bg-black/50 rounded-full p-2 text-gray-300">
@@ -650,6 +651,7 @@ export default function WorksPage() {
                         src={work.cover}
                         alt={work.title}
                         className="w-full h-full object-cover rounded"
+                        loading="lazy"
                       />
                     </div>
                     

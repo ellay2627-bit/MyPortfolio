@@ -709,6 +709,7 @@ export default function WorkEditPage() {
                           src={formData.cover}
                           alt="封面预览"
                           className="w-32 h-24 object-cover rounded-lg"
+                          loading="lazy"
                         />
                         <p className="text-xs text-gray-400 mt-1">图片比例固定为4:3</p>
                       </div>
@@ -838,6 +839,7 @@ export default function WorkEditPage() {
                           src={item.url}
                           alt={item.name || `图片 ${index + 1}`}
                           className="w-full h-40 object-cover"
+                          loading="lazy"
                         />
                         {item.name && (
                           <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2">

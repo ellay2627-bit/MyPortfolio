@@ -33,7 +33,7 @@ export default function Home() {
       <SectionLazyLoader id="stats" rootMargin="400px 0px" minHeight="680px">
         <Stats />
       </SectionLazyLoader>
-      <SectionLazyLoader rootMargin="400px 0px" minHeight="500px" className="hidden md:block">
+      <SectionLazyLoader rootMargin="400px 0px" minHeight="1px" className="hidden md:block">
         <VibeBubble />
       </SectionLazyLoader>
     </>

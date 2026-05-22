@@ -286,6 +286,7 @@ const MediaItemWithSkeleton = ({
                 className="w-full h-full object-cover cursor-pointer"
                 onClick={() => onImageClick(media.url)}
                 loading="lazy"
+                decoding="async"
                 onLoad={() => setMediaLoaded(true)}
                 onError={(e) => {
                   console.error('媒体图片加载失败:', media.url);
@@ -653,6 +654,7 @@ const ImageViewer: React.FC<ImageViewerProps> = React.memo(({ selectedImage, sel
         src={selectedImage} 
         alt="全屏查看" 
         className="max-w-full max-h-full object-contain"
+        loading="lazy"
       />
       
       {/* 图片计数器 */}
