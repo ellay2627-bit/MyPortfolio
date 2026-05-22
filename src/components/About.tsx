@@ -385,7 +385,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.5)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_pop.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -424,7 +424,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.8)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_01.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -463,7 +463,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.2)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_02.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -496,7 +496,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.0)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_sun.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -534,7 +534,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.5)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_star.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -567,7 +567,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.8)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_star2.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -600,7 +600,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.2)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_flash.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -633,7 +633,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.0)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_time.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -666,7 +666,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.4)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_omg.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -704,7 +704,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.2)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_robot.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -737,7 +737,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.5)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_figma.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -770,7 +770,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.7)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_ai.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -803,7 +803,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.9)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_PS.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -836,7 +836,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.0)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_kiss.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -874,7 +874,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.3)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_zxx.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -907,7 +907,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.5)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_xunzhang.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -940,7 +940,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.8)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_good.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -973,7 +973,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.0)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_group.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1011,7 +1011,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.5)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_heart.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1044,7 +1044,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(1.8)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_star3.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1077,7 +1077,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.2)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_flag.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1110,7 +1110,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 ...getParallaxStyle(2.0)
               }}
             >
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/decorate_bravo.png"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
@@ -1158,7 +1158,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           ...getParallaxStyle(0.8)
         }}
       >
-        <motion.img
+        <motion.img loading="lazy"
           src="/images/about/img/BGdot.png"
           alt=""
           decoding="async"
@@ -1851,7 +1851,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               </div>
 
               {/* Decorative elements */}
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/Resume_2.png"
                 alt=""
                 style={{
@@ -1865,7 +1865,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/Resume_1.png"
                 alt=""
                 style={{
@@ -1879,7 +1879,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <motion.img
+              <motion.img loading="lazy"
                 src="/images/about/img/Resume_3.png"
                 alt=""
                 style={{

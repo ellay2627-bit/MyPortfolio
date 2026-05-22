@@ -77,7 +77,7 @@ export default function Navbar() {
           {/* LOGO和导航链接居左 */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center mr-12">
-              <motion.img 
+              <motion.img loading="lazy" 
                 src="/images/logo.svg" 
                 alt="Logo" 
                 className="w-auto" 
