@@ -1,13 +1,17 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import ColorBends from './ColorBends.jsx';
 import RotatingText from './RotatingText.jsx';
+import './RotatingText.css';
+
+const ColorBends = dynamic(() => import('./ColorBends.jsx'), {
+  ssr: false,
+  loading: () => null,
+});
 
 // 类型断言，解决RotatingText组件的类型错误
 const RotatingTextComponent = RotatingText as React.ComponentType<any>;
-import './ColorBends.css';
-import './RotatingText.css';
 
 export default function Hero() {
   const controls = useAnimation();
@@ -38,8 +42,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden" ref={ref}>
-      {/* ColorBends动态背景 */}
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      ref={ref}
+      style={{ background: 'radial-gradient(ellipse at center, #03332A 0%, #011410 100%)' }}
+    >
+      {/* ColorBends动态背景，延后加载，先显示静态渐变 */}
       <ColorBends
         className="absolute inset-0 z-0"
         style={{ width: '100%', height: '100%' }}
