@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from '@/components/Hero';
-import Work from '@/components/Work';
 
-// 懒加载非首屏组件
+// 懒加载所有非首屏组件
+const Work = lazy(() => import('@/components/Work'));
 const About = lazy(() => import('@/components/About'));
 const Awards = lazy(() => import('@/components/Awards'));
 const Stats = lazy(() => import('@/components/Stats'));
@@ -41,17 +41,19 @@ export default function Home() {
       <Hero />
       
       {/* 懒加载About组件 */}
-      <Suspense fallback={<LoadingSkeleton />}>
+      <Suspense fallback={null}>
         <div className="hidden md:block">
           <About />
         </div>
       </Suspense>
       
-      {/* 作品区域 - 直接导入，不使用懒加载 */}
-      <Work />
+      {/* 作品区域 - 懒加载，不显示骨架屏 */}
+      <Suspense fallback={null}>
+        <Work />
+      </Suspense>
       
       {/* 懒加载其他组件 */}
-      <Suspense fallback={<LoadingSkeleton />}>
+      <Suspense fallback={null}>
         <div className="hidden md:block">
           <Awards />
         </div>

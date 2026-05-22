@@ -39,10 +39,10 @@ export const ABOUT_ICON_IMAGES = [
   '/images/about/icon/arrow-right-long-line.svg',
 ] as const
 
-/** 首屏进入 About 前优先加载 */
+/** 首屏进入 About 前优先加载 - 只选最重要的 1-2 张 */
 export const ABOUT_PRIORITY_IMAGES = [
   ABOUT_BACKGROUND_IMAGE,
-  ...ABOUT_ME_IMAGES,
+  ABOUT_ME_IMAGES[0], // 只预加载第一张人物图
 ] as const
 
 export const ABOUT_ALL_IMAGES = [
@@ -71,10 +71,16 @@ function preloadImage(url: string): Promise<void> {
   })
 }
 
-async function preloadBatch(urls: readonly string[]): Promise<void> {
+// 每次只加载 1 张图片，避免同时请求太多
+async function preloadBatch(urls: readonly string[], batchSize = 1): Promise<void> {
   const pending = urls.filter((url) => !loadedUrls.has(url))
   if (pending.length === 0) return
-  await Promise.all(pending.map(preloadImage))
+  
+  // 分批加载，一次只加载 batchSize 张
+  for (let i = 0; i < pending.length; i += batchSize) {
+    const batch = pending.slice(i, i + batchSize)
+    await Promise.all(batch.map(preloadImage))
+  }
 }
 
 /** 预加载 About 组件代码（与 page 中 lazy 对应，只执行一次） */
@@ -85,7 +91,7 @@ export function prefetchAboutModule(): void {
 }
 
 /**
- * 预加载 About 图片：优先背景 + 人物，再装饰图。
+ * 预加载 About 图片：保守策略，只预加载最必要的图片。
  * 多次调用共享同一 Promise，不会重复请求。
  */
 export function preloadAboutAssets(): Promise<void> {
@@ -93,9 +99,11 @@ export function preloadAboutAssets(): Promise<void> {
 
   preloadPromise = (async () => {
     try {
-      await preloadBatch(ABOUT_PRIORITY_IMAGES)
-      await preloadBatch(ABOUT_DECORATION_IMAGES)
-      await preloadBatch(ABOUT_ICON_IMAGES)
+      // 只预加载优先级最高的图片，装饰图完全不预加载
+      await preloadBatch(ABOUT_PRIORITY_IMAGES, 1)
+      // 装饰图完全不预加载，按需加载
+      // await preloadBatch(ABOUT_DECORATION_IMAGES)
+      // await preloadBatch(ABOUT_ICON_IMAGES)
     } catch {
       preloadPromise = null
     }

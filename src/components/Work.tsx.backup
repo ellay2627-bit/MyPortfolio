@@ -135,7 +135,6 @@ const SkeletonCard = () => (
 const WorkCard: React.FC<WorkCardProps> = React.memo(({ work, index, onClick, isLoaded }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
-  const [imageLoaded, setImageLoaded] = useState(false);
   
   return (
     <div className="group relative" ref={ref}>
@@ -150,11 +149,11 @@ const WorkCard: React.FC<WorkCardProps> = React.memo(({ work, index, onClick, is
         transition={{ 
           duration: 0.8, 
           ease: [0.21, 0.6, 0.35, 1],
-          delay: index * 0.05
+          delay: index * 0.05 // 减少延迟，从0.15秒降到0.05秒
         }}
         className="relative"
       >
-        {/* 作品卡片 */}
+        {/* 作品卡片 - 直接显示，不再单独处理加载状态 */}
         <div 
           className="relative overflow-hidden rounded-xl aspect-[4/3] bg-dark-bg cursor-pointer"
           onClick={onClick}
@@ -163,26 +162,15 @@ const WorkCard: React.FC<WorkCardProps> = React.memo(({ work, index, onClick, is
           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
           <div className="absolute inset-0 rounded-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
           
-          {/* 骨架屏 - 4%纯白色骨架闪烁 */}
-          {!imageLoaded && (
-            <div className="absolute inset-0 z-5">
-              <div className="absolute inset-0 bg-white/[0.04] animate-shimmer"></div>
-            </div>
-          )}
-          
           <div className="overflow-hidden rounded-xl h-full w-full">
             <img
               src={work.cover}
               alt={work.title}
-              className={`w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105 ${
-                imageLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               loading="lazy"
               decoding="async"
-              onLoad={() => setImageLoaded(true)}
               onError={(e) => {
                 console.error('封面图片加载失败:', work.title);
-                setImageLoaded(true);
                 e.currentTarget.style.display = 'none';
               }}
             />
@@ -679,14 +667,11 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
   const [loading, setLoading] = useState(true); // 初始显示骨架屏
   const [hasCache, setHasCache] = useState(false);
   const [initialLoaded, setInitialLoaded] = useState(false); // 标记是否已经完成首次加载
-  const [currentPage, setCurrentPage] = useState(1); // 当前页码
-  const [itemsPerPage] = useState(6); // 每页显示6个作品
   const [detailLoading, setDetailLoading] = useState(false); // 详情页加载状态
   const [showRefreshNotice, setShowRefreshNotice] = useState(false); // 显示刷新提示
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
-  const loadMoreRef = useRef<HTMLDivElement>(null); // 无限滚动哨兵元素
 
   // 数据更新处理函数
   const handleDataUpdate = useCallback(() => {
@@ -1202,31 +1187,6 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
     ? workList
     : workList.filter(item => item.category.includes(activeCategory));
 
-  // 无限滚动监听
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          // 当哨兵元素进入视口时，加载更多
-          if (!loading && filteredWorks.length > currentPage * itemsPerPage) {
-            setCurrentPage(prev => prev + 1);
-          }
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current);
-    }
-
-    return () => {
-      if (loadMoreRef.current) {
-        observer.unobserve(loadMoreRef.current);
-      }
-    };
-  }, [loading, currentPage, itemsPerPage, filteredWorks.length]);
-
   return (
     <section id="work" className="pt-48 pb-80 md:pt-32 md:pb-60 bg-dark-bg relative overflow-x-hidden">
 
@@ -1254,7 +1214,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
       
       {/* 右侧背景图片 - dotgroup.png */}
       <div className="absolute w-[600px] h-[600px] z-0 right-[-300px] top-[100px] opacity-30 animate-pulse overflow-hidden">
-        <img src="/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" loading="lazy" />
+        <img src="/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" />
       </div>
       
       <div className="w-full px-4 md:container md:mx-auto md:px-4 relative z-10">
@@ -1338,7 +1298,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
             ))
           ) : filteredWorks.length > 0 ? (
             // 显示作品卡片
-            filteredWorks.slice(0, currentPage * itemsPerPage).map((work, index) => (
+            filteredWorks.map((work, index) => (
               <WorkCard 
                 key={work.id}
                 work={work} 
@@ -1355,13 +1315,6 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
           )}
         </div>
       </div>
-
-      {/* 无限滚动哨兵元素 */}
-      {!loading && filteredWorks.length > currentPage * itemsPerPage && (
-        <div ref={loadMoreRef} className="h-20 flex justify-center items-center mt-8">
-          <div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
-        </div>
-      )}
 
       {/* 图片查看器 */}
       {selectedImage && selectedWork && (

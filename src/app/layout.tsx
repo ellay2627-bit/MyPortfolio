@@ -11,10 +11,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN" className="dark">
       <head>
-        {/* 禁止浏览器缓存，确保始终显示最新内容 */}
+        {/* 移除禁用缓存的代码！改为合理的缓存策略
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        */}
       </head>
       <body className="dark">
         <LayoutContent>{children}</LayoutContent>

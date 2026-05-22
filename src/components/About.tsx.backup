@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSectionScrollContext } from '@/contexts/SectionScrollProvider'
-// import { preloadAboutAssets } from '@/lib/aboutAssets' - 禁用预加载
+import { preloadAboutAssets } from '@/lib/aboutAssets'
 
 interface AboutProps {
   activeTab?: number
@@ -198,7 +198,10 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
     }
   }
  
-  // 完全禁用预加载 - 只在需要时加载图片
+  // 进入 About 时确保资源已预加载（与全局 Preloader 共享，不重复请求）
+  useEffect(() => {
+    void preloadAboutAssets()
+  }, [])
 
   // 自动视差动画
   useEffect(() => {
@@ -1209,7 +1212,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 decoding="async"
                 fetchPriority="high"
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-               loading="lazy" />
+              />
             </div>
           </motion.div>
           {getDecorations(direction)}
@@ -1300,7 +1303,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 <div className="scan-light" />
                 <span className="relative z-10 flex items-center">
                   查看履历
-                  <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} loading="lazy" />
+                  <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} />
                 </span>
               </motion.button>
             </div>
@@ -1502,7 +1505,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}>
                 <AnimatePresence mode="wait">
                   {/* 能力分析 */}
-                  {activeResumeTab === 2 && (
+                  {activeResumeTab === 0 && (
                     <motion.div
                       key="skills"
                       initial={{ opacity: 0, x: 20 }}
@@ -1529,7 +1532,6 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                         <motion.img 
                           src="/images/about/radar-placeholder.png" 
                           alt="能力分析"
-                          loading="lazy"
                           initial={{ scale: 0.3, opacity: 0 }}
                           animate={{ 
                             scale: 1, 
@@ -1544,7 +1546,6 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                             maxHeight: '100%',
                             objectFit: 'contain'
                           }} 
-                          onLoadStart={() => console.log('开始加载能力分析图片')}
                         />
                       </div>
                     </motion.div>
@@ -1663,7 +1664,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                   )}
 
                   {/* 工作经历 */}
-                  {activeResumeTab === 0 && (
+                  {activeResumeTab === 2 && (
                     <motion.div
                       key="experience"
                       initial={{ opacity: 0, x: 20 }}
@@ -1722,7 +1723,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                                   src="/images/about/icon/time_dot.svg" 
                                   alt=""
                                   style={{ width: '16px', height: '16px', flexShrink: 0 }}
-                                 loading="lazy" />
+                                />
                                 {!isLast && (
                                   <img 
                                     src="/images/about/icon/time_line.svg" 
@@ -1734,7 +1735,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                                       height: '110px',
                                       objectFit: 'cover'
                                     }}
-                                   loading="lazy" />
+                                  />
                                 )}
                               </div>
                               <div style={{ 
@@ -1832,7 +1833,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                   zIndex: 100
                 }}
               >
-                <img src="/images/about/icon/close-line.svg" alt="" style={{ width: '32px', height: '32px' }} loading="lazy" />
+                <img src="/images/about/icon/close-line.svg" alt="" style={{ width: '32px', height: '32px' }} />
               </button>
               
               {/* 我的履历文字 - 在头像区域的上方 */}
@@ -1908,7 +1909,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                   src="/images/about/img/me_ Resume.png"
                   alt=""
                   style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                 loading="lazy" />
+                />
               </div>
             </div>
           </motion.div>
