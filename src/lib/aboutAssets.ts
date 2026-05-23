@@ -1,42 +1,42 @@
 /** About 模块静态资源（public/images/about） */
 
 export const ABOUT_ME_IMAGES = [
-  '/images/about/img/me_01.png',
-  '/images/about/img/me_02.png',
-  '/images/about/img/me_03.png',
-  '/images/about/img/me_04.png',
-  '/images/about/img/me_05.png',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_01.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_02.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_03.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_04.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_05.webp',
 ] as const
 
 export const ABOUT_DECORATION_IMAGES = [
-  '/images/about/img/decorate_pop.png',
-  '/images/about/img/decorate_01.png',
-  '/images/about/img/decorate_02.png',
-  '/images/about/img/decorate_sun.png',
-  '/images/about/img/decorate_star.png',
-  '/images/about/img/decorate_star2.png',
-  '/images/about/img/decorate_flash.png',
-  '/images/about/img/decorate_time.png',
-  '/images/about/img/decorate_omg.png',
-  '/images/about/img/decorate_robot.png',
-  '/images/about/img/decorate_figma.png',
-  '/images/about/img/decorate_ai.png',
-  '/images/about/img/decorate_PS.png',
-  '/images/about/img/decorate_kiss.png',
-  '/images/about/img/decorate_zxx.png',
-  '/images/about/img/decorate_xunzhang.png',
-  '/images/about/img/decorate_good.png',
-  '/images/about/img/decorate_group.png',
-  '/images/about/img/decorate_heart.png',
-  '/images/about/img/decorate_star3.png',
-  '/images/about/img/decorate_flag.png',
-  '/images/about/img/decorate_bravo.png',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_pop.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_01.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_02.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_sun.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star2.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_flash.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_time.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_omg.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_robot.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_figma.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_ai.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_PS.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_kiss.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_zxx.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_xunzhang.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_good.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_group.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_heart.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star3.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_flag.webp',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_bravo.webp',
 ] as const
 
-export const ABOUT_BACKGROUND_IMAGE = '/images/about/img/BGdot.png'
+export const ABOUT_BACKGROUND_IMAGE = 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/BGdot.png'
 
 export const ABOUT_ICON_IMAGES = [
-  '/images/about/icon/arrow-right-long-line.svg',
+  'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/arrow-right-long-line.svg',
 ] as const
 
 /** 首屏进入 About 前优先加载 - 只选最重要的 1-2 张 */

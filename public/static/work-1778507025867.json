@@ -8,35 +8,35 @@
     "UX设计",
     "动态设计"
   ],
-  "cover": "/images/works/work-1778507025867-cover.jpg",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-cover.jpg",
   "ratio": "4:3",
   "order": 4,
   "media": [
     {
       "id": "image-1778507348365-0",
       "type": "image",
-      "url": "/images/works/work-1778507025867-media-0.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-0.jpg",
       "name": "23数据可视化 - 封.jpg",
       "order": 0
     },
     {
       "id": "image-1778507348371-1",
       "type": "image",
-      "url": "/images/works/work-1778507025867-media-1.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-1.jpg",
       "name": "26数据可视化 - 其他.jpg",
       "order": 1
     },
     {
       "id": "image-1778507348372-2",
       "type": "image",
-      "url": "/images/works/work-1778507025867-media-2.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-2.jpg",
       "name": "25数据可视化 - 监控.jpg",
       "order": 2
     },
     {
       "id": "image-1778507348375-3",
       "type": "image",
-      "url": "/images/works/work-1778507025867-media-3.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-3.jpg",
       "name": "24数据可视化 - 驾驶舱.jpg",
       "order": 3
     }

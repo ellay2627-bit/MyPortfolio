@@ -3,7 +3,61 @@ const path = require('path');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'works');
 const PUBLIC_IMAGES_DIR = path.join(__dirname, '..', 'public', 'images', 'works');
+const ALL_IMAGES_DIR = path.join(__dirname, '..', 'public', 'images');
 const STATIC_DIR = path.join(__dirname, '..', 'public', 'static');
+
+const OSS_BASE_URL = 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com';
+
+// 构建文件映射
+let fileMap = null;
+function getFileMap() {
+  if (fileMap) return fileMap;
+  
+  fileMap = new Map();
+  
+  function traverse(dir, basePath = '') {
+    if (!fs.existsSync(dir)) return;
+    
+    const files = fs.readdirSync(dir);
+    
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      
+      if (stat.isDirectory()) {
+        traverse(fullPath, path.join(basePath, file));
+      } else {
+        const relativePath = path.join('/images', basePath, file).replace(/\\/g, '/');
+        const nameWithoutExt = path.basename(file, path.extname(file));
+        const key = path.join('/images', basePath, nameWithoutExt).replace(/\\/g, '/').toLowerCase();
+        fileMap.set(key, relativePath);
+      }
+    }
+  }
+  
+  traverse(ALL_IMAGES_DIR);
+  return fileMap;
+}
+
+function getOssPath(localPath) {
+  if (!localPath) return localPath;
+  if (localPath.startsWith('http://') || localPath.startsWith('https://')) {
+    return localPath;
+  }
+  if (localPath.startsWith('/images/')) {
+    // 尝试找到正确的文件扩展名
+    const map = getFileMap();
+    const parsed = path.parse(localPath);
+    const key = path.join(parsed.dir, parsed.name).toLowerCase();
+    const actualPath = map.get(key);
+    
+    if (actualPath) {
+      return `${OSS_BASE_URL}${actualPath}`;
+    }
+    return `${OSS_BASE_URL}${localPath}`;
+  }
+  return localPath;
+}
 
 [PUBLIC_IMAGES_DIR, STATIC_DIR].forEach((dir) => {
   if (!fs.existsSync(dir)) {
@@ -89,11 +143,14 @@ function processWork(work, workId, usedLocalFiles) {
       const coverFileName = `work-${workId}-cover.${coverExt}`;
       const coverPath = path.join(PUBLIC_IMAGES_DIR, coverFileName);
       if (writeBase64Asset(processedWork.cover, coverPath)) {
-        processedWork.cover = `/images/works/${coverFileName}`;
+        processedWork.cover = getOssPath(`/images/works/${coverFileName}`);
         usedLocalFiles.add(coverFileName);
       }
     } else if (processedWork.cover.startsWith('/images/works/')) {
       usedLocalFiles.add(processedWork.cover.replace('/images/works/', ''));
+      processedWork.cover = getOssPath(processedWork.cover);
+    } else if (processedWork.cover.startsWith('http')) {
+      // 已经是 OSS 路径，保持不变
     }
   }
 
@@ -107,6 +164,10 @@ function processWork(work, workId, usedLocalFiles) {
       if (!parsedMedia) {
         if (mediaItem.url.startsWith('/images/works/')) {
           usedLocalFiles.add(mediaItem.url.replace('/images/works/', ''));
+          return {
+            ...mediaItem,
+            url: getOssPath(mediaItem.url),
+          };
         }
         return mediaItem;
       }
@@ -119,7 +180,7 @@ function processWork(work, workId, usedLocalFiles) {
         usedLocalFiles.add(mediaFileName);
         return {
           ...mediaItem,
-          url: `/images/works/${mediaFileName}`,
+          url: getOssPath(`/images/works/${mediaFileName}`),
         };
       }
 

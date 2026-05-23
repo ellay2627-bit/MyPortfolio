@@ -320,7 +320,7 @@ const ProfileCardComponent = ({
               <div className="pc-content pc-avatar-content">
                 <img
                   className="avatar"
-                  src="/images/avatar.png"
+                  src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/avatar.png"
                   alt={`${name || 'User'} avatar`}
                   loading="lazy"
                   onError={e => {

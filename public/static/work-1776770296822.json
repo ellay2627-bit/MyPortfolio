@@ -7,7 +7,7 @@
     "动态设计",
     "视觉设计"
   ],
-  "cover": "/images/works/work-1776770296822-cover.png",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770296822-cover.png",
   "ratio": "4:3",
   "order": 25,
   "media": [
@@ -21,21 +21,21 @@
     {
       "id": "image-1776770459322-1",
       "type": "image",
-      "url": "/images/works/work-1776770296822-media-1.gif",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770296822-media-1.gif",
       "name": "gif.gif",
       "order": 1
     },
     {
       "id": "image-1776770459335-2",
       "type": "image",
-      "url": "/images/works/work-1776770296822-media-2.gif",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770296822-media-2.gif",
       "name": "02.gif",
       "order": 2
     },
     {
       "id": "image-1776770459347-3",
       "type": "image",
-      "url": "/images/works/work-1776770296822-media-3.gif",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770296822-media-3.gif",
       "name": "03.gif",
       "order": 3
     }

@@ -6,14 +6,14 @@
   "category": [
     "UX设计"
   ],
-  "cover": "/images/works/work-1778510420037-cover.png",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-cover.png",
   "ratio": "4:3",
   "order": 17,
   "media": [
     {
       "id": "image-1778510622139-0",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-0.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-0.jpg",
       "name": "列表页-首次进入.jpg",
       "order": 0,
       "asset": null,
@@ -22,7 +22,7 @@
     {
       "id": "image-1778510622140-1",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-1.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-1.jpg",
       "name": "英语点读-1.jpg",
       "order": 1,
       "asset": null,
@@ -31,7 +31,7 @@
     {
       "id": "image-1778510622140-2",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-2.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-2.jpg",
       "name": "勋章墙.jpg",
       "order": 2,
       "asset": null,
@@ -40,7 +40,7 @@
     {
       "id": "image-1778510622140-3",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-3.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-3.jpg",
       "name": "英语点读-2.jpg",
       "order": 3,
       "asset": null,
@@ -49,7 +49,7 @@
     {
       "id": "image-1778510622140-4",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-4.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-4.jpg",
       "name": "默认.jpg",
       "order": 4,
       "asset": null,
@@ -58,7 +58,7 @@
     {
       "id": "image-1778510622140-5",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-5.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-5.jpg",
       "name": "英语点读.jpg",
       "order": 5,
       "asset": null,
@@ -67,7 +67,7 @@
     {
       "id": "image-1778510622140-6",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-6.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-6.jpg",
       "name": "列表页.jpg",
       "order": 6,
       "asset": null,
@@ -76,7 +76,7 @@
     {
       "id": "image-1778510622140-7",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-7.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-7.jpg",
       "name": "英语点读-4.jpg",
       "order": 7,
       "asset": null,
@@ -85,7 +85,7 @@
     {
       "id": "image-1778510622140-8",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-8.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-8.jpg",
       "name": "侧边目录优化.jpg",
       "order": 8,
       "asset": null,
@@ -94,7 +94,7 @@
     {
       "id": "image-1778510622141-9",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-9.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-9.jpg",
       "name": "英语点读-3.jpg",
       "order": 9,
       "asset": null,
@@ -103,7 +103,7 @@
     {
       "id": "image-1778510622141-10",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-10.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-10.jpg",
       "name": "APP.jpg",
       "order": 10,
       "asset": null,
@@ -112,7 +112,7 @@
     {
       "id": "image-1778510622141-11",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-11.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-11.jpg",
       "name": "勋章整理.jpg",
       "order": 11,
       "asset": null,
@@ -121,7 +121,7 @@
     {
       "id": "image-1778510622141-12",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-12.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-12.jpg",
       "name": "点读.jpg",
       "order": 12,
       "asset": null,
@@ -130,7 +130,7 @@
     {
       "id": "image-1778510622141-13",
       "type": "image",
-      "url": "/images/works/work-1778510420037-media-13.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-media-13.jpg",
       "name": "入口.jpg",
       "order": 13,
       "asset": null,

@@ -6,14 +6,14 @@
   "category": [
     "UX设计"
   ],
-  "cover": "/images/works/work-1778497760985-cover.jpg",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-cover.jpg",
   "ratio": "4:3",
   "order": 1,
   "media": [
     {
       "id": "image-1778497860194-2",
       "type": "image",
-      "url": "/images/works/work-1778497760985-media-0.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-media-0.jpg",
       "name": "03小苗-封.jpg",
       "order": 0,
       "asset": null,
@@ -22,7 +22,7 @@
     {
       "id": "image-1778497860196-4",
       "type": "image",
-      "url": "/images/works/work-1778497760985-media-1.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-media-1.jpg",
       "name": "04小苗 - 什么是小苗.jpg",
       "order": 1,
       "asset": null,
@@ -31,7 +31,7 @@
     {
       "id": "image-1778497860194-1",
       "type": "image",
-      "url": "/images/works/work-1778497760985-media-2.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-media-2.jpg",
       "name": "05小苗 - 设计亮点描述.jpg",
       "order": 2,
       "asset": null,
@@ -40,7 +40,7 @@
     {
       "id": "image-1778497860193-0",
       "type": "image",
-      "url": "/images/works/work-1778497760985-media-3.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-media-3.jpg",
       "name": "06小苗 - IP升级.jpg",
       "order": 3,
       "asset": null,
@@ -49,7 +49,7 @@
     {
       "id": "image-1778497860195-3",
       "type": "image",
-      "url": "/images/works/work-1778497760985-media-4.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778497760985-media-4.jpg",
       "name": "07小苗 - UX升级.jpg",
       "order": 4,
       "asset": null,

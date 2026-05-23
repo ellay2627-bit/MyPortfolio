@@ -6,98 +6,98 @@
   "category": [
     "UX设计"
   ],
-  "cover": "/images/works/work-1779090969749-cover.jpg",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-cover.jpg",
   "ratio": "4:3",
   "order": 20,
   "media": [
     {
       "id": "image-1779091063881-3",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-0.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-0.png",
       "name": "首页.png",
       "order": 0
     },
     {
       "id": "image-1779091472014-8",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-1.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-1.png",
       "name": "00.png",
       "order": 1
     },
     {
       "id": "image-1779091063882-4",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-2.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-2.png",
       "name": "内容审核 - 视频 -1440-主动点击进度条中的打点区域.png",
       "order": 2
     },
     {
       "id": "image-1779091063880-0",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-3.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-3.png",
       "name": "内容审核 - 音频 -1440.png",
       "order": 3
     },
     {
       "id": "image-1779091063881-1",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-4.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-4.png",
       "name": "图片.png",
       "order": 4
     },
     {
       "id": "image-1779091063881-2",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-5.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-5.png",
       "name": "文案.png",
       "order": 5
     },
     {
       "id": "image-1779091063882-5",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-6.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-6.jpg",
       "name": "框架.jpg",
       "order": 6
     },
     {
       "id": "image-1779091063883-8",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-7.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-7.jpg",
       "name": "英语点读 后台配置能力设计 - 四期.jpg",
       "order": 7
     },
     {
       "id": "image-1779091063884-9",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-8.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-8.jpg",
       "name": "标准课包 管理.jpg",
       "order": 8
     },
     {
       "id": "image-1779091472012-3",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-9.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-9.png",
       "name": "01.png",
       "order": 9
     },
     {
       "id": "image-1779091472010-0",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-10.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-10.png",
       "name": "1121.png",
       "order": 10
     },
     {
       "id": "image-1779091472013-6",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-11.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-11.png",
       "name": "04.png",
       "order": 11
     },
     {
       "id": "image-1779091472011-2",
       "type": "image",
-      "url": "/images/works/work-1779090969749-media-12.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-media-12.png",
       "name": "77.png",
       "order": 12
     }

@@ -6,49 +6,49 @@
   "category": [
     "UX设计"
   ],
-  "cover": "/images/works/work-1778510934180-cover.jpg",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-cover.jpg",
   "ratio": "4:3",
   "order": 15,
   "media": [
     {
       "id": "image-1778511016847-0",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-0.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-0.jpg",
       "name": "ux设计014.jpg",
       "order": 0
     },
     {
       "id": "image-1778511016849-5",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-1.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-1.jpg",
       "name": "ux设计015.jpg",
       "order": 1
     },
     {
       "id": "image-1778511016849-4",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-2.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-2.jpg",
       "name": "ux设计016.jpg",
       "order": 2
     },
     {
       "id": "image-1778511016848-2",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-3.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-3.jpg",
       "name": "ux设计018.jpg",
       "order": 3
     },
     {
       "id": "image-1778511016848-1",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-4.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-4.jpg",
       "name": "ux设计019.jpg",
       "order": 4
     },
     {
       "id": "image-1778511016848-3",
       "type": "image",
-      "url": "/images/works/work-1778510934180-media-5.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-media-5.jpg",
       "name": "ux设计017.jpg",
       "order": 5
     }

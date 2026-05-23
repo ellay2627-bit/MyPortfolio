@@ -7,14 +7,14 @@
     "UX设计",
     "动态设计"
   ],
-  "cover": "/images/works/work-1778512077048-cover.jpg",
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-cover.jpg",
   "ratio": "4:3",
   "order": 23,
   "media": [
     {
       "id": "image-1778512376291-2",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-0.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-media-0.png",
       "name": "web端效果.png",
       "order": 0,
       "asset": null,
@@ -23,7 +23,7 @@
     {
       "id": "image-1778512376293-3",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-1.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-media-1.png",
       "name": "传统流式 - 首页.png",
       "order": 1,
       "asset": null,
@@ -32,7 +32,7 @@
     {
       "id": "image-1778512376288-0",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-2.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-media-2.png",
       "name": "Frame 427319829 1.png",
       "order": 2,
       "asset": null,
@@ -41,7 +41,7 @@
     {
       "id": "image-1778512376289-1",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-3.jpg",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-media-3.jpg",
       "name": "首页 - 风格2.jpg",
       "order": 3,
       "asset": null,
@@ -50,7 +50,7 @@
     {
       "id": "image-1778512376296-4",
       "type": "image",
-      "url": "/images/works/work-1778512077048-media-4.png",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-media-4.png",
       "name": "概念设计.png",
       "order": 4,
       "asset": null,

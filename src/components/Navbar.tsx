@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center mr-12">
               <motion.img loading="lazy" 
-                src="/images/logo.svg" 
+                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/logo.svg" 
                 alt="Logo" 
                 className="w-auto" 
                 initial={{ height: 24 }}

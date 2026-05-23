@@ -1256,7 +1256,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
       
       {/* 右侧背景图片 - dotgroup.png */}
       <div className="absolute w-[600px] h-[600px] z-0 right-[-300px] top-[100px] opacity-30 animate-pulse overflow-hidden">
-        <img src="/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" loading="lazy" />
+        <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" loading="lazy" />
       </div>
       
       <div className="w-full px-4 md:container md:mx-auto md:px-4 relative z-10">
