@@ -53,12 +53,12 @@ const tabData = [
     }
 ]
  
-const AnimatedText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+const AnimatedText = ({ text, delay = 0, animated = true }: { text: string; delay?: number; animated?: boolean }) => {
   // Reduce per-character animations to avoid heavy re-renders.
   // For immediate performance relief we render static text.
   // This respects prefers-reduced-motion; for future, we can enable per-char animation conditionally.
   // Force-disable per-character animations to avoid text flicker and reduce CPU usage.
-  const shouldAnimate = true
+  const shouldAnimate = animated
 
   if (!shouldAnimate) {
     return (
@@ -167,6 +167,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
   const [autoParallax, setAutoParallax] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
   const [hasPlayedInitialAnimation, setHasPlayedInitialAnimation] = useState(false)
+  const [showHeavyContent, setShowHeavyContent] = useState(false)
   const animationKey = useRef(0)
   
   // 使用完整的滚动系统
@@ -231,6 +232,16 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
 
     observer.observe(containerRef.current)
     return () => observer.disconnect()
+  }, [hasPlayedInitialAnimation])
+
+  useEffect(() => {
+    if (!hasPlayedInitialAnimation) return
+
+    const timer = window.setTimeout(() => {
+      setShowHeavyContent(true)
+    }, 260)
+
+    return () => window.clearTimeout(timer)
   }, [hasPlayedInitialAnimation])
 
   // 装饰元素的随机值 - 在组件顶层定义
@@ -1147,36 +1158,38 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
         alignItems: 'center'
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          left: '25%',
-          top: '5.5%',
-          width: '50%',
-          height: '88.8%',
-          pointerEvents: 'none',
-          ...getParallaxStyle(0.8)
-        }}
-      >
-        <motion.img loading="lazy"
-          src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/BGdot.png"
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          animate={{
-            opacity: [0.6, 0.85, 0.6],
-            scale: [1, 1.03, 1],
+      {showHeavyContent && (
+        <div
+          style={{
+            position: 'absolute',
+            left: '25%',
+            top: '5.5%',
+            width: '50%',
+            height: '88.8%',
+            pointerEvents: 'none',
+            ...getParallaxStyle(0.8)
           }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
-        />
-      </div>
+        >
+          <motion.img loading="lazy"
+            src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/BGdot.png"
+            alt=""
+            decoding="async"
+            fetchPriority="high"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            animate={{
+              opacity: [0.6, 0.85, 0.6],
+              scale: [1, 1.03, 1],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+          />
+        </div>
+      )}
 
-      {hasPlayedInitialAnimation && (
+      {showHeavyContent && (
         <>
       <AnimatePresence mode="sync">
           <motion.div
@@ -1214,114 +1227,104 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           </motion.div>
           {getDecorations(direction)}
       </AnimatePresence>
-
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={`text-content-${currentActiveTab}`}
-          style={{
-            position: 'absolute',
-            left: '20.8%',
-            top: '32.2%',
-            width: '30%',
-            height: '35.5%'
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.1 }}
-        >
-            {tabDataForActive.title1 && (
-              <div
-                style={{
-                  marginBottom: '8px',
-                  fontSize: 'clamp(24px, 2.5vw, 48px)',
-                  fontWeight: 100,
-                  color: 'rgba(255,255,255,0.75)',
-                  lineHeight: 1.2,
-                  fontFamily: 'PingFang SC, system-ui'
-                }}
-              >
-                <AnimatedText text={tabDataForActive.title1} delay={0} />
-              </div>
-            )}
-
-            <div
-              style={{
-                fontSize: 'clamp(32px, 3.33vw, 64px)',
-                fontWeight: 600,
-                color: '#ffffff',
-                lineHeight: 1.125,
-                marginBottom: '8px',
-                fontFamily: 'PingFang SC, system-ui'
-              }}
-            >
-              <AnimatedText text={tabDataForActive.title2} delay={0} />
-            </div>
-
-            {tabDataForActive.description && (
-              <div
-                style={{
-                  fontSize: 'clamp(14px, 0.83vw, 16px)',
-                  fontWeight: 400,
-                  color: 'rgba(255,255,255,0.75)',
-                  lineHeight: 1.5,
-                  marginTop: '8px',
-                  fontFamily: 'PingFang SC, system-ui'
-                }}
-              >
-                <AnimatedText text={tabDataForActive.description} delay={0} />
-              </div>
-            )}
-
-            {tabDataForActive.hasButton && (
-              <div
-                style={{ marginTop: '40px' }}
-              >
-              <motion.button
-                suppressHydrationWarning
-                onClick={() => setShowTimeline(true)}
-                className="inline-flex items-center justify-center rounded-full border border-[1px] transition-colors relative overflow-hidden cursor-pointer"
-                style={{
-                  background: '#00ECB2',
-                  borderColor: '#00ECB2',
-                  color: '#000e0c',
-                  fontSize: 'clamp(16px, 1.04vw, 20px)',
-                  fontWeight: 400,
-                  paddingLeft: '20px',
-                  paddingRight: '20px',
-                  height: '38px',
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: '0 0 30px rgba(0, 236, 178, 0.5)',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="scan-light" />
-                <span className="relative z-10 flex items-center">
-                  查看履历
-                  <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} loading="lazy" />
-                </span>
-              </motion.button>
-            </div>
-          )}
-          </motion.div>
-        </AnimatePresence>
         </>
       )}
 
-      {hasPlayedInitialAnimation && (
-        <motion.div
+      <motion.div
+        style={{
+          position: 'absolute',
+          left: '20.8%',
+          top: '32.2%',
+          width: '30%',
+          height: '35.5%'
+        }}
+        initial={false}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.1 }}
+      >
+        {tabDataForActive.title1 && (
+          <div
+            style={{
+              marginBottom: '8px',
+              fontSize: 'clamp(24px, 2.5vw, 48px)',
+              fontWeight: 100,
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.2,
+              fontFamily: 'PingFang SC, system-ui'
+            }}
+          >
+            <AnimatedText text={tabDataForActive.title1} delay={0} animated={showHeavyContent} />
+          </div>
+        )}
+
+        <div
           style={{
-            position: 'absolute',
-            right: '16%',
-            width: 'auto',
-            alignSelf: 'center'
+            fontSize: 'clamp(32px, 3.33vw, 64px)',
+            fontWeight: 600,
+            color: '#ffffff',
+            lineHeight: 1.125,
+            marginBottom: '8px',
+            fontFamily: 'PingFang SC, system-ui'
           }}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.25, ease: 'easeOut' }}
         >
+          <AnimatedText text={tabDataForActive.title2} delay={0} animated={showHeavyContent} />
+        </div>
+
+        {tabDataForActive.description && (
+          <div
+            style={{
+              fontSize: 'clamp(14px, 0.83vw, 16px)',
+              fontWeight: 400,
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.5,
+              marginTop: '8px',
+              fontFamily: 'PingFang SC, system-ui'
+            }}
+          >
+            <AnimatedText text={tabDataForActive.description} delay={0} animated={showHeavyContent} />
+          </div>
+        )}
+
+        {tabDataForActive.hasButton && (
+          <div style={{ marginTop: '40px' }}>
+            <motion.button
+              suppressHydrationWarning
+              onClick={() => setShowTimeline(true)}
+              className="inline-flex items-center justify-center rounded-full border border-[1px] transition-colors relative overflow-hidden cursor-pointer"
+              style={{
+                background: '#00ECB2',
+                borderColor: '#00ECB2',
+                color: '#000e0c',
+                fontSize: 'clamp(16px, 1.04vw, 20px)',
+                fontWeight: 400,
+                paddingLeft: '20px',
+                paddingRight: '20px',
+                height: '38px',
+              }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: '0 0 30px rgba(0, 236, 178, 0.5)',
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="scan-light" />
+              <span className="relative z-10 flex items-center">
+                查看履历
+                <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} loading="lazy" />
+              </span>
+            </motion.button>
+          </div>
+        )}
+      </motion.div>
+
+      <div
+        style={{
+          position: 'absolute',
+          right: '16%',
+          width: 'auto',
+          alignSelf: 'center'
+        }}
+      >
         <div style={{
           display: 'flex',
           flexDirection: 'column',
@@ -1405,8 +1408,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
             )
           })}
         </div>
-      </motion.div>
-      )}
+      </div>
 
       {showTimeline && (
         <motion.div

@@ -2,7 +2,7 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import NavbarWrapper from './NavbarWrapper';
-import SiteLoader from './SiteLoader';
+const SiteLoader = dynamic(() => import('./SiteLoader'), { ssr: false, loading: () => null });
 // 延迟加载非关键组件
 const NeoCursor = dynamic(() => import('./NeoCursor'), { ssr: false, loading: () => null });
 const BackToTop = dynamic(() => import('./BackToTop'), { ssr: false, loading: () => null });

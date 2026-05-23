@@ -19,8 +19,8 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
-  const [boxWidth, setBoxWidth] = useState(0);
   const [showAnimation, setShowAnimation] = useState(false); // 控制动画显示
+  const [isMounted, setIsMounted] = useState(false);
   
   const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
 
@@ -30,17 +30,8 @@ export default function Hero() {
     }
   }, [isInView, controls]);
 
-  // 监听绿色框体宽度变化
   useEffect(() => {
-    if (!rotatingTextRef.current) return;
-    
-    const observer = new ResizeObserver((entries) => {
-      const width = entries[0].contentRect.width;
-      setBoxWidth(width);
-    });
-    
-    observer.observe(rotatingTextRef.current);
-    return () => observer.disconnect();
+    setIsMounted(true);
   }, []);
 
   // 让特效快速显示，不延迟
@@ -84,76 +75,61 @@ export default function Hero() {
       {/* 主要内容 - 设置pointer-events: none让鼠标事件穿透到背景 */}
       <div className="container mx-auto px-4 z-10 relative pointer-events-none">
         {/* 独立的 slogan 容器，专门做 layout 同步动画 */}
-        <motion.div
-          className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-bold mb-8 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+        <div
+          className={`text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-bold mb-8 text-center ${
+            isMounted ? 'hero-reveal hero-reveal--1' : ''
+          }`}
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-            <motion.span 
+            <motion.span
               className="whitespace-nowrap"
               layout
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
             >
               你好，我是
             </motion.span>
-            <RotatingTextComponent
-              texts={textArray}
-              mainClassName="px-3 sm:px-4 md:px-3 bg-gradient-to-r from-primary to-green-400 text-[#000E0C] overflow-hidden py-1 sm:py-2 md:py-2 rounded-lg justify-center"
-              staggerFrom="last"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
-              splitBy="characters"
-              auto
-              loop
-            />
+            {isMounted ? (
+              <RotatingTextComponent
+                texts={textArray}
+                mainClassName="px-3 sm:px-4 md:px-3 bg-gradient-to-r from-primary to-green-400 text-[#000E0C] overflow-hidden py-1 sm:py-2 md:py-2 rounded-lg justify-center"
+                staggerFrom="last"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+                splitBy="characters"
+                auto
+                loop
+              />
+            ) : (
+              <span className="px-3 sm:px-4 md:px-3 bg-gradient-to-r from-primary to-green-400 text-[#000E0C] overflow-hidden py-1 sm:py-2 md:py-2 rounded-lg justify-center inline-flex">
+                Ellay
+              </span>
+            )}
           </div>
-        </motion.div>
+        </div>
 
         {/* 其他内容，用原来的 staggerChildren 动画 */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.8,
-                ease: 'easeOut',
-                staggerChildren: 0.2
-              }
-            }
-          }}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="text-center"
-        >
-          <motion.p 
-            className="text-lg md:text-xl text-white/80 mb-12 max-w-3xl mx-auto font-light"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 } }
-            }}
+        <div className="text-center">
+          <p
+            className={`text-lg md:text-xl text-white/80 mb-12 max-w-3xl mx-auto font-light ${
+              isMounted ? 'hero-reveal hero-reveal--2' : ''
+            }`}
           >
             深耕设计 / 产品16年+，从UI · 视觉 到 产品 · AI智能，全赛道闭环经验高手
-          </motion.p>
+          </p>
           {/* 按钮设置pointer-events: auto使其可点击 */}
           <motion.a
             href="#work"
-            className="inline-flex items-center gap-2 px-4 py-2.5 backdrop-blur-lg bg-white/10 text-white rounded-full font-light text-base transition-all border border-[1px] pointer-events-auto"
+            className={`inline-flex items-center gap-2 px-4 py-2.5 backdrop-blur-lg bg-white/10 text-white rounded-full font-light text-base transition-all border border-[1px] pointer-events-auto ${
+              isMounted ? 'hero-reveal hero-reveal--3' : ''
+            }`}
             style={{ borderColor: 'rgba(255, 255, 255, 0.12)' }}
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 236, 178, 0.5)', backgroundColor: 'rgba(0, 236, 178, 0.1)' }}
             whileTap={{ scale: 0.95 }}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.4 } }
-            }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -161,7 +137,7 @@ export default function Hero() {
             </svg>
             查看作品
           </motion.a>
-        </motion.div>
+        </div>
       </div>
 
       {/* 滚动提示 */}

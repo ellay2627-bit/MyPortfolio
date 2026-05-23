@@ -241,44 +241,68 @@ html.lenis, html.lenis body {
 }
 
 .site-loader__inner {
-  width: min(240px, calc(100vw - 48px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.site-loader__track {
-  width: 100%;
-  height: 3px;
-  overflow: hidden;
+.site-loader__spinner {
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(0, 236, 178, 0.95);
+  border-right-color: rgba(0, 236, 178, 0.55);
+  box-shadow: 0 0 14px rgba(0, 236, 178, 0.18);
+  animation: siteLoaderSpin 0.78s linear infinite;
 }
 
-.site-loader__bar {
-  --loader-progress: 0.08;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(var(--loader-progress));
-  transform-origin: left center;
-  border-radius: inherit;
-  background: linear-gradient(90deg, rgba(0, 236, 178, 0.72) 0%, #00ecb2 55%, rgba(140, 255, 224, 0.95) 100%);
-  box-shadow: 0 0 12px rgba(0, 236, 178, 0.32);
-  transition: transform 0.18s ease-out;
+.hero-reveal {
+  animation: heroReveal 0.7s ease-out both;
 }
 
-.site-loader__text {
-  margin-top: 12px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.78);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.42) 100%);
+.hero-reveal--1 {
+  animation-delay: 0.06s;
+}
+
+.hero-reveal--2 {
+  animation-delay: 0.16s;
+}
+
+.hero-reveal--3 {
+  animation-delay: 0.26s;
+}
+
+.skeleton-glow-text {
+  background: linear-gradient(90deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.62) 50%, rgba(255,255,255,0.22) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: siteLoaderTextFlow 2.2s linear infinite;
+  animation: skeletonGlowFlow 2.4s linear infinite;
 }
 
-@keyframes siteLoaderTextFlow {
+@keyframes siteLoaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skeletonGlowFlow {
   0% {
     background-position: 200% 50%;
   }
