@@ -5,6 +5,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import RotatingText from './RotatingText.jsx';
 import './RotatingText.css';
 
+// 延迟加载 ColorBends，只在首屏内容渲染完成后才加载
 const ColorBends = dynamic(() => import('./ColorBends.jsx'), {
   ssr: false,
   loading: () => null,
@@ -19,6 +20,7 @@ export default function Hero() {
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
   const [boxWidth, setBoxWidth] = useState(0);
+  const [showAnimation, setShowAnimation] = useState(false); // 控制动画显示
   
   const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
 
@@ -41,6 +43,16 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  // 延迟显示动画，确保首屏内容先渲染
+  useEffect(() => {
+    // 在页面加载后延迟一段时间再显示动画
+    const timer = setTimeout(() => {
+      setShowAnimation(true);
+    }, 800); // 延迟800ms，让文字内容先显示
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -48,25 +60,27 @@ export default function Hero() {
       ref={ref}
       style={{ background: 'radial-gradient(ellipse at center, #03332A 0%, #011410 100%)' }}
     >
-      {/* ColorBends动态背景，延后加载，先显示静态渐变 */}
-      <ColorBends
-        className="absolute inset-0 z-0"
-        style={{ width: '100%', height: '100%' }}
-        rotation={90}
-        speed={0.2}
-        colors={["#00ECB2"]}
-        transparent
-        autoRotate={0}
-        scale={1.3}
-        frequency={1}
-        warpStrength={1}
-        mouseInfluence={1}
-        parallax={0.8}
-        noise={0.15}
-        iterations={1}
-        intensity={1.7}
-        bandWidth={2}
-      />
+      {/* ColorBends动态背景，延迟加载，先显示静态渐变 */}
+      {showAnimation && (
+        <ColorBends
+          className="absolute inset-0 z-0"
+          style={{ width: '100%', height: '100%' }}
+          rotation={90}
+          speed={0.2}
+          colors={["#00ECB2"]}
+          transparent
+          autoRotate={0}
+          scale={1.3}
+          frequency={1}
+          warpStrength={1}
+          mouseInfluence={1}
+          parallax={0.8}
+          noise={0.15}
+          iterations={1}
+          intensity={1.7}
+          bandWidth={2}
+        />
+      )}
 
       {/* 主要内容 - 设置pointer-events: none让鼠标事件穿透到背景 */}
       <div className="container mx-auto px-4 z-10 relative pointer-events-none">
