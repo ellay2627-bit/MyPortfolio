@@ -1,0 +1,45 @@
+{
+  "id": 1778507025867,
+  "title": "中小学智慧教育数据可视化",
+  "brief": "利用数据可视组件，搭建可视化大屏，结合动态效果让数据更灵动、可视性更佳",
+  "description": "<p>方案将海量、零散的教育底层数据转化为直观的视觉图谱，实现从宏观态势感知到微观细节下钻的无缝衔接，让决策真正做到有据可依、全局在握。</p>",
+  "category": [
+    "其他",
+    "UX设计",
+    "动态设计"
+  ],
+  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-cover.jpg",
+  "ratio": "4:3",
+  "order": 4,
+  "media": [
+    {
+      "id": "image-1778507348365-0",
+      "type": "image",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-0.jpg",
+      "name": "23数据可视化 - 封.jpg",
+      "order": 0
+    },
+    {
+      "id": "image-1778507348371-1",
+      "type": "image",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-1.jpg",
+      "name": "26数据可视化 - 其他.jpg",
+      "order": 1
+    },
+    {
+      "id": "image-1778507348372-2",
+      "type": "image",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-2.jpg",
+      "name": "25数据可视化 - 监控.jpg",
+      "order": 2
+    },
+    {
+      "id": "image-1778507348375-3",
+      "type": "image",
+      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507025867-media-3.jpg",
+      "name": "24数据可视化 - 驾驶舱.jpg",
+      "order": 3
+    }
+  ],
+  "links": []
+}

@@ -19,9 +19,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
-  const [boxWidth, setBoxWidth] = useState(0);
   const [showAnimation, setShowAnimation] = useState(false); // 控制动画显示
-  const [allowHeavyEffects, setAllowHeavyEffects] = useState(false);
   
   const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
 
@@ -31,46 +29,14 @@ export default function Hero() {
     }
   }, [isInView, controls]);
 
-  // 监听绿色框体宽度变化
+  // Hero 背景特效恢复默认显示，但仍稍微延后到首屏内容渲染后挂载
   useEffect(() => {
-    if (!rotatingTextRef.current) return;
-    
-    const observer = new ResizeObserver((entries) => {
-      const width = entries[0].contentRect.width;
-      setBoxWidth(width);
-    });
-    
-    observer.observe(rotatingTextRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  // 弱网/省流量下不加载重背景特效，避免首屏长时间白屏或卡顿
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const connection = (navigator as Navigator & {
-      connection?: {
-        saveData?: boolean;
-        effectiveType?: string;
-      };
-    }).connection;
-
-    const saveDataEnabled = connection?.saveData === true;
-    const slowConnection = connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g' || connection?.effectiveType === '3g';
-
-    setAllowHeavyEffects(!saveDataEnabled && !slowConnection);
-  }, []);
-
-  // 更保守地延后首屏重特效，优先让正文可见
-  useEffect(() => {
-    if (!allowHeavyEffects) return;
-
     const timer = setTimeout(() => {
       setShowAnimation(true);
-    }, 1800);
+    }, 300);
     
     return () => clearTimeout(timer);
-  }, [allowHeavyEffects]);
+  }, []);
 
   return (
     <section
@@ -80,7 +46,7 @@ export default function Hero() {
       style={{ background: 'radial-gradient(ellipse at center, #03332A 0%, #011410 100%)' }}
     >
       {/* ColorBends动态背景，延迟加载，先显示静态渐变 */}
-      {allowHeavyEffects && showAnimation && (
+      {showAnimation && (
         <ColorBends
           className="absolute inset-0 z-0"
           style={{ width: '100%', height: '100%' }}

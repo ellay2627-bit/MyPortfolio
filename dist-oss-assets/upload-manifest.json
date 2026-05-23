@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-05-23T07:57:07.127Z",
+  "outputDir": "/Users/ellay/Documents/Portfolio/dist-oss-assets",
+  "uploadTargets": [
+    "/_next/static/*",
+    "/static/*",
+    "/images/*"
+  ],
+  "note": "这些文件上传到 OSS 后，Vercel 前台可通过 assetPrefix + 绝对静态资源地址访问。"
+}

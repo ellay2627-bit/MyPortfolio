@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-05-23T07:13:38.358Z",
+  "outputDir": "/Users/ellay/Documents/Portfolio/dist-oss",
+  "notes": [
+    "dist-oss 仅包含公开前台站点，不包含本地 admin 后台。",
+    "作品图片继续走现有阿里云 OSS 外链，不重复打包上传。",
+    "如需国内访问更稳，可先使用 OSS 静态网站托管，后续再按需接 CDN。"
+  ]
+}

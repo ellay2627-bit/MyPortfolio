@@ -5,6 +5,8 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"build:oss": "npm run build && node scripts/build-oss-static-site.js",
+		"build:oss-assets": "npm run build && node scripts/build-oss-static-assets.js",
 		"start": "next start",
 		"lint": "next lint",
 		"migrate:storage": "node scripts/migrate-works-to-storage.js",

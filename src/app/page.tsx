@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import SectionLazyLoader from '@/components/SectionLazyLoader';
 
 // 首屏以下模块不参与 SSR，避免首页 HTML 和 RSC 首包过重
 const About = dynamic(() => import('@/components/About'), {
@@ -53,35 +52,25 @@ const LoadingSkeleton = () => (
 export default function Home() {
   return (
     <>
-      {/* 首屏优先加载 - 立即显示 */}
       <Hero />
-      
-      {/* 懒加载About组件 */}
-      <SectionLazyLoader rootMargin="200px 0px" minHeight="40vh">
-        <Suspense fallback={<LoadingSkeleton />}>
-          <div className="hidden md:block">
-            <About />
-          </div>
-        </Suspense>
-      </SectionLazyLoader>
-      
-      {/* 作品区域接近可视区时再加载，避免首页一打开就请求作品列表和详情逻辑 */}
-      <SectionLazyLoader rootMargin="600px 0px" minHeight="60vh" id="work">
-        <Suspense fallback={<WorkSkeleton />}>
-          <Work />
-        </Suspense>
-      </SectionLazyLoader>
-      
-      {/* 懒加载其他组件 */}
-      <SectionLazyLoader rootMargin="200px 0px" minHeight="40vh">
-        <Suspense fallback={<LoadingSkeleton />}>
-          <div className="hidden md:block">
-            <Awards />
-          </div>
-          
-          <Stats />
-        </Suspense>
-      </SectionLazyLoader>
+
+      <Suspense fallback={<LoadingSkeleton />}>
+        <div className="hidden md:block">
+          <About />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<WorkSkeleton />}>
+        <Work />
+      </Suspense>
+
+      <Suspense fallback={<LoadingSkeleton />}>
+        <div className="hidden md:block">
+          <Awards />
+        </div>
+
+        <Stats />
+      </Suspense>
     </>
   );
 }

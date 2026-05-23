@@ -1,18 +1,174 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 export type Section = 'hero' | 'about' | 'work' | 'awards' | 'stats' | 'contact'
 
-// 恢复 About Tab 切换功能，只禁用滚动控制
-export function useSectionScroll() {
-  const [currentSection] = useState<Section>('hero')
-  const [aboutTab, setAboutTab] = useState(0)
+const ANIMATION_DURATION = 600
 
-  const goToSection = () => {}
+export function useSectionScroll() {
+  const [currentSection, setCurrentSection] = useState<Section>('hero')
+  const [aboutTab, setAboutTab] = useState(0)
+  
+  const isAnimating = useRef(false)
+  const animationFrameId = useRef<number | null>(null)
+  const aboutTabRef = useRef(0)
+  const lastScrollTime = useRef(0)
+
+  const easeInOutQuart = (t: number): number => {
+    return t < 0.5 
+      ? 8 * t * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 4) / 2
+  }
+
+  const animateScrollTo = useCallback((targetY: number, duration: number = ANIMATION_DURATION) => {
+    if (isAnimating.current) return false
+    
+    isAnimating.current = true
+    
+    const startY = window.scrollY
+    const startTime = performance.now()
+    
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const easedProgress = easeInOutQuart(progress)
+      
+      window.scrollTo(0, startY + (targetY - startY) * easedProgress)
+      
+      if (progress < 1) {
+        animationFrameId.current = requestAnimationFrame(animate)
+      } else {
+        window.setTimeout(() => {
+          isAnimating.current = false
+        }, 50)
+      }
+    }
+    
+    animationFrameId.current = requestAnimationFrame(animate)
+    return true
+  }, [])
+
+  const goToSection = useCallback((section: Section, options?: { aboutTab?: number }) => {
+    const targetId = section === 'contact' ? 'stats' : section
+    const element = document.getElementById(targetId)
+    if (!element) return
+    
+    const targetY = element.offsetTop
+    const started = animateScrollTo(targetY, ANIMATION_DURATION)
+    if (!started) return
+    
+    setCurrentSection(section)
+    
+    if (section === 'about') {
+      const tab = options?.aboutTab ?? 0
+      aboutTabRef.current = tab
+      setAboutTab(tab)
+    }
+  }, [animateScrollTo])
 
   const changeAboutTab = useCallback((tab: number) => {
+    if (isAnimating.current) return
+    
+    isAnimating.current = true
+    aboutTabRef.current = tab
     setAboutTab(tab)
+    
+    window.setTimeout(() => {
+      isAnimating.current = false
+    }, 100)
   }, [])
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement | null
+      if (timelineModal && timelineModal.contains(e.target as Node)) {
+        return
+      }
+
+      const workModal = document.querySelector('.work-detail-scrollbar') as HTMLElement | null
+      if (workModal && workModal.contains(e.target as Node)) {
+        return
+      }
+      
+      const now = Date.now()
+      const scrollTop = window.scrollY
+      const viewportHeight = window.innerHeight
+      
+      const heroElement = document.getElementById('hero')
+      const aboutElement = document.getElementById('about')
+      const workElement = document.getElementById('work')
+      
+      if (!heroElement || !aboutElement || !workElement) return
+      
+      const aboutTop = aboutElement.offsetTop
+      const workTop = workElement.offsetTop
+      
+      const inAbout =
+        scrollTop >= aboutTop - viewportHeight / 2 &&
+        scrollTop < workTop - viewportHeight / 2
+      
+      if (!inAbout && (isAnimating.current || now - lastScrollTime.current < 800)) {
+        e.preventDefault()
+        e.stopPropagation()
+        return
+      }
+      
+      const isScrollingDown = e.deltaY > 0
+      const inHero = scrollTop < aboutTop - viewportHeight / 2
+      const inWork = scrollTop >= workTop - viewportHeight / 2
+      
+      if (inHero) {
+        if (isScrollingDown) {
+          e.preventDefault()
+          e.stopPropagation()
+          lastScrollTime.current = now
+          goToSection('about')
+        }
+        return
+      }
+      
+      if (inAbout) {
+        e.preventDefault()
+        e.stopPropagation()
+        
+        const currentTab = aboutTabRef.current
+        
+        if (isScrollingDown) {
+          if (currentTab < 4) {
+            changeAboutTab(currentTab + 1)
+          } else {
+            lastScrollTime.current = now
+            goToSection('work')
+          }
+        } else {
+          if (currentTab > 0) {
+            changeAboutTab(currentTab - 1)
+          } else {
+            lastScrollTime.current = now
+            goToSection('hero')
+          }
+        }
+        return
+      }
+      
+      if (inWork) {
+        if (!isScrollingDown && scrollTop <= workTop + viewportHeight / 2) {
+          e.preventDefault()
+          e.stopPropagation()
+          lastScrollTime.current = now
+          goToSection('about', { aboutTab: 4 })
+        }
+      }
+    }
+    
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true })
+    return () => {
+      window.removeEventListener('wheel', handleWheel, { capture: true })
+      if (animationFrameId.current !== null) {
+        cancelAnimationFrame(animationFrameId.current)
+      }
+    }
+  }, [goToSection, changeAboutTab])
 
   return {
     currentSection,
