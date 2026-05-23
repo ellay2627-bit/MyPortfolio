@@ -2,6 +2,7 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import NavbarWrapper from './NavbarWrapper';
+import SiteLoader from './SiteLoader';
 // 延迟加载非关键组件
 const NeoCursor = dynamic(() => import('./NeoCursor'), { ssr: false, loading: () => null });
 const BackToTop = dynamic(() => import('./BackToTop'), { ssr: false, loading: () => null });
@@ -29,6 +30,7 @@ function LayoutContentInner({ children }: LayoutContentProps) {
 
   return (
     <>
+      {!isAdminPage && <SiteLoader />}
       {!isAdminPage && <NavbarWrapper />}
       {/* 暂时禁用，解决网速慢的问题 */}
       {/* {!isAdminPage && <AboutImagePreloader />} */}
@@ -51,4 +53,3 @@ export function LayoutContent({ children }: LayoutContentProps) {
     </SectionScrollProvider>
   );
 }
-

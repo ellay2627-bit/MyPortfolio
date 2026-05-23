@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
-import { getStaticDataUrl } from '@/lib/ossPublicPath';
 
 // 静态数据缓存
 let listData: any[] = [];
@@ -16,7 +15,7 @@ const loadListData = async () => {
         try {
           // 1. 优先从 public/static 加载（发布后的静态文件）
           try {
-            const response = await fetch(getStaticDataUrl('/static/works-list.json'));
+            const response = await fetch('/static/works-list.json');
             if (response.ok) {
               const data = await response.json();
               if (Array.isArray(data) && data.length > 0) {
@@ -49,7 +48,7 @@ const loadListData = async () => {
 // 加载作品详情数据 - 只从静态文件加载，快速高效
 const loadWorkDetail = async (workId: string): Promise<any | null> => {
   try {
-    const response = await fetch(getStaticDataUrl(`/static/work-${workId}.json`));
+    const response = await fetch(`/static/work-${workId}.json`);
     if (response.ok) {
       const data = await response.json();
       console.log('✅ 从静态文件加载详情:', workId);
@@ -436,9 +435,6 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                     onClose();
                   } else {
                     setShowDetailModal(false);
-                    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/works/')) {
-                      window.location.href = '/#work';
-                    }
                   }
                 }}
                 className="p-2 rounded-full hover:bg-gray-800 transition-all text-white flex-shrink-0 ml-4"
@@ -693,7 +689,6 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const loadMoreRef = useRef<HTMLDivElement>(null); // 无限滚动哨兵元素
-  const [dataBootstrapped, setDataBootstrapped] = useState(false);
 
   // 数据更新处理函数
   const handleDataUpdate = useCallback(() => {
@@ -795,12 +790,11 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // 作品区真正接近可视区时再初始化数据，避免首页一打开就抢占带宽
+  // 组件加载时立即获取数据
   useEffect(() => {
-    if (!isInView || dataBootstrapped) return;
+    // 立即开始初始化数据
     initializeData();
-    setDataBootstrapped(true);
-  }, [isInView, dataBootstrapped]);
+  }, []);
 
   // 保存详情页状态到本地存储
   useEffect(() => {
@@ -1037,7 +1031,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
       console.log('从静态文件获取作品详情:', workId);
       
       // 直接从静态文件加载，不依赖 data.json
-      const response = await fetch(getStaticDataUrl(`/static/work-${workId}.json`));
+      const response = await fetch(`/static/work-${workId}.json`);
       if (!response.ok) {
         console.error('静态详情文件不存在:', workId);
         return null;

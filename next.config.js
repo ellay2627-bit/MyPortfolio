@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
-const OSS_BASE_URL = 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com';
-const useOssStaticAssets = process.env.NEXT_PUBLIC_USE_OSS_STATIC === 'true';
-
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: useOssStaticAssets ? OSS_BASE_URL : '',
   images: {
     domains: ['localhost', 'vercel.app', 'cloudflarepages.com', 'ellay.top', 'my-resume-images-2026.oss-cn-beijing.aliyuncs.com'],
     formats: ['image/avif', 'image/webp'],

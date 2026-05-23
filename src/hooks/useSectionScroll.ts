@@ -13,6 +13,7 @@ export function useSectionScroll() {
   const animationFrameId = useRef<number | null>(null)
   const aboutTabRef = useRef(0)
   const lastScrollTime = useRef(0)
+  const initialized = useRef(false)
 
   const easeInOutQuart = (t: number): number => {
     return t < 0.5 
@@ -38,7 +39,7 @@ export function useSectionScroll() {
       if (progress < 1) {
         animationFrameId.current = requestAnimationFrame(animate)
       } else {
-        window.setTimeout(() => {
+        setTimeout(() => {
           isAnimating.current = false
         }, 50)
       }
@@ -49,8 +50,7 @@ export function useSectionScroll() {
   }, [])
 
   const goToSection = useCallback((section: Section, options?: { aboutTab?: number }) => {
-    const targetId = section === 'contact' ? 'stats' : section
-    const element = document.getElementById(targetId)
+    const element = document.getElementById(section)
     if (!element) return
     
     const targetY = element.offsetTop
@@ -73,24 +73,29 @@ export function useSectionScroll() {
     aboutTabRef.current = tab
     setAboutTab(tab)
     
-    window.setTimeout(() => {
+    setTimeout(() => {
       isAnimating.current = false
     }, 100)
   }, [])
 
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement | null
-      if (timelineModal && timelineModal.contains(e.target as Node)) {
-        return
-      }
+    // 延迟 2 秒后初始化，确保首屏快速加载不卡住！
+    const initTimer = setTimeout(() => {
+      initialized.current = true
+    }, 2000)
 
-      const workModal = document.querySelector('.work-detail-scrollbar') as HTMLElement | null
-      if (workModal && workModal.contains(e.target as Node)) {
-        return
-      }
+    const handleWheel = (e: WheelEvent) => {
+      // 只有初始化完成后才启用滚动控制！
+      if (!initialized.current) return
+      
+      // 检查弹窗
+      const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement
+      if (timelineModal && timelineModal.contains(e.target as Node)) return
+      const workModal = document.querySelector('.work-detail-scrollbar') as HTMLElement
+      if (workModal && workModal.contains(e.target as Node)) return
       
       const now = Date.now()
+      
       const scrollTop = window.scrollY
       const viewportHeight = window.innerHeight
       
@@ -103,9 +108,8 @@ export function useSectionScroll() {
       const aboutTop = aboutElement.offsetTop
       const workTop = workElement.offsetTop
       
-      const inAbout =
-        scrollTop >= aboutTop - viewportHeight / 2 &&
-        scrollTop < workTop - viewportHeight / 2
+      const inAbout = scrollTop >= aboutTop - viewportHeight / 2 && 
+                      scrollTop < workTop - viewportHeight / 2
       
       if (!inAbout && (isAnimating.current || now - lastScrollTime.current < 800)) {
         e.preventDefault()
@@ -114,6 +118,7 @@ export function useSectionScroll() {
       }
       
       const isScrollingDown = e.deltaY > 0
+      
       const inHero = scrollTop < aboutTop - viewportHeight / 2
       const inWork = scrollTop >= workTop - viewportHeight / 2
       
@@ -158,13 +163,15 @@ export function useSectionScroll() {
           lastScrollTime.current = now
           goToSection('about', { aboutTab: 4 })
         }
+        return
       }
     }
     
     window.addEventListener('wheel', handleWheel, { passive: false, capture: true })
     return () => {
+      clearTimeout(initTimer)
       window.removeEventListener('wheel', handleWheel, { capture: true })
-      if (animationFrameId.current !== null) {
+      if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
     }

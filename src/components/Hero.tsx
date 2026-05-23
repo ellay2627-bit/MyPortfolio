@@ -19,6 +19,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
+  const [boxWidth, setBoxWidth] = useState(0);
   const [showAnimation, setShowAnimation] = useState(false); // 控制动画显示
   
   const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
@@ -29,11 +30,24 @@ export default function Hero() {
     }
   }, [isInView, controls]);
 
-  // Hero 背景特效恢复默认显示，但仍稍微延后到首屏内容渲染后挂载
+  // 监听绿色框体宽度变化
+  useEffect(() => {
+    if (!rotatingTextRef.current) return;
+    
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      setBoxWidth(width);
+    });
+    
+    observer.observe(rotatingTextRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // 让特效快速显示，不延迟
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAnimation(true);
-    }, 300);
+    }, 100); // 快速显示特效
     
     return () => clearTimeout(timer);
   }, []);
