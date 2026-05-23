@@ -13,10 +13,19 @@ interface SectionScrollContextType {
 const SectionScrollContext = createContext<SectionScrollContextType | undefined>(undefined)
 
 export function SectionScrollProvider({ children }: { children: ReactNode }) {
-  const scroll = useSectionScroll()
-  
+  // 使用简化的 hook，不添加任何会卡住的逻辑！
+  const { currentSection, aboutTab, goToSection, changeAboutTab, scrollToSection } = useSectionScroll()
+
   return (
-    <SectionScrollContext.Provider value={scroll}>
+    <SectionScrollContext.Provider 
+      value={{
+        currentSection,
+        aboutTab,
+        goToSection,
+        changeAboutTab,
+        scrollToSection,
+      }}
+    >
       {children}
     </SectionScrollContext.Provider>
   )
@@ -25,7 +34,14 @@ export function SectionScrollProvider({ children }: { children: ReactNode }) {
 export function useSectionScrollContext() {
   const context = useContext(SectionScrollContext)
   if (context === undefined) {
-    throw new Error('useSectionScrollContext must be used within a SectionScrollProvider')
+    // 返回安全的默认值
+    return {
+      currentSection: 'hero',
+      aboutTab: 0,
+      goToSection: () => {},
+      changeAboutTab: () => {},
+      scrollToSection: () => {},
+    }
   }
   return context
 }

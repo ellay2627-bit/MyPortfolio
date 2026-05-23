@@ -13,7 +13,7 @@ export function useSectionScroll() {
   const animationFrameId = useRef<number | null>(null)
   const aboutTabRef = useRef(0)
   const lastScrollTime = useRef(0)
-  const isInitialized = useRef(false)
+  const initialized = useRef(false)
 
   const easeInOutQuart = (t: number): number => {
     return t < 0.5 
@@ -79,25 +79,20 @@ export function useSectionScroll() {
   }, [])
 
   useEffect(() => {
-    // 延迟初始化，确保首屏内容先加载
+    // 延迟 2 秒后初始化，确保首屏快速加载不卡住！
     const initTimer = setTimeout(() => {
-      isInitialized.current = true
-    }, 1000)
-    
+      initialized.current = true
+    }, 2000)
+
     const handleWheel = (e: WheelEvent) => {
-      // 如果还没初始化，不做任何处理，允许正常滚动
-      if (!isInitialized.current) return
+      // 只有初始化完成后才启用滚动控制！
+      if (!initialized.current) return
       
-      // 检查是否有弹窗打开 - 如果有，不阻止滚动
+      // 检查弹窗
       const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement
-      if (timelineModal && timelineModal.contains(e.target as Node)) {
-        return
-      }
-      // 检查Work详情弹窗是否打开
+      if (timelineModal && timelineModal.contains(e.target as Node)) return
       const workModal = document.querySelector('.work-detail-scrollbar') as HTMLElement
-      if (workModal && workModal.contains(e.target as Node)) {
-        return
-      }
+      if (workModal && workModal.contains(e.target as Node)) return
       
       const now = Date.now()
       
@@ -108,7 +103,6 @@ export function useSectionScroll() {
       const aboutElement = document.getElementById('about')
       const workElement = document.getElementById('work')
       
-      // 如果元素不存在，不做任何处理，允许正常滚动
       if (!heroElement || !aboutElement || !workElement) return
       
       const aboutTop = aboutElement.offsetTop
@@ -117,7 +111,6 @@ export function useSectionScroll() {
       const inAbout = scrollTop >= aboutTop - viewportHeight / 2 && 
                       scrollTop < workTop - viewportHeight / 2
       
-      // 只有在Hero和Work区域才使用冷却时间，About区域不使用
       if (!inAbout && (isAnimating.current || now - lastScrollTime.current < 800)) {
         e.preventDefault()
         e.stopPropagation()
@@ -126,7 +119,6 @@ export function useSectionScroll() {
       
       const isScrollingDown = e.deltaY > 0
       
-      // 判断当前在哪个区域
       const inHero = scrollTop < aboutTop - viewportHeight / 2
       const inWork = scrollTop >= workTop - viewportHeight / 2
       
@@ -179,6 +171,9 @@ export function useSectionScroll() {
     return () => {
       clearTimeout(initTimer)
       window.removeEventListener('wheel', handleWheel, { capture: true })
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current)
+      }
     }
   }, [goToSection, changeAboutTab])
 

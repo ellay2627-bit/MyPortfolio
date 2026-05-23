@@ -6,7 +6,6 @@ const About = lazy(() => import('@/components/About'));
 const Work = lazy(() => import('@/components/Work'));
 const Awards = lazy(() => import('@/components/Awards'));
 const Stats = lazy(() => import('@/components/Stats'));
-const VibeBubble = lazy(() => import('@/components/VibeBubble'));
 
 // 作品区域的骨架屏
 const WorkSkeleton = () => (
@@ -59,10 +58,6 @@ export default function Home() {
         </div>
         
         <Stats />
-        
-        <div className="hidden md:block">
-          <VibeBubble />
-        </div>
       </Suspense>
     </>
   );
