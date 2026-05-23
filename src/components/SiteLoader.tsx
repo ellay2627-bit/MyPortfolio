@@ -7,6 +7,8 @@ export default function SiteLoader() {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add('use-system-cursor');
+
     const finish = () => {
       window.setTimeout(() => {
         setIsLeaving(true);
@@ -14,6 +16,7 @@ export default function SiteLoader() {
 
       window.setTimeout(() => {
         setIsVisible(false);
+        document.body.classList.remove('use-system-cursor');
       }, 480);
     };
 
@@ -25,6 +28,7 @@ export default function SiteLoader() {
     window.addEventListener('load', finish, { once: true });
 
     return () => {
+      document.body.classList.remove('use-system-cursor');
       window.removeEventListener('load', finish);
     };
   }, []);

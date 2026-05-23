@@ -88,6 +88,11 @@ a, button, [cursor-pointer], .work-card, .project-card, .pc-contact-btn {
   cursor: none !important;
 }
 
+body.use-system-cursor,
+body.use-system-cursor * {
+  cursor: auto !important;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }
