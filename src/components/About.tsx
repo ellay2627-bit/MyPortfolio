@@ -1905,7 +1905,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 zIndex: 3
               }}>
                 <img
-                  src="/images/about/img/me_ Resume.png"
+                  src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_%20Resume.webp"
                   alt=""
                   style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                  loading="lazy" />

@@ -13,6 +13,7 @@ export function useSectionScroll() {
   const animationFrameId = useRef<number | null>(null)
   const aboutTabRef = useRef(0)
   const lastScrollTime = useRef(0)
+  const isInitialized = useRef(false)
 
   const easeInOutQuart = (t: number): number => {
     return t < 0.5 
@@ -78,7 +79,15 @@ export function useSectionScroll() {
   }, [])
 
   useEffect(() => {
+    // 延迟初始化，确保首屏内容先加载
+    const initTimer = setTimeout(() => {
+      isInitialized.current = true
+    }, 1000)
+    
     const handleWheel = (e: WheelEvent) => {
+      // 如果还没初始化，不做任何处理，允许正常滚动
+      if (!isInitialized.current) return
+      
       // 检查是否有弹窗打开 - 如果有，不阻止滚动
       const timelineModal = document.querySelector('[data-lenis-prevent]') as HTMLElement
       if (timelineModal && timelineModal.contains(e.target as Node)) {
@@ -99,6 +108,7 @@ export function useSectionScroll() {
       const aboutElement = document.getElementById('about')
       const workElement = document.getElementById('work')
       
+      // 如果元素不存在，不做任何处理，允许正常滚动
       if (!heroElement || !aboutElement || !workElement) return
       
       const aboutTop = aboutElement.offsetTop
@@ -167,6 +177,7 @@ export function useSectionScroll() {
     
     window.addEventListener('wheel', handleWheel, { passive: false, capture: true })
     return () => {
+      clearTimeout(initTimer)
       window.removeEventListener('wheel', handleWheel, { capture: true })
     }
   }, [goToSection, changeAboutTab])

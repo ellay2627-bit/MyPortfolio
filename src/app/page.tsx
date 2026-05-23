@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from '@/components/Hero';
-import Work from '@/components/Work';
 
-// 懒加载非首屏组件
+// 懒加载所有非首屏组件
 const About = lazy(() => import('@/components/About'));
+const Work = lazy(() => import('@/components/Work'));
 const Awards = lazy(() => import('@/components/Awards'));
 const Stats = lazy(() => import('@/components/Stats'));
 const VibeBubble = lazy(() => import('@/components/VibeBubble'));
@@ -47,8 +47,10 @@ export default function Home() {
         </div>
       </Suspense>
       
-      {/* 作品区域 - 直接导入，不使用懒加载 */}
-      <Work />
+      {/* 作品区域 - 使用懒加载 */}
+      <Suspense fallback={<WorkSkeleton />}>
+        <Work />
+      </Suspense>
       
       {/* 懒加载其他组件 */}
       <Suspense fallback={<LoadingSkeleton />}>

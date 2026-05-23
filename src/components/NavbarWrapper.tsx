@@ -6,11 +6,11 @@ import { setupScrollRestoration } from '@/hooks/useScrollRestoration';
 export default function NavbarWrapper() {
   const [showEnhancements, setShowEnhancements] = useState(false);
 
-  // 现在代码很小了，几乎立即启动 Lenis
+  // 快速加载 Lenis 功能
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowEnhancements(true);
-    }, 100); // 几乎立即显示！
+    }, 300); // 0.3秒后就加载
     return () => clearTimeout(timer);
   }, []);
 

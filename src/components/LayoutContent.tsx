@@ -19,11 +19,11 @@ function LayoutContentInner({ children }: LayoutContentProps) {
   const isAdminPage = pathname?.startsWith('/admin');
   const [showEnhancements, setShowEnhancements] = useState(false);
 
-  // 现在代码很小了，几乎立即加载增强功能
+  // 快速加载增强功能
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowEnhancements(true);
-    }, 100); // 几乎立即显示！
+    }, 500); // 0.5秒后就加载
     return () => clearTimeout(timer);
   }, []);
 

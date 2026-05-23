@@ -5,7 +5,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import RotatingText from './RotatingText.jsx';
 import './RotatingText.css';
 
-// 延迟加载 ColorBends，极度延迟，保证首屏优先
+// 完全禁用 ssr，让颜色弯曲特效只在客户端加载，不阻塞首屏
 const ColorBends = dynamic(() => import('./ColorBends.jsx'), {
   ssr: false,
   loading: () => null,
@@ -43,11 +43,11 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  // 现在代码很小了，几乎立即显示动画！
+  // 让特效快速显示，不延迟
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAnimation(true);
-    }, 50); // 几乎立即显示！
+    }, 100); // 快速显示特效
     
     return () => clearTimeout(timer);
   }, []);

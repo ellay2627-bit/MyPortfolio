@@ -95,21 +95,8 @@ export function prefetchAboutModule(): void {
  * 多次调用共享同一 Promise，不会重复请求。
  */
 export function preloadAboutAssets(): Promise<void> {
-  if (preloadPromise) return preloadPromise
-
-  preloadPromise = (async () => {
-    try {
-      // 只预加载优先级最高的图片，装饰图完全不预加载
-      await preloadBatch(ABOUT_PRIORITY_IMAGES, 1)
-      // 装饰图完全不预加载，按需加载
-      // await preloadBatch(ABOUT_DECORATION_IMAGES)
-      // await preloadBatch(ABOUT_ICON_IMAGES)
-    } catch {
-      preloadPromise = null
-    }
-  })()
-
-  return preloadPromise
+  // 完全禁用预加载，不做任何网络请求
+  return Promise.resolve()
 }
 
 export function isAboutAssetPreloaded(url: string): boolean {

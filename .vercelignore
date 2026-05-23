@@ -6,10 +6,27 @@ src/components/LiquidEther.css.backup
 src/components/LiquidEther.jsx.backup
 src/components/LiquidEther.jsx.old
 tsconfig.tsbuildinfo
-# Large image files - already on OSS
+# Large image files - already on OSS (作品图片都在OSS，about图标留着)
 data/images/
 public/images/works/
 # Backup and script files
 scripts/
 *.md
 *.yml
+*.yaml
+*.zip
+*.rar
+*.7z
+# Git files
+.git/
+.gitignore
+# Build files
+.next/
+out/
+dist/
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
