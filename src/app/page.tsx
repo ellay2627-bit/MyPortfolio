@@ -1,41 +1,67 @@
-import dynamic from 'next/dynamic';
+import React, { lazy, Suspense } from 'react';
 import Hero from '@/components/Hero';
-import SectionLazyLoader from '@/components/SectionLazyLoader';
+import Work from '@/components/Work';
 
-const About = dynamic(() => import('@/components/About'), { loading: () => null, ssr: false });
-const Work = dynamic(() => import('@/components/Work'), { loading: () => null, ssr: false });
-const Awards = dynamic(() => import('@/components/Awards'), { loading: () => null, ssr: false });
-const Stats = dynamic(() => import('@/components/Stats'), { loading: () => null, ssr: false });
-const VibeBubble = dynamic(() => import('@/components/VibeBubble'), { loading: () => null, ssr: false });
+// 懒加载非首屏组件
+const About = lazy(() => import('@/components/About'));
+const Awards = lazy(() => import('@/components/Awards'));
+const Stats = lazy(() => import('@/components/Stats'));
+const VibeBubble = lazy(() => import('@/components/VibeBubble'));
+
+// 作品区域的骨架屏
+const WorkSkeleton = () => (
+  <div className="py-48 md:py-32">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-col items-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-8">我的<span className="text-primary">作品</span></h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-16 w-full">
+          {/* 显示6个骨架屏，与实际作品数量一致 */}
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="aspect-[4/3] bg-gray-800 rounded-xl animate-pulse"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// 其他区域的骨架屏
+const LoadingSkeleton = () => (
+  <div className="py-20">
+    <div className="container mx-auto px-4">
+      <div className="h-64 bg-gray-800 rounded-xl animate-pulse"></div>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
     <>
       {/* 首屏优先加载 - 立即显示 */}
       <Hero />
-
-      {/* 只有 About 区域进入视口才加载组件 */}
-      <SectionLazyLoader id="about" rootMargin="600px 0px" minHeight="820px" className="hidden md:block">
-        <About />
-      </SectionLazyLoader>
-
-      {/* 作品区域按需加载，避免页面首屏加载全部内容 */}
-      <SectionLazyLoader id="work" rootMargin="400px 0px" minHeight="1000px">
-        <Work />
-      </SectionLazyLoader>
-
-      {/* Awards 区域按需加载 */}
-      <SectionLazyLoader id="awards" rootMargin="400px 0px" minHeight="680px" className="hidden md:block">
-        <Awards />
-      </SectionLazyLoader>
-
-      {/* 其他非首屏组件按需加载 */}
-      <SectionLazyLoader id="stats" rootMargin="400px 0px" minHeight="680px">
+      
+      {/* 懒加载About组件 */}
+      <Suspense fallback={<LoadingSkeleton />}>
+        <div className="hidden md:block">
+          <About />
+        </div>
+      </Suspense>
+      
+      {/* 作品区域 - 直接导入，不使用懒加载 */}
+      <Work />
+      
+      {/* 懒加载其他组件 */}
+      <Suspense fallback={<LoadingSkeleton />}>
+        <div className="hidden md:block">
+          <Awards />
+        </div>
+        
         <Stats />
-      </SectionLazyLoader>
-      <SectionLazyLoader rootMargin="400px 0px" minHeight="1px" className="hidden md:block">
-        <VibeBubble />
-      </SectionLazyLoader>
+        
+        <div className="hidden md:block">
+          <VibeBubble />
+        </div>
+      </Suspense>
     </>
   );
 }

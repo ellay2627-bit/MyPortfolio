@@ -1,0 +1,10 @@
+name = "ellay-portfolio"
+type = "nextjs"
+
+[build]
+command = "npm run build"
+cwd = "."
+publish = ".next"
+
+[env]
+NODE_ENV = "production"

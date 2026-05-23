@@ -3,5 +3,8 @@
     "deploymentEnabled": {
       "main": true
     }
-  }
+  },
+  "buildCommand": "rm -rf .next/cache && next build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
 }

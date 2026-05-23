@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'vercel.app'],
+    domains: ['localhost', 'vercel.app', 'cloudflarepages.com', 'ellay.top'],
     formats: ['image/avif', 'image/webp'],
   },
   async headers() {
