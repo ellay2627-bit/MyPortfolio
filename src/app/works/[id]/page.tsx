@@ -1,33 +1,28 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import React from 'react';
 import Work from '@/components/Work';
+import worksList from '../../../../public/static/works-list.json';
 
-export default function WorkDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const [workId, setWorkId] = useState<string | null>(null);
-  const [showDirectModal, setShowDirectModal] = useState(false);
+export const dynamicParams = false;
 
-  useEffect(() => {
-    if (params.id) {
-      setWorkId(String(params.id));
-      setShowDirectModal(true);
-    }
-  }, [params.id]);
+export function generateStaticParams() {
+  return (worksList as Array<{ id: string | number }>).map((work) => ({
+    id: String(work.id),
+  }));
+}
 
-  const handleCloseDirectModal = () => {
-    setShowDirectModal(false);
-    setWorkId(null);
-    // 导航回主页
-    router.push('/#work');
+interface WorkDetailPageProps {
+  params: {
+    id: string;
   };
+}
+
+export default function WorkDetailPage({ params }: WorkDetailPageProps) {
+  const workId = params?.id ? String(params.id) : null;
 
   return (
-    <Work 
-      directWorkId={showDirectModal ? workId : null}
-      onDirectClose={handleCloseDirectModal}
+    <Work
+      directWorkId={workId}
+      onDirectClose={undefined}
     />
   );
 }

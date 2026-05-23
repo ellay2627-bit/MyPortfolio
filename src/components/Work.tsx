@@ -435,6 +435,9 @@ const WorkDetailModal: React.FC<WorkDetailModalProps> = React.memo(({
                     onClose();
                   } else {
                     setShowDetailModal(false);
+                    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/works/')) {
+                      window.location.href = '/#work';
+                    }
                   }
                 }}
                 className="p-2 rounded-full hover:bg-gray-800 transition-all text-white flex-shrink-0 ml-4"
@@ -689,6 +692,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const loadMoreRef = useRef<HTMLDivElement>(null); // 无限滚动哨兵元素
+  const [dataBootstrapped, setDataBootstrapped] = useState(false);
 
   // 数据更新处理函数
   const handleDataUpdate = useCallback(() => {
@@ -790,11 +794,12 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // 组件加载时立即获取数据
+  // 作品区真正接近可视区时再初始化数据，避免首页一打开就抢占带宽
   useEffect(() => {
-    // 立即开始初始化数据
+    if (!isInView || dataBootstrapped) return;
     initializeData();
-  }, []);
+    setDataBootstrapped(true);
+  }, [isInView, dataBootstrapped]);
 
   // 保存详情页状态到本地存储
   useEffect(() => {
