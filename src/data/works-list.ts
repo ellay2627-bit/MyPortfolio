@@ -59,14 +59,52 @@ export const worksList: WorkItem[] = [
   {
     "id": 1778498670904,
     "title": "国家智慧教育读书平台",
-    "brief": "国家中小学智慧教育平台中的读书版块,为亿万师生、家长提供专业、权威的阅读资源",
+    "brief": "告别千篇一律的“G端感”与刻板印象，本方案以新中式极简笔触重塑门户视觉，通过精致的3D纸雕插画和呼吸感设计，证明了G端产品亦能拥有超脱平庸、清新脱俗的人文意蕴。",
     "category": [
-      "视觉设计",
-      "UX设计"
+      "UX设计",
+      "动态设计"
     ],
     "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498670904-cover.jpg",
     "ratio": "4:3",
     "order": 5
+  },
+  {
+    "id": 1778498879461,
+    "title": "Sandbox FX 产品落地页",
+    "brief": "网龙华渔成功收购promethean，基于这一历史性合作，结合新型互动课堂的衍生，我们决定做点不一样的创新",
+    "category": [
+      "UX设计",
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-cover.jpg",
+    "ratio": "4:3",
+    "order": 6
+  },
+  {
+    "id": 1779086805656,
+    "title": "Sunyur商越品牌识别系统升级",
+    "brief": "通过系统的推导，尝试提升品牌价值，共赢品牌",
+    "category": [
+      "视觉设计",
+      "品牌设计",
+      "动态设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779086805656-cover.jpg",
+    "ratio": "4:3",
+    "order": 7
+  },
+  {
+    "id": 1778506874277,
+    "title": "UED视觉升级 数字分身",
+    "brief": "UED 团队‘专业可信且充满探索欲’的年轻化品牌心智",
+    "category": [
+      "品牌设计",
+      "动态设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506874277-cover.webp",
+    "ratio": "4:3",
+    "order": 9
   },
   {
     "id": 1779276584797,
@@ -82,161 +120,215 @@ export const worksList: WorkItem[] = [
     "order": 9
   },
   {
-    "id": 1778498879461,
-    "title": "智教中国品牌升级",
-    "brief": "以科技为主题的品牌焕新，通过动态图形强化品牌记忆点",
+    "id": 1779087549839,
+    "title": "Sunyur商越官方手册印刷册",
+    "brief": "官方手册可以清晰明了地树立品牌形象，达成共赢",
     "category": [
       "视觉设计",
-      "动态设计"
+      "其他"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-cover.jpg",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-cover.jpg",
     "ratio": "4:3",
     "order": 10
   },
   {
-    "id": 1778508748968,
-    "title": "Vividly - AI 动态生成平台",
-    "brief": "一款帮助用户通过AI生成动态图片的工具类产品，能够快速、智能的将图片生成动态效果",
+    "id": 1776770500445,
+    "title": "Sunyur商越「新技术重构采购价值」年度峰会视觉设计",
+    "brief": "希望能够通过碰撞的质感，延续商越【变革与重构】的战略意义。",
     "category": [
       "视觉设计",
-      "UX设计"
+      "动态设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508748968-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770500445-cover.webp",
     "ratio": "4:3",
     "order": 11
   },
   {
-    "id": 1778502248177,
-    "title": "AIGC 探索-产品UI",
-    "brief": "基于AI能力的教育助手设计实践，通过AI辅助用户进行学习",
+    "id": 1778508076843,
+    "title": "jinstar 概念声音APP",
+    "brief": "用声音社交",
     "category": [
-      "视觉设计",
+      "动态设计",
       "UX设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502248177-cover.jpg",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508076843-cover.webp",
+    "ratio": "4:3",
+    "order": 12
+  },
+  {
+    "id": 1779090375446,
+    "title": "中小学习题库优化升级",
+    "brief": "解决业务痛点，提升用户体验，成本可控下的最佳实践",
+    "category": [
+      "UX设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090375446-cover.jpg",
     "ratio": "4:3",
     "order": 13
   },
   {
-    "id": 1778508444788,
-    "title": "智能体设计探索",
-    "brief": "一款教育型智能体的设计探索",
+    "id": 1778506616824,
+    "title": "天晴互动娱乐品牌识别",
+    "brief": "网龙旗下游戏娱乐品牌，完成品牌蜕变，为其设计一套更有趣的国际化LOGO及延展设计",
     "category": [
       "视觉设计",
-      "UX设计"
+      "品牌设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508444788-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506616824-cover.webp",
     "ratio": "4:3",
     "order": 14
   },
   {
     "id": 1778510934180,
-    "title": "MOCO空间设计",
-    "brief": "结合线下艺术空间的品牌设计",
+    "title": "中小学产品UX升级",
+    "brief": "中小学产品整体优化，完成蜕变",
     "category": [
-      "视觉设计",
       "UX设计"
     ],
     "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510934180-cover.jpg",
     "ratio": "4:3",
+    "order": 15
+  },
+  {
+    "id": 1778509209617,
+    "title": "华渔教育 官方品牌文档PPT设计",
+    "brief": "教育的本质是简单高效",
+    "category": [
+      "品牌设计",
+      "其他"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509209617-cover.webp",
+    "ratio": "4:3",
     "order": 16
   },
   {
-    "id": 1778507560399,
-    "title": "数字人互动平台",
-    "brief": "一款数字人相关的互动产品设计",
+    "id": 1778510420037,
+    "title": "英语点读英语",
+    "brief": "哪里不会点哪里的英语点读轻量级应用",
     "category": [
-      "视觉设计",
       "UX设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507560399-cover.png",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-cover.png",
     "ratio": "4:3",
     "order": 17
   },
   {
-    "id": 1778510420037,
-    "title": "育小苗品牌及界面",
-    "brief": "结合育小苗IP形象，进行界面设计及相关品牌设计",
+    "id": 1778508981409,
+    "title": "Sunyur商越千机阁发布开场视频",
+    "brief": "让 SaaS比 自己 更强大！",
     "category": [
+      "动态设计",
       "视觉设计",
-      "UX设计"
+      "其他"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778510420037-cover.png",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508981409-cover.webp",
     "ratio": "4:3",
     "order": 18
   },
   {
     "id": 1778502878297,
-    "title": "中小学智慧教育 - 2025焕新",
-    "brief": "国家中小学智慧教育平台2025年度焕新设计，从界面、交互、动效 全方位升级平台体验",
+    "title": "Yurdesign2.0 设计语言发布keynote设计",
+    "brief": "致力于让每个使用商越采购数字化系统的用户都享有C端互联网产品的极致体验",
     "category": [
       "视觉设计",
-      "UX设计",
-      "动态设计"
+      "动态设计",
+      "其他"
     ],
     "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502878297-cover.webp",
+    "ratio": "4:3",
+    "order": 19
+  },
+  {
+    "id": 1778509415274,
+    "title": "SandboxFX 沙盘新一代互动教学 品牌设计",
+    "brief": "一款应用与大屏，展示与编辑沙盘，灵活好用的教育沙盘产品",
+    "category": [
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509415274-cover.webp",
     "ratio": "4:3",
     "order": 20
   },
   {
-    "id": 1778509415274,
-    "title": "育小苗智能体 - 界面&动效",
-    "brief": "结合 AI 智能体的产品实践，对界面与动效进行设计",
+    "id": 1779090969749,
+    "title": "中小学后台产品管理专辑",
+    "brief": "后台的轻松管理任务",
     "category": [
-      "视觉设计",
+      "UX设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-cover.jpg",
+    "ratio": "4:3",
+    "order": 20
+  },
+  {
+    "id": 1778508444788,
+    "title": "百度智能云运营宣传",
+    "brief": "百度云细分行业属性的3d化尝试",
+    "category": [
+      "动态设计",
+      "视觉设计"
+    ],
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508444788-cover.webp",
+    "ratio": "4:3",
+    "order": 21
+  },
+  {
+    "id": 1778512077048,
+    "title": "WEB落地页辑",
+    "brief": "WEB落地页集合",
+    "category": [
       "UX设计",
       "动态设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509415274-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778512077048-cover.jpg",
     "ratio": "4:3",
     "order": 22
   },
   {
-    "id": 1778509209617,
-    "title": "教师助手 - 界面&动效",
-    "brief": "面向教师的数字化工具产品，结合动态效果提升产品体验",
+    "id": 1778508748968,
+    "title": "天晴演艺品牌识别",
+    "brief": "黑白艺术与文艺潜质",
     "category": [
-      "视觉设计",
-      "UX设计",
-      "动态设计"
+      "品牌设计",
+      "视觉设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509209617-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508748968-cover.webp",
     "ratio": "4:3",
     "order": 23
   },
   {
-    "id": 1778508981409,
-    "title": "学生助手 - 界面&动效",
-    "brief": "面向学生的数字化工具产品，结合动态效果提升产品体验",
+    "id": 1778507560399,
+    "title": "视觉设计专辑",
+    "brief": "多年设计实战的碎片沉淀。跨越线上与线下，连接创意与执行，视觉美学与品牌传达的持续思考。",
     "category": [
+      "其他",
       "视觉设计",
-      "UX设计",
       "动态设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778508981409-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778507560399-cover.png",
     "ratio": "4:3",
     "order": 24
   },
   {
-    "id": 1779087549839,
-    "title": "智教中国 - 界面&动效",
-    "brief": "面向教育局及教育管理者的数据化平台，结合动态效果提升产品体验",
+    "id": 1776770296822,
+    "title": "小满发布会动态包装",
+    "brief": "用动态视觉提升发布会影响力影响力",
     "category": [
-      "视觉设计",
-      "UX设计",
-      "动态设计"
+      "动态设计",
+      "视觉设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-cover.jpg",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1776770296822-cover.png",
     "ratio": "4:3",
     "order": 25
   },
   {
     "id": 1778506476989,
-    "title": "国家中小学智慧教育平台 - 改版",
-    "brief": "负责2024年度国家中小学智慧教育平台改版升级，以实用、好用、爱用为目标，升级整体用户体验",
+    "title": "商越产品家族",
+    "brief": "精致的3Dicon树立不同产品线的识别，确保统一",
     "category": [
       "视觉设计",
-      "UX设计",
+      "其他",
       "动态设计"
     ],
     "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-cover.jpg",
@@ -244,72 +336,27 @@ export const worksList: WorkItem[] = [
     "order": 26
   },
   {
-    "id": 1778506616824,
-    "title": "国家中小学智慧教育平台 - 移动端",
-    "brief": "国家中小学智慧教育平台的移动端适配设计",
+    "id": 1778502673231,
+    "title": "激情设计文创",
+    "brief": "文创作品，周边设计，线下设计",
     "category": [
-      "视觉设计",
-      "UX设计"
+      "其他",
+      "视觉设计"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506616824-cover.webp",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502673231-cover.jpg",
     "ratio": "4:3",
     "order": 27
   },
   {
-    "id": 1779090969749,
-    "title": "国家中小学智慧教育 - 品牌设计",
-    "brief": "平台的品牌设计升级，包含LOGO及VI识别系统",
+    "id": 1778502248177,
+    "title": "「到蓬莱过神仙日子」公车广告",
+    "brief": "大美蓬莱过神仙日子",
     "category": [
-      "视觉设计"
+      "视觉设计",
+      "其他"
     ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090969749-cover.jpg",
+    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502248177-cover.jpg",
     "ratio": "4:3",
     "order": 28
-  },
-  {
-    "id": 1779090375446,
-    "title": "国家中小学智慧教育 - 视觉升级",
-    "brief": "平台的视觉设计升级，包含基础组件库及核心页面设计",
-    "category": [
-      "视觉设计",
-      "UX设计"
-    ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779090375446-cover.jpg",
-    "ratio": "4:3",
-    "order": 29
-  },
-  {
-    "id": 1778502673231,
-    "title": "国家中小学智慧教育平台 - 部分设计",
-    "brief": "2023年加入项目后的部分设计整理，包含读书、德育、课后服务等板块",
-    "category": [
-      "视觉设计",
-      "UX设计"
-    ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502673231-cover.jpg",
-    "ratio": "4:3",
-    "order": 30
-  },
-  {
-    "id": 1779086805656,
-    "title": "国家中小学智慧教育 - 发布设计",
-    "brief": "负责平台重要发布期的视觉设计工作，包含发布专题页、宣传物料、主题周边等",
-    "category": [
-      "视觉设计",
-      "其他"
-    ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779086805656-cover.jpg",
-    "ratio": "4:3",
-    "order": 31
-  },
-  {
-    "id": 1778508076843,
-    "title": "智慧平台运营设计",
-    "brief": "负责平台重要节点的运营设计工作，包含日常节点、寒暑假、专题教育等",
-    "category": [
-      "视觉设计",
-      "UX设计",
-      "动态设计",
-      "其他"
-    ],
-    "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-17
+  }
+]

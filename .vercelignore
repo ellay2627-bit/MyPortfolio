@@ -6,3 +6,10 @@ src/components/LiquidEther.css.backup
 src/components/LiquidEther.jsx.backup
 src/components/LiquidEther.jsx.old
 tsconfig.tsbuildinfo
+# Large image files - already on OSS
+data/images/
+public/images/works/
+# Backup and script files
+scripts/
+*.md
+*.yml

@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
-import dynamic from 'next/dynamic';
-// 延迟加载 Lenis
-const Lenis = dynamic(() => import('lenis'), { ssr: false, loading: () => null });
 import { setupScrollRestoration } from '@/hooks/useScrollRestoration';
 
 export default function NavbarWrapper() {
