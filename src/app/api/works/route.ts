@@ -16,7 +16,8 @@ import {
 
 const worksDirectory = path.join(process.cwd(), 'content/works');
 const draftDirectory = path.join(process.cwd(), 'content/drafts');
-const publicImagesDirectory = path.join(process.cwd(), 'public', 'images', 'works');
+// 改成 data/images/works，这样部署时不包含！
+const publicImagesDirectory = path.join(process.cwd(), 'data', 'images', 'works');
 const publicStaticDirectory = path.join(process.cwd(), 'public', 'static');
 
 // 确保目录存在

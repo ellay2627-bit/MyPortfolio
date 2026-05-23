@@ -5,7 +5,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import RotatingText from './RotatingText.jsx';
 import './RotatingText.css';
 
-// 延迟加载 ColorBends，只在首屏内容渲染完成后才加载
+// 延迟加载 ColorBends，极度延迟，保证首屏优先
 const ColorBends = dynamic(() => import('./ColorBends.jsx'), {
   ssr: false,
   loading: () => null,
@@ -43,12 +43,11 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  // 延迟显示动画，确保首屏内容先渲染
+  // 现在代码很小了，几乎立即显示动画！
   useEffect(() => {
-    // 在页面加载后延迟一段时间再显示动画
     const timer = setTimeout(() => {
       setShowAnimation(true);
-    }, 800); // 延迟800ms，让文字内容先显示
+    }, 50); // 几乎立即显示！
     
     return () => clearTimeout(timer);
   }, []);

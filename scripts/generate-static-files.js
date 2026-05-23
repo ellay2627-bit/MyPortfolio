@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'works');
-const PUBLIC_IMAGES_DIR = path.join(__dirname, '..', 'public', 'images', 'works');
-const ALL_IMAGES_DIR = path.join(__dirname, '..', 'public', 'images');
+const PUBLIC_IMAGES_DIR = path.join(__dirname, '..', 'data', 'images', 'works'); // 改成 data/！
+const ALL_IMAGES_DIR = path.join(__dirname, '..', 'data', 'images'); // 改成 data/！
 const STATIC_DIR = path.join(__dirname, '..', 'public', 'static');
 
 const OSS_BASE_URL = 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com';

@@ -1,8 +1,10 @@
 'use client';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import NavbarWrapper from './NavbarWrapper';
-import NeoCursor from './NeoCursor';
-import BackToTop from './BackToTop';
+// 延迟加载非关键组件
+const NeoCursor = dynamic(() => import('./NeoCursor'), { ssr: false, loading: () => null });
+const BackToTop = dynamic(() => import('./BackToTop'), { ssr: false, loading: () => null });
 // 暂时禁用 About 图片预加载，因为会拖慢网速
 // import { AboutImagePreloader } from './AboutImagePreloader';
 import { usePathname } from 'next/navigation';
@@ -15,6 +17,15 @@ interface LayoutContentProps {
 function LayoutContentInner({ children }: LayoutContentProps) {
   const pathname = usePathname();
   const isAdminPage = pathname?.startsWith('/admin');
+  const [showEnhancements, setShowEnhancements] = useState(false);
+
+  // 现在代码很小了，几乎立即加载增强功能
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowEnhancements(true);
+    }, 100); // 几乎立即显示！
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -22,8 +33,13 @@ function LayoutContentInner({ children }: LayoutContentProps) {
       {/* 暂时禁用，解决网速慢的问题 */}
       {/* {!isAdminPage && <AboutImagePreloader />} */}
       {children}
-      {!isAdminPage && <NeoCursor />}
-      {!isAdminPage && <BackToTop />}
+      {/* 延迟加载的增强功能 */}
+      {!isAdminPage && showEnhancements && (
+        <>
+          <NeoCursor />
+          <BackToTop />
+        </>
+      )}
     </>
   );
 }
