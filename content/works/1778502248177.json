@@ -7,14 +7,14 @@
     "视觉设计",
     "其他"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502248177-cover.jpg",
+  "cover": "/images/works/work-1778502248177-cover.jpg",
   "ratio": "4:3",
   "order": 28,
   "media": [
     {
       "id": "image-1778502648811-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502248177-media-0.jpg",
+      "url": "/images/works/work-1778502248177-media-0.jpg",
       "name": "蓬莱旅游海报 - 李超.jpg",
       "order": 0
     }

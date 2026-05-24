@@ -8,14 +8,14 @@
     "其他",
     "动态设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-cover.jpg",
+  "cover": "/images/works/work-1778506476989-cover.jpg",
   "ratio": "4:3",
   "order": 27,
   "media": [
     {
       "id": "image-1778506586681-3",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-0.webp",
+      "url": "/images/works/work-1778506476989-media-0.webp",
       "name": "06.webp",
       "order": 0,
       "asset": null,
@@ -24,7 +24,7 @@
     {
       "id": "image-1778506569620-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-1.jpg",
+      "url": "/images/works/work-1778506476989-media-1.jpg",
       "name": "15sunyur 品牌 - 架构图.jpg",
       "order": 1,
       "asset": null,
@@ -33,7 +33,7 @@
     {
       "id": "image-1778506569620-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-2.jpg",
+      "url": "/images/works/work-1778506476989-media-2.jpg",
       "name": "16sunyur 品牌 - 家族.jpg",
       "order": 2,
       "asset": null,
@@ -42,7 +42,7 @@
     {
       "id": "image-1778506586681-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-3.webp",
+      "url": "/images/works/work-1778506476989-media-3.webp",
       "name": "05.webp",
       "order": 3,
       "asset": null,
@@ -51,7 +51,7 @@
     {
       "id": "image-1778506586681-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-4.webp",
+      "url": "/images/works/work-1778506476989-media-4.webp",
       "name": "04.webp",
       "order": 4,
       "asset": null,
@@ -60,7 +60,7 @@
     {
       "id": "image-1778506586681-2",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-5.webp",
+      "url": "/images/works/work-1778506476989-media-5.webp",
       "name": "01.webp",
       "order": 5,
       "asset": null,
@@ -69,7 +69,7 @@
     {
       "id": "image-1778506586681-4",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-6.webp",
+      "url": "/images/works/work-1778506476989-media-6.webp",
       "name": "02.webp",
       "order": 6,
       "asset": null,
@@ -78,7 +78,7 @@
     {
       "id": "image-1778506586681-5",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-7.webp",
+      "url": "/images/works/work-1778506476989-media-7.webp",
       "name": "03.webp",
       "order": 7,
       "asset": null,
@@ -87,7 +87,7 @@
     {
       "id": "image-1778506586682-6",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778506476989-media-8.webp",
+      "url": "/images/works/work-1778506476989-media-8.webp",
       "name": "07.webp",
       "order": 8,
       "asset": null,

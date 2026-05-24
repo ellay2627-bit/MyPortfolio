@@ -19,7 +19,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const rotatingTextRef = useRef(null);
-  const [showAnimation, setShowAnimation] = useState(false); // 控制动画显示
+  const [showAnimation, setShowAnimation] = useState(true); // 立即显示动画
   const [isMounted, setIsMounted] = useState(false);
   
   const textArray = ['Ellay', '李超(李一轩)', 'UX设计师', '视觉设计师', '产品设计师'];
@@ -32,15 +32,6 @@ export default function Hero() {
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
-
-  // 让特效快速显示，不延迟
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAnimation(true);
-    }, 100); // 快速显示特效
-    
-    return () => clearTimeout(timer);
   }, []);
 
   return (

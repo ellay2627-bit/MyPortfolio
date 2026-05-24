@@ -7,7 +7,7 @@
     "UX设计",
     "动态设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498670904-cover.jpg",
+  "cover": "/images/works/work-1778498670904-cover.jpg",
   "ratio": "4:3",
   "order": 5,
   "media": [
@@ -22,7 +22,7 @@
     {
       "id": "image-1778498853490-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498670904-media-1.jpg",
+      "url": "/images/works/work-1778498670904-media-1.jpg",
       "name": "16读书平台-封.jpg",
       "order": 1,
       "asset": null,
@@ -31,7 +31,7 @@
     {
       "id": "image-1778498853491-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498670904-media-2.jpg",
+      "url": "/images/works/work-1778498670904-media-2.jpg",
       "name": "17读书平台-审美.jpg",
       "order": 2,
       "asset": null,
@@ -40,7 +40,7 @@
     {
       "id": "image-1778498853491-2",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498670904-media-3.jpg",
+      "url": "/images/works/work-1778498670904-media-3.jpg",
       "name": "18读书平台-设计插画.jpg",
       "order": 3,
       "asset": null,

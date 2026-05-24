@@ -8,7 +8,7 @@
     "动态设计",
     "视觉设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-cover.jpg",
+  "cover": "/images/works/work-1778498879461-cover.jpg",
   "ratio": "4:3",
   "order": 6,
   "media": [
@@ -23,7 +23,7 @@
     {
       "id": "image-1778499396260-8",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-1.gif",
+      "url": "/images/works/work-1778498879461-media-1.gif",
       "name": "04.gif",
       "order": 1,
       "asset": null,
@@ -32,7 +32,7 @@
     {
       "id": "image-1778499396255-7",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-2.gif",
+      "url": "/images/works/work-1778498879461-media-2.gif",
       "name": "06.gif",
       "order": 2,
       "asset": null,
@@ -41,7 +41,7 @@
     {
       "id": "image-1778499396251-3",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-3.webp",
+      "url": "/images/works/work-1778498879461-media-3.webp",
       "name": "01.webp",
       "order": 3,
       "asset": null,
@@ -50,7 +50,7 @@
     {
       "id": "image-1778499396252-5",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-4.webp",
+      "url": "/images/works/work-1778498879461-media-4.webp",
       "name": "02.webp",
       "order": 4,
       "asset": null,
@@ -59,7 +59,7 @@
     {
       "id": "image-1778499396251-4",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-5.webp",
+      "url": "/images/works/work-1778498879461-media-5.webp",
       "name": "03.webp",
       "order": 5,
       "asset": null,
@@ -68,7 +68,7 @@
     {
       "id": "image-1778499396253-6",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-6.webp",
+      "url": "/images/works/work-1778498879461-media-6.webp",
       "name": "05.webp",
       "order": 6,
       "asset": null,
@@ -77,7 +77,7 @@
     {
       "id": "image-1778499396249-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-7.webp",
+      "url": "/images/works/work-1778498879461-media-7.webp",
       "name": "07.webp",
       "order": 7,
       "asset": null,
@@ -86,7 +86,7 @@
     {
       "id": "image-1778499396248-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498879461-media-8.webp",
+      "url": "/images/works/work-1778498879461-media-8.webp",
       "name": "08.webp",
       "order": 8,
       "asset": null,

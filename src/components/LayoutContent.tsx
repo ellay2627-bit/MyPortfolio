@@ -18,15 +18,7 @@ interface LayoutContentProps {
 function LayoutContentInner({ children }: LayoutContentProps) {
   const pathname = usePathname();
   const isAdminPage = pathname?.startsWith('/admin');
-  const [showEnhancements, setShowEnhancements] = useState(false);
-
-  // 快速加载增强功能
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowEnhancements(true);
-    }, 500); // 0.5秒后就加载
-    return () => clearTimeout(timer);
-  }, []);
+  const [showEnhancements, setShowEnhancements] = useState(true); // 立即显示增强功能
 
   return (
     <>

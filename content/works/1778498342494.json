@@ -6,35 +6,35 @@
   "category": [
     "UX设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498342494-cover.jpg",
+  "cover": "/images/works/work-1778498342494-cover.jpg",
   "ratio": "4:3",
   "order": 2,
   "media": [
     {
       "id": "image-1778498546032-2",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498342494-media-0.jpg",
+      "url": "/images/works/work-1778498342494-media-0.jpg",
       "name": "12备课授课-封.jpg",
       "order": 0
     },
     {
       "id": "image-1778498546032-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498342494-media-1.jpg",
+      "url": "/images/works/work-1778498342494-media-1.jpg",
       "name": "13备课授课-AI工作流.jpg",
       "order": 1
     },
     {
       "id": "image-1778498546035-3",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498342494-media-2.jpg",
+      "url": "/images/works/work-1778498342494-media-2.jpg",
       "name": "14备课授课-UI亮点.jpg",
       "order": 2
     },
     {
       "id": "image-1778498546032-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498342494-media-3.jpg",
+      "url": "/images/works/work-1778498342494-media-3.jpg",
       "name": "15UIKITS.jpg",
       "order": 3
     }

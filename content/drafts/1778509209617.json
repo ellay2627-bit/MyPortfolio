@@ -7,14 +7,14 @@
     "品牌设计",
     "其他"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509209617-cover.webp",
+  "cover": "/images/works/work-1778509209617-cover.webp",
   "ratio": "4:3",
   "order": 16,
   "media": [
     {
       "id": "image-1778509365414-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509209617-media-0.webp",
+      "url": "/images/works/work-1778509209617-media-0.webp",
       "name": "01.webp",
       "order": 0,
       "asset": null,
@@ -23,7 +23,7 @@
     {
       "id": "image-1778509365411-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778509209617-media-1.webp",
+      "url": "/images/works/work-1778509209617-media-1.webp",
       "name": "02.webp",
       "order": 1,
       "asset": null,

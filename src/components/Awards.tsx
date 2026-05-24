@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const LeafDecoration = () => (
   <img 
-    src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/leaf.svg" 
+    src="/images/leaf.svg" 
     alt="leaf" 
     loading="lazy"
     className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity duration-500 grayscale group-hover:grayscale-0"

@@ -7,98 +7,98 @@
     "视觉设计",
     "其他"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-cover.jpg",
+  "cover": "/images/works/work-1779087549839-cover.jpg",
   "ratio": "4:3",
   "order": 10,
   "media": [
     {
       "id": "image-1779087662213-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-0.webp",
+      "url": "/images/works/work-1779087549839-media-0.webp",
       "name": "01.webp",
       "order": 0
     },
     {
       "id": "image-1779087662213-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-1.webp",
+      "url": "/images/works/work-1779087549839-media-1.webp",
       "name": "05.webp",
       "order": 1
     },
     {
       "id": "image-1779087662214-2",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-2.webp",
+      "url": "/images/works/work-1779087549839-media-2.webp",
       "name": "06.webp",
       "order": 2
     },
     {
       "id": "image-1779087662214-3",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-3.webp",
+      "url": "/images/works/work-1779087549839-media-3.webp",
       "name": "08.webp",
       "order": 3
     },
     {
       "id": "image-1779087662214-4",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-4.webp",
+      "url": "/images/works/work-1779087549839-media-4.webp",
       "name": "09.webp",
       "order": 4
     },
     {
       "id": "image-1779087662214-5",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-5.webp",
+      "url": "/images/works/work-1779087549839-media-5.webp",
       "name": "07.webp",
       "order": 5
     },
     {
       "id": "image-1779087662214-6",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-6.webp",
+      "url": "/images/works/work-1779087549839-media-6.webp",
       "name": "04.webp",
       "order": 6
     },
     {
       "id": "image-1779087662214-7",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-7.webp",
+      "url": "/images/works/work-1779087549839-media-7.webp",
       "name": "12.webp",
       "order": 7
     },
     {
       "id": "image-1779087662214-8",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-8.webp",
+      "url": "/images/works/work-1779087549839-media-8.webp",
       "name": "11.webp",
       "order": 8
     },
     {
       "id": "image-1779087662215-9",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-9.webp",
+      "url": "/images/works/work-1779087549839-media-9.webp",
       "name": "13.webp",
       "order": 9
     },
     {
       "id": "image-1779087662215-10",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-10.webp",
+      "url": "/images/works/work-1779087549839-media-10.webp",
       "name": "10.webp",
       "order": 10
     },
     {
       "id": "image-1779087662215-11",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-11.webp",
+      "url": "/images/works/work-1779087549839-media-11.webp",
       "name": "03.webp",
       "order": 11
     },
     {
       "id": "image-1779087662215-12",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1779087549839-media-12.webp",
+      "url": "/images/works/work-1779087549839-media-12.webp",
       "name": "02.webp",
       "order": 12
     }

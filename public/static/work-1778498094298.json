@@ -6,35 +6,35 @@
   "category": [
     "UX设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498094298-cover.jpg",
+  "cover": "/images/works/work-1778498094298-cover.jpg",
   "ratio": "4:3",
   "order": 3,
   "media": [
     {
       "id": "image-1778498255825-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498094298-media-0.jpg",
+      "url": "/images/works/work-1778498094298-media-0.jpg",
       "name": "08赞赞来客-封.jpg",
       "order": 0
     },
     {
       "id": "image-1778498255826-1",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498094298-media-1.jpg",
+      "url": "/images/works/work-1778498094298-media-1.jpg",
       "name": "09赞赞 - 产品形态.jpg",
       "order": 1
     },
     {
       "id": "image-1778498255826-3",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498094298-media-2.jpg",
+      "url": "/images/works/work-1778498094298-media-2.jpg",
       "name": "10赞赞 - 设计系统.jpg",
       "order": 2
     },
     {
       "id": "image-1778498255826-2",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778498094298-media-3.jpg",
+      "url": "/images/works/work-1778498094298-media-3.jpg",
       "name": "11赞赞 - 典型页面.jpg",
       "order": 3
     }

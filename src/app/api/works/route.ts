@@ -12,15 +12,14 @@ import {
   isRemoteStorageEnabled,
   isRemoteUrl,
   uploadAssetToRemoteStorage,
+  uploadAssetToLocalStorage,
 } from '@/lib/media-storage';
 
 const worksDirectory = path.join(process.cwd(), 'content/works');
 const draftDirectory = path.join(process.cwd(), 'content/drafts');
-// 改成 data/images/works，这样部署时不包含！
-const publicImagesDirectory = path.join(process.cwd(), 'data', 'images', 'works');
+const publicImagesDirectory = path.join(process.cwd(), 'public', 'images', 'works');
 const publicStaticDirectory = path.join(process.cwd(), 'public', 'static');
 
-// 确保目录存在
 if (!fs.existsSync(worksDirectory)) {
   fs.mkdirSync(worksDirectory, { recursive: true });
 }
@@ -29,10 +28,9 @@ if (!fs.existsSync(draftDirectory)) {
   fs.mkdirSync(draftDirectory, { recursive: true });
 }
 
-// 添加内存缓存
 let worksCache: any[] | null = null;
 let cacheTimestamp = 0;
-const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
+const CACHE_DURATION = 5 * 60 * 1000;
 
 function normalizeRemoteAssetRef(asset: any) {
   if (!asset || typeof asset !== 'object') {
@@ -130,6 +128,36 @@ async function optimizeCoverAsset(cover: string, workId: string) {
   }
 
   const compressed = await compressWorkAssetBase64(cover);
+  const contentHash = buildHashSuffix(compressed.base64Data);
+  const publicId = buildStableAssetId(['works', workId, 'cover', contentHash]);
+
+  if (isRemoteStorageEnabled()) {
+    const remoteAsset = await uploadAssetToRemoteStorage({
+      base64Data: compressed.base64Data,
+      resourceType: 'image',
+      publicId,
+    });
+
+    if (remoteAsset) {
+      return {
+        cover: remoteAsset.secureUrl,
+        coverAsset: remoteAsset,
+      };
+    }
+  }
+
+  const localAsset = await uploadAssetToLocalStorage({
+    base64Data: compressed.base64Data,
+    publicId,
+  });
+
+  if (localAsset) {
+    return {
+      cover: localAsset.url,
+      coverAsset: null,
+    };
+  }
+
   return {
     cover: compressed.base64Data,
     coverAsset: null,
@@ -143,14 +171,14 @@ async function optimizeMediaItem(item: any, workId: string, index: number) {
 
   if (item.type === 'image' && isBase64DataUrl(item.url)) {
     const compressed = await compressWorkAssetBase64(item.url);
-    const thresholdBytes = getRemoteStorageThresholdBytes();
     const contentHash = buildHashSuffix(compressed.base64Data);
+    const publicId = buildStableAssetId(['works', workId, 'media', index, contentHash]);
 
-    if (isRemoteStorageEnabled() && compressed.outputBytes > thresholdBytes) {
+    if (isRemoteStorageEnabled()) {
       const remoteAsset = await uploadAssetToRemoteStorage({
         base64Data: compressed.base64Data,
         resourceType: 'image',
-        publicId: buildStableAssetId(['works', workId, 'media', index, contentHash]),
+        publicId,
       });
 
       if (remoteAsset) {
@@ -163,33 +191,48 @@ async function optimizeMediaItem(item: any, workId: string, index: number) {
       }
     }
 
+    const localAsset = await uploadAssetToLocalStorage({
+      base64Data: compressed.base64Data,
+      publicId,
+    });
+
+    if (localAsset) {
+      return {
+        ...item,
+        url: localAsset.url,
+        asset: null,
+        source: 'local',
+      };
+    }
+
     return {
       ...item,
       url: compressed.base64Data,
       asset: null,
-      source: 'local',
+      source: 'base64',
     };
   }
 
-  if (item.type === 'video' && isBase64DataUrl(item.url) && isRemoteStorageEnabled()) {
-    const contentHash = buildHashSuffix(item.url);
-    const remoteAsset = await uploadAssetToRemoteStorage({
-      base64Data: item.url,
-      resourceType: 'video',
-      publicId: buildStableAssetId(['works', workId, 'media', index, contentHash]),
-    });
-
-    if (remoteAsset) {
-      return {
-        ...item,
-        url: remoteAsset.secureUrl,
-        asset: remoteAsset,
-        source: 'remote',
-      };
-    }
-  }
-
   if (item.type === 'video' && isBase64DataUrl(item.url)) {
+    if (isRemoteStorageEnabled()) {
+      const contentHash = buildHashSuffix(item.url);
+      const publicId = buildStableAssetId(['works', workId, 'media', index, contentHash]);
+      const remoteAsset = await uploadAssetToRemoteStorage({
+        base64Data: item.url,
+        resourceType: 'video',
+        publicId,
+      });
+
+      if (remoteAsset) {
+        return {
+          ...item,
+          url: remoteAsset.secureUrl,
+          asset: remoteAsset,
+          source: 'remote',
+        };
+      }
+    }
+
     return {
       ...item,
       source: 'local',
@@ -234,25 +277,20 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const draft = searchParams.get('draft') === 'true';
     
-    // 检查缓存
     const now = Date.now();
     if (!draft && worksCache && now - cacheTimestamp < CACHE_DURATION) {
       return NextResponse.json(worksCache, { status: 200 });
     }
     
-    // 读取对应的目录
     const targetDirectory = draft ? draftDirectory : worksDirectory;
     
-    // 确保目录存在
     if (!fs.existsSync(targetDirectory)) {
       fs.mkdirSync(targetDirectory, { recursive: true });
     }
     
-    // 读取文件
     const files = fs.readdirSync(targetDirectory);
     const jsonFiles = files.filter(file => file.endsWith('.json'));
     
-    // 读取并解析JSON文件
       const works = jsonFiles.map(file => {
         try {
           const filePath = path.join(targetDirectory, file);
@@ -268,10 +306,8 @@ export async function GET(request: NextRequest) {
       
       console.log('Total works found:', works.length);
     
-    // 按order字段排序
     works.sort((a: any, b: any) => (a.order || 0) - (b.order || 0));
 
-    // 缓存结果（非草稿）
     if (!draft) {
       worksCache = works;
       cacheTimestamp = now;
@@ -285,17 +321,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  // 清除缓存
   worksCache = null;
   try {
     const data = await request.json();
     
-    // 确保草稿目录存在
     if (!fs.existsSync(draftDirectory)) {
       fs.mkdirSync(draftDirectory, { recursive: true });
     }
     
-    // 处理批量保存排序
     if (data.works && Array.isArray(data.works)) {
       for (const work of data.works) {
         const fileName = `${work.id || Date.now()}.json`;
@@ -306,12 +339,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: '排序保存成功' });
     }
     
-    // 处理单个作品保存
     const work = await optimizeWorkPayload(data);
     const fileName = `${work.id || Date.now()}.json`;
     const filePath = path.join(draftDirectory, fileName);
     
-    // 写入草稿文件
     fs.writeFileSync(filePath, JSON.stringify(work, null, 2));
     
     return NextResponse.json({ success: true, message: '作品保存成功' });
@@ -322,12 +353,10 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  // 清除缓存
   worksCache = null;
   try {
     const { id } = await request.json();
     
-    // 查找并删除草稿文件
     const files = fs.readdirSync(draftDirectory);
     const fileToDelete = files.find(file => {
       try {
@@ -348,7 +377,6 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ success: true, message: '作品删除成功' });
     }
     
-    // 也尝试删除已发布的文件
     const publishedFiles = fs.readdirSync(worksDirectory);
     const publishedFileToDelete = publishedFiles.find(file => {
       try {
@@ -376,14 +404,11 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
-// 发布功能
 export async function PUT(request: NextRequest) {
-  // 清除缓存
   worksCache = null;
   try {
     console.log('开始发布作品...');
     
-    // 确保目录存在
     if (!fs.existsSync(draftDirectory)) {
       fs.mkdirSync(draftDirectory, { recursive: true });
       console.log('草稿目录不存在，已创建:', draftDirectory);
@@ -394,7 +419,6 @@ export async function PUT(request: NextRequest) {
       console.log('发布目录不存在，已创建:', worksDirectory);
     }
     
-    // 读取所有草稿文件
     const draftFiles = fs.readdirSync(draftDirectory).filter(file => file.endsWith('.json') && file !== 'data.json');
     
     if (draftFiles.length === 0) {
@@ -405,7 +429,6 @@ export async function PUT(request: NextRequest) {
     console.log('找到', draftFiles.length, '个待发布作品');
     const currentDraftFileSet = new Set(draftFiles);
     
-    // 复制草稿到发布目录
     const works: any[] = [];
     draftFiles.forEach(file => {
       try {
@@ -413,7 +436,6 @@ export async function PUT(request: NextRequest) {
         const publishPath = path.join(worksDirectory, file);
         fs.copyFileSync(draftPath, publishPath);
         
-        // 同时读取用于生成data.json
         const fileContent = fs.readFileSync(draftPath, 'utf8');
         const work = JSON.parse(fileContent);
         works.push(work);
@@ -423,7 +445,6 @@ export async function PUT(request: NextRequest) {
       }
     });
 
-    // 删除已发布目录中不再存在的旧作品文件
     const publishedFiles = listPublishedWorkFiles();
     publishedFiles.forEach((file) => {
       if (!currentDraftFileSet.has(file)) {
@@ -439,18 +460,15 @@ export async function PUT(request: NextRequest) {
       }
     });
     
-    // 按 order 字段排序
     works.sort((a: any, b: any) => (a.order || 0) - (b.order || 0));
     console.log('作品排序完成');
     
-    // 生成静态数据文件 data.json
     const dataJsonPath = path.join(worksDirectory, 'data.json');
     fs.writeFileSync(dataJsonPath, JSON.stringify(works, null, 2));
     console.log('✅ 生成静态数据文件成功:', dataJsonPath);
     
     console.log('✅ 发布完成，共', works.length, '个作品');
     
-    // 生成静态文件（包括提取图片）
     console.log('开始生成静态文件...');
     try {
       const { execSync } = require('child_process');
@@ -459,7 +477,6 @@ export async function PUT(request: NextRequest) {
       console.log('✅ 静态文件生成完成');
     } catch (scriptError) {
       console.error('生成静态文件失败:', scriptError);
-      // 不阻塞发布流程
     }
     
     return NextResponse.json({ 
@@ -477,7 +494,6 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-// 获取草稿数量
 export async function PATCH(request: NextRequest) {
   try {
     const draftFiles = fs.readdirSync(draftDirectory);

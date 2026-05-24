@@ -7,14 +7,14 @@
     "其他",
     "视觉设计"
   ],
-  "cover": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502673231-cover.jpg",
+  "cover": "/images/works/work-1778502673231-cover.jpg",
   "ratio": "4:3",
   "order": 28,
   "media": [
     {
       "id": "image-1778502827438-0",
       "type": "image",
-      "url": "https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/works/work-1778502673231-media-0.webp",
+      "url": "/images/works/work-1778502673231-media-0.webp",
       "name": "01.webp",
       "order": 0,
       "asset": null,

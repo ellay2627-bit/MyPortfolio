@@ -685,6 +685,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
   const [itemsPerPage] = useState(6); // 每页显示6个作品
   const [detailLoading, setDetailLoading] = useState(false); // 详情页加载状态
   const [showRefreshNotice, setShowRefreshNotice] = useState(false); // 显示刷新提示
+  const [previousHash, setPreviousHash] = useState(''); // 保存打开详情前的hash
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
@@ -768,13 +769,14 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
           window.history.pushState({ workId: selectedWork.id }, '', newUrl);
         }
       } else {
-        // 作品关闭时回退URL
+        // 作品关闭时回退URL - 恢复之前的hash或回到根路径
         if (window.location.pathname.startsWith('/works/')) {
-          window.history.replaceState({}, '', '/#work');
+          const targetUrl = previousHash ? `/${previousHash}` : '/';
+          window.history.replaceState({}, '', targetUrl);
         }
       }
     }
-  }, [showDetailModal, selectedWork, directWorkId]);
+  }, [showDetailModal, selectedWork, directWorkId, previousHash]);
 
   // 处理浏览器的前进/后退按钮
   useEffect(() => {
@@ -1104,6 +1106,11 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
     try {
       console.log('点击作品:', work.title, work.id);
       
+      // 保存当前的hash，关闭时可以恢复
+      if (typeof window !== 'undefined') {
+        setPreviousHash(window.location.hash);
+      }
+      
       // 立即使用列表数据创建后备作品
       const fallbackWork = {
         id: work.id,
@@ -1256,7 +1263,7 @@ export default function Work({ directWorkId, onDirectClose }: WorkProps = {}) {
       
       {/* 右侧背景图片 - dotgroup.png */}
       <div className="absolute w-[600px] h-[600px] z-0 right-[-300px] top-[100px] opacity-30 animate-pulse overflow-hidden">
-        <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" loading="lazy" />
+        <img src="/images/dotgroup.png" alt="Background" className="w-full h-full object-contain" loading="lazy" />
       </div>
       
       <div className="w-full px-4 md:container md:mx-auto md:px-4 relative z-10">

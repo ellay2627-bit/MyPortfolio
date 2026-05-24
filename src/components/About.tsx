@@ -53,11 +53,7 @@ const tabData = [
     }
 ]
  
-const AnimatedText = ({ text, delay = 0, animated = true }: { text: string; delay?: number; animated?: boolean }) => {
-  // Reduce per-character animations to avoid heavy re-renders.
-  // For immediate performance relief we render static text.
-  // This respects prefers-reduced-motion; for future, we can enable per-char animation conditionally.
-  // Force-disable per-character animations to avoid text flicker and reduce CPU usage.
+const AnimatedText = ({ text, delay = 0, animated = true, charDelay = 0.08 }: { text: string; delay?: number; animated?: boolean; charDelay?: number }) => {
   const shouldAnimate = animated
 
   if (!shouldAnimate) {
@@ -83,15 +79,22 @@ const AnimatedText = ({ text, delay = 0, animated = true }: { text: string; dela
             <motion.span
               key={`${segIndex}-${index}`}
               initial={{ 
-                opacity: 0
+                opacity: 0,
+                y: 20
               }}
               animate={{ 
-                opacity: 1
+                opacity: 1,
+                y: 0
+              }}
+              exit={{
+                opacity: 0,
+                y: -10,
+                transition: { duration: 0.1 }
               }}
               transition={{
-                duration: 0.05,
-                delay: (segIndex * 0.05) + (index * 0.04),
-                ease: 'easeIn'
+                duration: 0.3,
+                delay: (segIndex * charDelay) + (index * charDelay),
+                ease: [0.25, 0.1, 0.25, 1]
               }}
               style={{ display: 'inline-block' }}
             >
@@ -358,12 +361,12 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
  
   const getMeImage = () => {
     switch (currentActiveTab) {
-      case 0: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_01.webp'
-      case 1: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_02.webp'
-      case 2: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_03.webp'
-      case 3: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_04.webp'
-      case 4: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_05.webp'
-      default: return 'https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_01.webp'
+      case 0: return '/images/about/img/me_01.webp'
+      case 1: return '/images/about/img/me_02.webp'
+      case 2: return '/images/about/img/me_03.webp'
+      case 3: return '/images/about/img/me_04.webp'
+      case 4: return '/images/about/img/me_05.webp'
+      default: return '/images/about/img/me_01.webp'
     }
   }
 
@@ -397,7 +400,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_pop.webp"
+                src="/images/about/img/decorate_pop.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -436,7 +439,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_01.webp"
+                src="/images/about/img/decorate_01.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -475,7 +478,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_02.webp"
+                src="/images/about/img/decorate_02.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -508,7 +511,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_sun.webp"
+                src="/images/about/img/decorate_sun.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -546,7 +549,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star.webp"
+                src="/images/about/img/decorate_star.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -579,7 +582,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star2.webp"
+                src="/images/about/img/decorate_star2.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -612,7 +615,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_flash.webp"
+                src="/images/about/img/decorate_flash.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -645,7 +648,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_time.webp"
+                src="/images/about/img/decorate_time.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -678,7 +681,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_omg.webp"
+                src="/images/about/img/decorate_omg.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -716,7 +719,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_robot.webp"
+                src="/images/about/img/decorate_robot.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -749,7 +752,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_figma.webp"
+                src="/images/about/img/decorate_figma.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -782,7 +785,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_ai.webp"
+                src="/images/about/img/decorate_ai.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -815,7 +818,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_PS.webp"
+                src="/images/about/img/decorate_PS.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -848,7 +851,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_kiss.webp"
+                src="/images/about/img/decorate_kiss.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -886,7 +889,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_zxx.webp"
+                src="/images/about/img/decorate_zxx.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -919,7 +922,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_xunzhang.webp"
+                src="/images/about/img/decorate_xunzhang.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -952,7 +955,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_good.webp"
+                src="/images/about/img/decorate_good.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -985,7 +988,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_group.webp"
+                src="/images/about/img/decorate_group.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -1023,7 +1026,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_heart.webp"
+                src="/images/about/img/decorate_heart.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -1056,7 +1059,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_star3.webp"
+                src="/images/about/img/decorate_star3.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -1089,7 +1092,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_flag.webp"
+                src="/images/about/img/decorate_flag.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -1122,7 +1125,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               }}
             >
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/decorate_bravo.webp"
+                src="/images/about/img/decorate_bravo.webp"
                 alt=""
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 animate={{
@@ -1171,7 +1174,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
           }}
         >
           <motion.img loading="lazy"
-            src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/BGdot.png"
+            src="/images/about/img/BGdot.png"
             alt=""
             decoding="async"
             fetchPriority="high"
@@ -1242,35 +1245,37 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
         animate={{ opacity: 1 }}
         transition={{ duration: 0.1 }}
       >
-        {tabDataForActive.title1 && (
-          <div
-            style={{
-              marginBottom: '8px',
-              fontSize: 'clamp(24px, 2.5vw, 48px)',
-              fontWeight: 100,
-              color: 'rgba(255,255,255,0.75)',
-              lineHeight: 1.2,
-              fontFamily: 'PingFang SC, system-ui'
-            }}
-          >
-            <AnimatedText text={tabDataForActive.title1} delay={0} animated={showHeavyContent} />
-          </div>
-        )}
+        <AnimatePresence mode="popLayout">
+          <motion.div key={currentActiveTab}>
+            {tabDataForActive.title1 && (
+              <div
+                style={{
+                  marginBottom: '8px',
+                  fontSize: 'clamp(24px, 2.5vw, 48px)',
+                  fontWeight: 100,
+                  color: 'rgba(255,255,255,0.75)',
+                  lineHeight: 1.2,
+                  fontFamily: 'PingFang SC, system-ui'
+                }}
+              >
+                <AnimatedText text={tabDataForActive.title1} delay={0} animated={showHeavyContent} />
+              </div>
+            )}
 
-        <div
-          style={{
-            fontSize: 'clamp(32px, 3.33vw, 64px)',
-            fontWeight: 600,
-            color: '#ffffff',
-            lineHeight: 1.125,
-            marginBottom: '8px',
-            fontFamily: 'PingFang SC, system-ui'
-          }}
-        >
-          <AnimatedText text={tabDataForActive.title2} delay={0} animated={showHeavyContent} />
-        </div>
+            <div
+              style={{
+                fontSize: 'clamp(32px, 3.33vw, 64px)',
+                fontWeight: 600,
+                color: '#ffffff',
+                lineHeight: 1.125,
+                marginBottom: '8px',
+                fontFamily: 'PingFang SC, system-ui'
+              }}
+            >
+              <AnimatedText text={tabDataForActive.title2} delay={0} animated={showHeavyContent} />
+            </div>
 
-        {tabDataForActive.description && (
+            {tabDataForActive.description && (
           <div
             style={{
               fontSize: 'clamp(14px, 0.83vw, 16px)',
@@ -1281,9 +1286,11 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               fontFamily: 'PingFang SC, system-ui'
             }}
           >
-            <AnimatedText text={tabDataForActive.description} delay={0} animated={showHeavyContent} />
+            <AnimatedText text={tabDataForActive.description} delay={0} animated={showHeavyContent} charDelay={0.05} />
           </div>
         )}
+          </motion.div>
+        </AnimatePresence>
 
         {tabDataForActive.hasButton && (
           <div style={{ marginTop: '40px' }}>
@@ -1310,7 +1317,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
               <div className="scan-light" />
               <span className="relative z-10 flex items-center">
                 查看履历
-                <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} loading="lazy" />
+                <img src="/images/about/icon/arrow-right-long-line.svg" alt="" style={{ width: '16px', height: '16px', marginLeft: '8px' }} loading="lazy" />
               </span>
             </motion.button>
           </div>
@@ -1529,7 +1536,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                         justifyContent: 'center'
                       }}>
                         <motion.img 
-                          src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/radar-placeholder.png" 
+                          src="/images/about/radar-placeholder.png" 
                           alt="能力分析"
                           loading="lazy"
                           initial={{ scale: 0.3, opacity: 0 }}
@@ -1721,13 +1728,13 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                                 paddingTop: '0px'
                               }}>
                                 <img 
-                                  src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/time_dot.svg" 
+                                  src="/images/about/icon/time_dot.svg" 
                                   alt=""
                                   style={{ width: '16px', height: '16px', flexShrink: 0 }}
                                  loading="lazy" />
                                 {!isLast && (
                                   <img 
-                                    src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/time_line.svg" 
+                                    src="/images/about/icon/time_line.svg" 
                                     alt=""
                                     style={{ 
                                       width: '2px', 
@@ -1834,7 +1841,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                   zIndex: 100
                 }}
               >
-                <img src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/icon/close-line.svg" alt="" style={{ width: '32px', height: '32px' }} loading="lazy" />
+                <img src="/images/about/icon/close-line.svg" alt="" style={{ width: '32px', height: '32px' }} loading="lazy" />
               </button>
               
               {/* 我的履历文字 - 在头像区域的上方 */}
@@ -1854,7 +1861,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
 
               {/* Decorative elements */}
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/Resume_2.webp"
+                src="/images/about/img/Resume_2.webp"
                 alt=""
                 style={{
                   position: 'absolute',
@@ -1868,7 +1875,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               />
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/Resume_1.webp"
+                src="/images/about/img/Resume_1.webp"
                 alt=""
                 style={{
                   position: 'absolute',
@@ -1882,7 +1889,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               />
               <motion.img loading="lazy"
-                src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/Resume_3.webp"
+                src="/images/about/img/Resume_3.webp"
                 alt=""
                 style={{
                   position: 'absolute',
@@ -1907,7 +1914,7 @@ export default function About({ activeTab: propActiveTab, onTabChange: propOnTab
                 zIndex: 3
               }}>
                 <img
-                  src="https://my-resume-images-2026.oss-cn-beijing.aliyuncs.com/images/about/img/me_%20Resume.webp"
+                  src="/images/about/img/me_%20Resume.webp"
                   alt=""
                   style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                  loading="lazy" />

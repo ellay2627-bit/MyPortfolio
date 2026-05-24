@@ -79,10 +79,8 @@ export function useSectionScroll() {
   }, [])
 
   useEffect(() => {
-    // 延迟 2 秒后初始化，确保首屏快速加载不卡住！
-    const initTimer = setTimeout(() => {
-      initialized.current = true
-    }, 2000)
+    // 立即初始化，不延迟！
+    initialized.current = true
 
     const handleWheel = (e: WheelEvent) => {
       // 只有初始化完成后才启用滚动控制！
@@ -169,7 +167,6 @@ export function useSectionScroll() {
     
     window.addEventListener('wheel', handleWheel, { passive: false, capture: true })
     return () => {
-      clearTimeout(initTimer)
       window.removeEventListener('wheel', handleWheel, { capture: true })
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
