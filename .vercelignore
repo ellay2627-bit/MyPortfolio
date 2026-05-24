@@ -8,7 +8,6 @@ src/components/LiquidEther.jsx.old
 tsconfig.tsbuildinfo
 # Large image files - already on OSS (作品图片都在OSS，about图标留着)
 data/images/
-public/images/works/
 # Backup and script files
 scripts/
 *.md
