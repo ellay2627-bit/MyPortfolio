@@ -44,7 +44,7 @@ const nextConfig = {
     }
     return config;
   },
-  output: 'standalone',
+  // output: 'standalone', // 暂时禁用，避免静态文件处理问题
   async headers() {
     return [
       {
